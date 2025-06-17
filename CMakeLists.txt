@@ -53,6 +53,9 @@ qt_add_qml_module(appPVZ
 #    RESOURCES ${AssetsFiles}
     NO_RESOURCE_TARGET_PATH
     QML_FILES qml/GameTitle.qml
+    QML_FILES qml/GameScene.qml
+    QML_FILES qml/MenuScene.qml
+    QML_FILES qml/Zombie.qml
 )
 
 # NOTE: for PUBLISHING, perform the following steps:

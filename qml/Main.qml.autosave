@@ -3,6 +3,7 @@ import Felgo 4.0
 import QtQuick
 import QtQuick.Controls
 GameWindow{
+    id:gameWindow
     property alias gametitle: _gametitle
     color: "white"
     width:640
@@ -10,11 +11,62 @@ GameWindow{
     title:qsTr("PlantsVSZombies,你们知道吗，什么，不会吧，真的吗")
     visible:true
 
+//wenrenqiang
+  //  state:"game"
+
+    MenuScene{
+    id:menuScene
+    Image{
+    Zombie{id:aa
+    }
+    }
+    }
+    GameScene{
+    id:gameScene
+    Image{
+    Zombie{id:bb}
+    }
+    }
+
+
+//activeScene: menuScene
+
+states:[
+  State{
+  name:"menu"
+
+    PropertyChanges{
+
+    target:gameWindow;
+    activeScene: menuScene
+    }
+    },
+
+  State{
+  name:"game"
+
+    PropertyChanges{
+
+    target:gameWindow;
+    activeScene: gameScene
+    }
+
+
+    }
+
+
+]
+
+
+
+//wenrenqiang
+
+
     Text{
         text:qsTr("Press any key to continue")
         opacity:0.4
         font.pixelSize: 30
-                color: "blue"
+        color: "blue"
                 anchors.centerIn: parent
                 enabled: false
     }
@@ -39,6 +91,8 @@ GameWindow{
                     gametitle.x = mouse.x;
                     gametitle.y = mouse.y;
             }
-       }
-   }
+        }
+        //onReleased:{gametitle.visible = false}
+    }
+
 }

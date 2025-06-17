@@ -1,4 +1,5 @@
 //the title of the game,when onpressed on the window,the title will come out
+
 import QtQuick
 import QtQuick.Controls
     Item{
