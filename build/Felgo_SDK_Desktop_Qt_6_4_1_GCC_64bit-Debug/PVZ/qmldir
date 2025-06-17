@@ -1,0 +1,5 @@
+module PVZ
+typeinfo appPVZ.qmltypes
+prefer :/
+GameTitle 1.0 qml/GameTitle.qml
+
