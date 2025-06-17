@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/PVZ">
-    <file alias="qmldir">/document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/PVZ/qmldir</file>
-  </qresource>
-</RCC>
-

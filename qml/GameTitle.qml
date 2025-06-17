@@ -1,80 +1,204 @@
-//the title of the game,when onpressed on the window,the title will come out
-
+//the menu of the game
 import QtQuick
 import QtQuick.Controls
-    Item{
-        property alias begin:_begin
-        property alias set:_set
-        property alias quit: _quit
-        Column {
-            spacing:4
-            Button{
-                id: _begin
-                width:180
-                height:30
-                background: Rectangle {
-                    border.color: "#888"
-                    border.width: 2
-                    radius: 50
-                    color: begin.hovered ? "lightgreen" : "lightblue"
-                    //color: begin.pressed ? "lightgreen" : "lightblue"
-                }
-                Text {
-                    text: qsTr("Begin the game")
-                    font.pixelSize: 20
-                    anchors.horizontalCenter : parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-                TapHandler{
-                    onTapped: console.log("aaa")
+import QtMultimedia
+import Felgo 4.0
+Scene{
+    property alias options:_options
+    property alias quit:_quit
+    property alias optionsImage:_optionsImage
+    property alias quitImage:_quitImage
+    property alias help:_help
+    property alias helpImage:_helpImage
+    property alias adventure:_adventure
+    property alias adventureImage:_adventureImage
+    property alias miniGames:_miniGames
+    property alias miniGamesImage:_miniGamesImage
+    property alias puzzle:_puzzle
+    property alias puzzleImage:_puzzleImage
+    property alias survival:_survival
+    property alias survivalImage:_survivalImage
+    id:menuscene
+    signal beginpressed
 
-                    //begin()
+    MediaPlayer {
+        source:""
+    }
 
-                }
+    Image {
+        id:_menu
+        source: "../assets/menu.png"
+        anchors.fill:parent
+        TapHandler{
+            onTapped: {
+                console.log("menu was clicked")
             }
-            Button{
-                id:_set
-                width:180
-                height:30
-                background: Rectangle {
-                    border.color: "#888"
-                    border.width: 2
-                    radius: 50
-                    color: set.hovered ? "lightgreen" : "lightblue"
-                }
-                Text {
-                    text: qsTr("About set")
-                    font.pixelSize: 20
-                    anchors.horizontalCenter : parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-                TapHandler{
-                    onTapped: console.log("begin was clicked")
-                    //gesturePolicy: TapHandler.ReleaseWithinBounds
-                }
-            }
-            Button{
-                 id: _quit
-                width:180
-                height:30
-                background: Rectangle {
-                    border.color: "#888"
-                    border.width: 2
-                    radius: 50
-                    color: quit.hovered ? "lightgreen" : "lightblue"
-
-                }
-                Text {
-                    text: qsTr("Close the game")//可以加成米塔那种鼠标移到上面笑脸变哭脸
-                font.pixelSize: 20
-                anchors.horizontalCenter : parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            TapHandler{
-                onTapped: console.log("the game ended")
-                //gesturePolicy: TapHandler.ReleaseWithinBounds
-                //quit()
-            }
-        }
         }
     }
+
+    Button{
+        id:_options
+        x:320;y:235;z:1
+        width:44;height:50
+        background: Rectangle {
+            color: "transparent" // 设置背景为透明
+            border.color: "transparent" // 确保边框也是透明的
+            //border.color: "#888"
+        }
+        TapHandler{
+            onTapped: {
+                console.log("options was clicked")
+            }
+        }
+
+        Image {
+            id:_optionsImage
+            x:1;y:25
+            width: 44
+            fillMode: Image.PreserveAspectFit // 保持宽高比，填充容器
+            source: "../assets/SelectorScreen_Options2.png"
+            visible:options.hovered
+        }
+    }
+    Button{
+        id:_quit
+        x:392;y:243;z:1
+        width:40;height:50
+        background: Rectangle{
+            color: "transparent"
+            border.color: "transparent"
+            //border.color: "#888"test the button's position
+        }
+        TapHandler{
+            onTapped: {
+                console.log("quit was clicked")
+            }
+        }
+        Image {
+            id:_quitImage
+            x:5;y:30
+            width: 27
+            fillMode: Image.PreserveAspectFit
+            source: "../assets/SelectorScreen_Quit2.png"
+            visible:quit.hovered
+        }
+    }
+    Button{
+        id:_help
+        x:358;y:238;z:1
+        width:34;height:60
+        background: Rectangle {
+            color: "transparent"
+            border.color: "transparent"
+        }
+        TapHandler{
+            onTapped: {
+                console.log("help was clicked")
+            }
+        }
+
+        Image {
+            id:_helpImage
+            x:5;y:43
+            width: 26
+            fillMode: Image.PreserveAspectFit
+            source: "../assets/SelectorScreen_Help2.png"
+            visible:help.hovered
+        }
+    }
+    Button{
+        id:_adventure
+        x:240;y:36;z:1
+        width:170;height:70
+        background: Rectangle {
+            color: "transparent"
+            border.color: "transparent"
+        }
+        TapHandler{
+            onTapped: {
+                console.log("start was clicked")
+            }
+        }
+
+        Image {
+            id:_adventureImage
+            width: 170
+            fillMode: Image.PreserveAspectFit
+            source: "../assets/SelectorScreen_StartAdventure_Highlight.png"
+            visible:adventure.hovered
+        }
+    }
+    Button{
+        id:_miniGames
+        x:242;y:103;z:1
+        width:170;height:45
+        background: Rectangle {
+            color: "transparent"
+            border.color: "transparent"
+        }
+        TapHandler{
+            onTapped: {
+                console.log("minigames was clicked")
+            }
+        }
+
+        Image {
+            y:-10
+            id:_miniGamesImage
+            width: 160
+            fillMode: Image.PreserveAspectFit
+            source: "../assets/SelectorScreen_Survival_highlight.png"
+            visible:miniGames.hovered
+        }
+    }
+    Button{
+        id:_puzzle
+        x:243;y:150;z:1
+        width:150;height:40
+        background: Rectangle {
+            color: "transparent"
+            border.color: "transparent"
+        }
+        TapHandler{
+            onTapped: {
+                console.log("puzzle was clicked")
+            }
+        }
+
+        Image {
+            y:-12
+            id:_puzzleImage
+            width: 145
+            fillMode: Image.PreserveAspectFit
+            source: "../assets/SelectorScreen_Challenges_highlight.png"
+            visible:puzzle.hovered
+        }
+    }
+    Button{
+        id:_survival
+        x:246;y:188;z:1
+        width:150;height:40
+        background: Rectangle {
+            color: "transparent"
+            border.color: "transparent"
+        }
+        TapHandler{
+            onTapped: {
+                console.log("survival was clicked")
+            }
+        }
+
+        Image {
+            y:-12
+            id:_survivalImage
+            width: 135
+            fillMode: Image.PreserveAspectFit
+            source: "../assets/SelectorScreen_vasebreaker_highlight.png"
+            visible:survival.hovered
+        }
+    }
+    BackgroundMusic{
+        source:""
+    }
+
+}
