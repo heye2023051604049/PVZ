@@ -32,6 +32,7 @@
 			"qt_add_qml_module",
 			"_qt_internal_find_third_party_dependencies",
 			"add_dependencies",
+			"qt6_target_qml_sources",
 			"_qt_internal_scan_qml_imports",
 			"_qt_internal_generate_deploy_qml_imports_script",
 			"cmake_language",
@@ -41,7 +42,8 @@
 			"target_include_directories",
 			"_qt_internal_qml_type_registration",
 			"target_sources",
-			"qt6_extract_metatypes"
+			"qt6_extract_metatypes",
+			"_qt_internal_target_enable_qmlcachegen"
 		],
 		"files" : 
 		[
@@ -147,7 +149,7 @@
 			{
 				"command" : 6,
 				"file" : 1,
-				"line" : 69,
+				"line" : 72,
 				"parent" : 0
 			},
 			{
@@ -427,87 +429,99 @@
 				"parent" : 2
 			},
 			{
+				"command" : 22,
+				"file" : 13,
+				"line" : 611,
+				"parent" : 43
+			},
+			{
+				"command" : 21,
+				"file" : 13,
+				"line" : 2187,
+				"parent" : 65
+			},
+			{
 				"file" : 1,
 				"line" : -1,
 				"parent" : 0
 			},
 			{
-				"command" : 26,
+				"command" : 27,
 				"file" : 20,
 				"line" : 1,
-				"parent" : 65
+				"parent" : 67
+			},
+			{
+				"command" : 26,
+				"file" : 0,
+				"line" : 705,
+				"parent" : 68
 			},
 			{
 				"command" : 25,
 				"file" : 0,
-				"line" : 705,
-				"parent" : 66
+				"line" : 640,
+				"parent" : 69
 			},
 			{
 				"command" : 24,
 				"file" : 0,
 				"line" : 640,
-				"parent" : 67
+				"parent" : 70
 			},
 			{
 				"command" : 23,
-				"file" : 0,
-				"line" : 640,
-				"parent" : 68
-			},
-			{
-				"command" : 22,
 				"file" : 13,
 				"line" : 2870,
-				"parent" : 69
+				"parent" : 71
 			},
 			{
 				"command" : 21,
 				"file" : 13,
 				"line" : 2723,
-				"parent" : 70
+				"parent" : 72
 			},
 			{
-				"command" : 27,
+				"command" : 28,
 				"file" : 1,
-				"line" : 66,
+				"line" : 69,
 				"parent" : 0
 			},
 			{
-				"command" : 29,
+				"command" : 30,
 				"file" : 13,
 				"line" : 517,
 				"parent" : 43
 			},
 			{
-				"command" : 28,
+				"command" : 29,
 				"file" : 13,
 				"line" : 2515,
-				"parent" : 73
+				"parent" : 75
 			},
 			{
-				"command" : 28,
+				"command" : 29,
 				"file" : 13,
 				"line" : 2540,
-				"parent" : 73
+				"parent" : 75
+			},
+			{
+				"command" : 32,
+				"file" : 13,
+				"line" : 2322,
+				"parent" : 75
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 1077,
+				"parent" : 78
 			},
 			{
 				"command" : 31,
 				"file" : 13,
-				"line" : 2322,
-				"parent" : 73
-			},
-			{
-				"command" : 30,
-				"file" : 0,
-				"line" : 1077,
-				"parent" : 76
-			},
-			{
-				"command" : 30,
-				"file" : 13,
 				"line" : 2506,
-				"parent" : 73
+				"parent" : 75
 			},
 			{
 				"command" : 10,
@@ -519,21 +533,21 @@
 				"command" : 9,
 				"file" : 0,
 				"line" : 342,
-				"parent" : 79
-			},
-			{
-				"command" : 8,
-				"file" : 0,
-				"line" : 1810,
-				"parent" : 80
-			},
-			{
-				"command" : 30,
-				"file" : 0,
-				"line" : 1574,
 				"parent" : 81
 			},
 			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1810,
+				"parent" : 82
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 1574,
+				"parent" : 83
+			},
+			{
 				"command" : 10,
 				"file" : 13,
 				"line" : 561,
@@ -543,19 +557,67 @@
 				"command" : 9,
 				"file" : 0,
 				"line" : 342,
-				"parent" : 83
+				"parent" : 85
 			},
 			{
 				"command" : 8,
 				"file" : 0,
 				"line" : 1810,
-				"parent" : 84
+				"parent" : 86
 			},
 			{
-				"command" : 30,
+				"command" : 31,
 				"file" : 0,
 				"line" : 1574,
-				"parent" : 85
+				"parent" : 87
+			},
+			{
+				"command" : 33,
+				"file" : 13,
+				"line" : 2080,
+				"parent" : 65
+			},
+			{
+				"command" : 31,
+				"file" : 13,
+				"line" : 979,
+				"parent" : 89
+			},
+			{
+				"command" : 31,
+				"file" : 13,
+				"line" : 2129,
+				"parent" : 65
+			},
+			{
+				"command" : 31,
+				"file" : 13,
+				"line" : 2129,
+				"parent" : 65
+			},
+			{
+				"command" : 10,
+				"file" : 13,
+				"line" : 2205,
+				"parent" : 65
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 342,
+				"parent" : 93
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 1810,
+				"parent" : 94
+			},
+			{
+				"command" : 31,
+				"file" : 0,
+				"line" : 1574,
+				"parent" : 95
 			}
 		]
 	},
@@ -615,7 +677,7 @@
 					"define" : "QT_QMLMODELS_LIB"
 				},
 				{
-					"backtrace" : 72,
+					"backtrace" : 74,
 					"define" : "QT_QML_DEBUG"
 				},
 				{
@@ -650,52 +712,56 @@
 					"path" : "/document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/appPVZ_autogen/include"
 				},
 				{
-					"backtrace" : 74,
+					"backtrace" : 76,
 					"path" : "/document/qtcreator/PVZ"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
+					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtQml/6.4.1"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
+					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtQml/6.4.1/QtQml"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
+					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtCore/6.4.1"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
+					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtCore/6.4.1/QtCore"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
 					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtCore"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
 					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
 					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/mkspecs/linux-g++"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
 					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtQml"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
 					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtQmlIntegration"
 				},
 				{
-					"backtrace" : 75,
+					"backtrace" : 77,
 					"isSystem" : true,
 					"path" : "/opt/felgo/Felgo/gcc_64/include/QtNetwork"
 				},
@@ -770,9 +836,13 @@
 			[
 				0,
 				1,
-				6,
-				7,
-				8
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32
 			]
 		}
 	],
@@ -783,7 +853,11 @@
 			"id" : "Felgo_resources_1::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 71,
+			"backtrace" : 66,
+			"id" : "appPVZ_tooling::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 73,
 			"id" : "appPVZ_qmlimportscan::@6890427a1f51a3e7e1df"
 		},
 		{
@@ -943,9 +1017,13 @@
 			[
 				0,
 				1,
-				6,
-				7,
-				8
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32
 			]
 		},
 		{
@@ -953,43 +1031,67 @@
 			"sourceIndexes" : 
 			[
 				2,
+				3,
 				4,
-				5,
-				9,
-				16,
-				17,
-				18,
-				19,
-				20,
-				21,
 				22,
-				23,
 				24,
 				25,
-				26,
-				27,
-				28,
-				29,
-				30
+				33,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				3
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				23
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				10,
-				11,
-				12,
-				13,
-				14,
-				15
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43
 			]
 		}
 	],
@@ -1010,8 +1112,98 @@
 		},
 		{
 			"backtrace" : 4,
+			"path" : "qml/ButtonsChange.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "qml/GameTitle.qml",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
 			"path" : "qml/Main.qml",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Adventure_button.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Adventure_highlight.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Challenges_button.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Challenges_highlight.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Help1.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Help2.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Options1.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Options2.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Quit1.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Quit2.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_StartAdventure_Button1.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_StartAdventure_Highlight.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Survival_button.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Survival_highlight.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_Vasebreaker_button.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/SelectorScreen_vasebreaker_highlight.png",
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 4,
@@ -1020,34 +1212,72 @@
 		},
 		{
 			"backtrace" : 4,
+			"path" : "assets/images.qrc",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"path" : "assets/menu.png",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
 			"path" : "qml/config.json",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 77,
+			"backtrace" : 79,
 			"isGenerated" : true,
 			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/meta_types/qt6apppvz_debug_metatypes.json.gen",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 78,
+			"backtrace" : 80,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/apppvz_qmltyperegistrations.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 82,
+			"backtrace" : 84,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qrc_qmake_PVZ.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 86,
+			"backtrace" : 88,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
 			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qrc_qmake_PVZ_copy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 90,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmlcache/appPVZ_qmlcache_loader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 91,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmlcache/appPVZ_qml/GameTitle_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 92,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmlcache/appPVZ_qml/ButtonsChange_qml.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 96,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qrc_appPVZ_raw_qml_0.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -1078,6 +1308,30 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qrc_qmake_PVZ_copy.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmlcache/appPVZ_qmlcache_loader.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmlcache/appPVZ_qml/GameTitle_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmlcache/appPVZ_qml/ButtonsChange_qml.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qrc_appPVZ_raw_qml_0.cpp.rule",
 			"sourceGroupIndex" : 3
 		},
 		{

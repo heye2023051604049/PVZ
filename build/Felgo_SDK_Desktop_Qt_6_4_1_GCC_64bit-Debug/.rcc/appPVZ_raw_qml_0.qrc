@@ -1,6 +1,8 @@
 <RCC>
   <qresource prefix="/">
     <file alias="qml/GameTitle.qml">/document/qtcreator/PVZ/qml/GameTitle.qml</file>
+    <file alias="qml/GameTitle.qml">/document/qtcreator/PVZ/qml/GameTitle.qml</file>
+    <file alias="assets/images.qrc">/document/qtcreator/PVZ/assets/images.qrc</file>
   </qresource>
 </RCC>
 

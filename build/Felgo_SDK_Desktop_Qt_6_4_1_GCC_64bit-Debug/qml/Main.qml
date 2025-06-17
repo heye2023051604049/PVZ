@@ -4,43 +4,14 @@ import QtQuick
 import QtQuick.Controls
 GameWindow{
     property alias gametitle: _gametitle
-    color: "white"
-    width:640
-    height:480
+    //color: "white"
+    //width:640
+    //height:480
     title:qsTr("PlantsVSZombies,你们知道吗，什么，不会吧，真的吗")
-    visible:true
-
-    Text{
-        text:qsTr("Press any key to continue")
-        opacity:0.4
-        font.pixelSize: 30
-                color: "blue"
-                anchors.centerIn: parent
-                enabled: false
-    }
-
+    //visible:true
     GameTitle{
         id:_gametitle
-        visible:false
-        z:1
-
     }
-    //Actions{
-      //  id:actions
 
-    //}
-    MouseArea{
-        anchors.fill:parent
-        onPressed: {
-            if(mouse.x >= gametitle.x && mouse.x <= gametitle.x + gametitle.width &&
-                mouse.y >= gametitle.y && mouse.y <= gametitle.y + gametitle.height){
-            }else{
-                    gametitle.visible = true;
-                    gametitle.x = mouse.x;
-                    gametitle.y = mouse.y;
-            }
-        }
-        //onReleased:{gametitle.visible = false}
-    }
 
 }

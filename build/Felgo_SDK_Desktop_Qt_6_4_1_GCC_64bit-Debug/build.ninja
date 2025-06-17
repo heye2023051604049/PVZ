@@ -47,7 +47,7 @@ cmake_ninja_workdir = /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_G
 #############################################
 # Order-only phony target for appPVZ
 
-build cmake_object_order_depends_target_appPVZ: phony || .rcc/qmlcache/appPVZ_qml/GameTitle_qml.cpp .rcc/qmlcache/appPVZ_qmlcache_loader.cpp .rcc/qrc_appPVZ_raw_qml_0.cpp .rcc/qrc_qmake_PVZ.cpp .rcc/qrc_qmake_PVZ_copy.cpp PVZ/appPVZ.qmltypes appPVZ_autogen appPVZ_autogen/mocs_compilation.cpp appPVZ_autogen/timestamp appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling apppvz_qmltyperegistrations.cpp assets/felgo-logo.png cmake_object_order_depends_target_Felgo_resources_1 meta_types/appPVZ_json_file_list.txt meta_types/appPVZ_json_file_list.txt.timestamp meta_types/qt6apppvz_debug_metatypes.json meta_types/qt6apppvz_debug_metatypes.json.gen qml/GameTitle.qml qml/Main.qml qml/config.json
+build cmake_object_order_depends_target_appPVZ: phony || .rcc/qmlcache/appPVZ_qml/GameTitle_qml.cpp .rcc/qmlcache/appPVZ_qmlcache_loader.cpp .rcc/qrc_appPVZ_raw_qml_0.cpp .rcc/qrc_qmake_PVZ.cpp .rcc/qrc_qmake_PVZ_copy.cpp PVZ/appPVZ.qmltypes appPVZ_autogen appPVZ_autogen/mocs_compilation.cpp appPVZ_autogen/timestamp appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling apppvz_qmltyperegistrations.cpp assets/SelectorScreen_Adventure_button.png assets/SelectorScreen_Adventure_highlight.png assets/SelectorScreen_Challenges_button.png assets/SelectorScreen_Challenges_highlight.png assets/SelectorScreen_Help1.png assets/SelectorScreen_Help2.png assets/SelectorScreen_Options1.png assets/SelectorScreen_Options2.png assets/SelectorScreen_Quit1.png assets/SelectorScreen_Quit2.png assets/SelectorScreen_StartAdventure_Button1.png assets/SelectorScreen_StartAdventure_Highlight.png assets/SelectorScreen_Survival_button.png assets/SelectorScreen_Survival_highlight.png assets/SelectorScreen_Vasebreaker_button.png assets/SelectorScreen_vasebreaker_highlight.png assets/felgo-logo.png assets/images.qrc assets/menu.png cmake_object_order_depends_target_Felgo_resources_1 meta_types/appPVZ_json_file_list.txt meta_types/appPVZ_json_file_list.txt.timestamp meta_types/qt6apppvz_debug_metatypes.json meta_types/qt6apppvz_debug_metatypes.json.gen qml/GameTitle.qml qml/Main.qml qml/config.json
 
 build CMakeFiles/appPVZ.dir/appPVZ_autogen/mocs_compilation.cpp.o: CXX_COMPILER__appPVZ_unscanned_Debug /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/appPVZ_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_appPVZ
   DEFINES = -DQT_BLUETOOTH_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DBUS_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NETWORK_LIB -DQT_OPENGL_LIB -DQT_QMLINTEGRATION_LIB -DQT_QMLMODELS_LIB -DQT_QML_DEBUG -DQT_QML_LIB -DQT_QUICKCONTROLS2_LIB -DQT_QUICK_LIB -DQT_SQL_LIB -DQT_WEBSOCKETS_LIB -DQT_WIDGETS_LIB
@@ -186,7 +186,7 @@ build all_qmltyperegistrations: phony appPVZ_qmltyperegistration
 #############################################
 # Utility command for appPVZ_other_files
 
-build appPVZ_other_files: phony qml/GameTitle.qml
+build appPVZ_other_files: phony qml/GameTitle.qml assets/images.qrc
 
 
 #############################################
@@ -216,7 +216,7 @@ build all_qmllint_json: phony appPVZ_qmllint_json
 #############################################
 # Utility command for appPVZ_tooling
 
-build appPVZ_tooling: phony PVZ/qml/GameTitle.qml
+build appPVZ_tooling: phony PVZ/qml/GameTitle.qml PVZ/assets/images.qrc
 
 
 #############################################
@@ -334,11 +334,173 @@ build qml/Main.qml | ${cmake_ninja_workdir}qml/Main.qml: CUSTOM_COMMAND /documen
 
 
 #############################################
+# Custom command for assets/SelectorScreen_Adventure_button.png
+
+build assets/SelectorScreen_Adventure_button.png | ${cmake_ninja_workdir}assets/SelectorScreen_Adventure_button.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Adventure_button.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Adventure_button.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Adventure_button.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Adventure_highlight.png
+
+build assets/SelectorScreen_Adventure_highlight.png | ${cmake_ninja_workdir}assets/SelectorScreen_Adventure_highlight.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Adventure_highlight.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Adventure_highlight.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Adventure_highlight.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Challenges_button.png
+
+build assets/SelectorScreen_Challenges_button.png | ${cmake_ninja_workdir}assets/SelectorScreen_Challenges_button.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Challenges_button.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Challenges_button.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Challenges_button.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Challenges_highlight.png
+
+build assets/SelectorScreen_Challenges_highlight.png | ${cmake_ninja_workdir}assets/SelectorScreen_Challenges_highlight.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Challenges_highlight.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Challenges_highlight.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Challenges_highlight.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Help1.png
+
+build assets/SelectorScreen_Help1.png | ${cmake_ninja_workdir}assets/SelectorScreen_Help1.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Help1.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Help1.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Help1.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Help2.png
+
+build assets/SelectorScreen_Help2.png | ${cmake_ninja_workdir}assets/SelectorScreen_Help2.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Help2.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Help2.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Help2.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Options1.png
+
+build assets/SelectorScreen_Options1.png | ${cmake_ninja_workdir}assets/SelectorScreen_Options1.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Options1.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Options1.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Options1.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Options2.png
+
+build assets/SelectorScreen_Options2.png | ${cmake_ninja_workdir}assets/SelectorScreen_Options2.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Options2.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Options2.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Options2.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Quit1.png
+
+build assets/SelectorScreen_Quit1.png | ${cmake_ninja_workdir}assets/SelectorScreen_Quit1.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Quit1.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Quit1.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Quit1.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Quit2.png
+
+build assets/SelectorScreen_Quit2.png | ${cmake_ninja_workdir}assets/SelectorScreen_Quit2.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Quit2.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Quit2.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Quit2.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_StartAdventure_Button1.png
+
+build assets/SelectorScreen_StartAdventure_Button1.png | ${cmake_ninja_workdir}assets/SelectorScreen_StartAdventure_Button1.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_StartAdventure_Button1.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_StartAdventure_Button1.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_StartAdventure_Button1.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_StartAdventure_Highlight.png
+
+build assets/SelectorScreen_StartAdventure_Highlight.png | ${cmake_ninja_workdir}assets/SelectorScreen_StartAdventure_Highlight.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_StartAdventure_Highlight.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_StartAdventure_Highlight.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_StartAdventure_Highlight.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Survival_button.png
+
+build assets/SelectorScreen_Survival_button.png | ${cmake_ninja_workdir}assets/SelectorScreen_Survival_button.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Survival_button.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Survival_button.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Survival_button.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Survival_highlight.png
+
+build assets/SelectorScreen_Survival_highlight.png | ${cmake_ninja_workdir}assets/SelectorScreen_Survival_highlight.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Survival_highlight.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Survival_highlight.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Survival_highlight.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_Vasebreaker_button.png
+
+build assets/SelectorScreen_Vasebreaker_button.png | ${cmake_ninja_workdir}assets/SelectorScreen_Vasebreaker_button.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_Vasebreaker_button.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_Vasebreaker_button.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_Vasebreaker_button.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/SelectorScreen_vasebreaker_highlight.png
+
+build assets/SelectorScreen_vasebreaker_highlight.png | ${cmake_ninja_workdir}assets/SelectorScreen_vasebreaker_highlight.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/SelectorScreen_vasebreaker_highlight.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/SelectorScreen_vasebreaker_highlight.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/SelectorScreen_vasebreaker_highlight.png
+  restat = 1
+
+
+#############################################
 # Custom command for assets/felgo-logo.png
 
 build assets/felgo-logo.png | ${cmake_ninja_workdir}assets/felgo-logo.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/felgo-logo.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
   COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/felgo-logo.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
   DESC = Generating assets/felgo-logo.png
+  restat = 1
+
+
+#############################################
+# Custom command for assets/images.qrc
+
+build assets/images.qrc | ${cmake_ninja_workdir}assets/images.qrc: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/images.qrc
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/images.qrc /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/images.qrc
+  restat = 1
+
+
+#############################################
+# Custom command for assets/menu.png
+
+build assets/menu.png | ${cmake_ninja_workdir}assets/menu.png: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/menu.png || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /usr/bin/cmake -E make_directory /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/menu.png /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/assets/
+  DESC = Generating assets/menu.png
   restat = 1
 
 
@@ -408,7 +570,7 @@ build .rcc/qmlcache/appPVZ_qml/GameTitle_qml.cpp | ${cmake_ninja_workdir}.rcc/qm
 #############################################
 # Custom command for .rcc/qrc_appPVZ_raw_qml_0.cpp
 
-build .rcc/qrc_appPVZ_raw_qml_0.cpp | ${cmake_ninja_workdir}.rcc/qrc_appPVZ_raw_qml_0.cpp: CUSTOM_COMMAND /document/qtcreator/PVZ/qml/GameTitle.qml .rcc/appPVZ_raw_qml_0.qrc /opt/felgo/Felgo/gcc_64/./libexec/rcc || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
+build .rcc/qrc_appPVZ_raw_qml_0.cpp | ${cmake_ninja_workdir}.rcc/qrc_appPVZ_raw_qml_0.cpp: CUSTOM_COMMAND /document/qtcreator/PVZ/qml/GameTitle.qml /document/qtcreator/PVZ/qml/GameTitle.qml /document/qtcreator/PVZ/assets/images.qrc .rcc/appPVZ_raw_qml_0.qrc /opt/felgo/Felgo/gcc_64/./libexec/rcc || Felgo_resources_1 Felgo_resources_1_autogen Felgo_resources_1_autogen_timestamp_deps appPVZ_autogen appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_tooling
   COMMAND = cd /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug && /opt/felgo/Felgo/gcc_64/./libexec/rcc --output /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qrc_appPVZ_raw_qml_0.cpp --name appPVZ_raw_qml_0 /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/appPVZ_raw_qml_0.qrc --no-zstd
   DESC = Running rcc for resource appPVZ_raw_qml_0
   restat = 1
@@ -463,15 +625,15 @@ build CMakeFiles/appPVZ_qmltyperegistration | ${cmake_ninja_workdir}CMakeFiles/a
 #############################################
 # Custom command for CMakeFiles/appPVZ_qmllint
 
-build CMakeFiles/appPVZ_qmllint | ${cmake_ninja_workdir}CMakeFiles/appPVZ_qmllint: CUSTOM_COMMAND /opt/felgo/Felgo/gcc_64/bin/qmllint /document/qtcreator/PVZ/qml/GameTitle.qml || all_qmltyperegistrations appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_qmltyperegistration appPVZ_tooling
-  COMMAND = cd /document/qtcreator/PVZ && /opt/felgo/Felgo/gcc_64/bin/qmllint --bare -I /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug -I /opt/felgo/Felgo/gcc_64/./qml --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ_copy.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/appPVZ_raw_qml_0.qrc /document/qtcreator/PVZ/qml/GameTitle.qml
+build CMakeFiles/appPVZ_qmllint | ${cmake_ninja_workdir}CMakeFiles/appPVZ_qmllint: CUSTOM_COMMAND /opt/felgo/Felgo/gcc_64/bin/qmllint /document/qtcreator/PVZ/qml/GameTitle.qml /document/qtcreator/PVZ/qml/GameTitle.qml || all_qmltyperegistrations appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_qmltyperegistration appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ && /opt/felgo/Felgo/gcc_64/bin/qmllint --bare -I /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug -I /opt/felgo/Felgo/gcc_64/./qml --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ_copy.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/appPVZ_raw_qml_0.qrc /document/qtcreator/PVZ/qml/GameTitle.qml /document/qtcreator/PVZ/qml/GameTitle.qml
 
 
 #############################################
 # Custom command for CMakeFiles/appPVZ_qmllint_json
 
-build CMakeFiles/appPVZ_qmllint_json | ${cmake_ninja_workdir}CMakeFiles/appPVZ_qmllint_json: CUSTOM_COMMAND /opt/felgo/Felgo/gcc_64/bin/qmllint /document/qtcreator/PVZ/qml/GameTitle.qml || all_qmltyperegistrations appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_qmltyperegistration appPVZ_tooling
-  COMMAND = cd /document/qtcreator/PVZ && /opt/felgo/Felgo/gcc_64/bin/qmllint --bare -I /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug -I /opt/felgo/Felgo/gcc_64/./qml --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ_copy.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/appPVZ_raw_qml_0.qrc /document/qtcreator/PVZ/qml/GameTitle.qml --json /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/appPVZ_qmllint.json
+build CMakeFiles/appPVZ_qmllint_json | ${cmake_ninja_workdir}CMakeFiles/appPVZ_qmllint_json: CUSTOM_COMMAND /opt/felgo/Felgo/gcc_64/bin/qmllint /document/qtcreator/PVZ/qml/GameTitle.qml /document/qtcreator/PVZ/qml/GameTitle.qml || all_qmltyperegistrations appPVZ_autogen_timestamp_deps appPVZ_qmlimportscan appPVZ_qmltyperegistration appPVZ_tooling
+  COMMAND = cd /document/qtcreator/PVZ && /opt/felgo/Felgo/gcc_64/bin/qmllint --bare -I /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug -I /opt/felgo/Felgo/gcc_64/./qml --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/qmake_PVZ_copy.qrc --resource /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.rcc/appPVZ_raw_qml_0.qrc /document/qtcreator/PVZ/qml/GameTitle.qml /document/qtcreator/PVZ/qml/GameTitle.qml --json /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/appPVZ_qmllint.json
 
 
 #############################################
@@ -484,6 +646,15 @@ build PVZ/qml/GameTitle.qml | ${cmake_ninja_workdir}PVZ/qml/GameTitle.qml: CUSTO
 
 
 #############################################
+# Custom command for PVZ/assets/images.qrc
+
+build PVZ/assets/images.qrc | ${cmake_ninja_workdir}PVZ/assets/images.qrc: CUSTOM_COMMAND /document/qtcreator/PVZ/assets/images.qrc
+  COMMAND = cd /document/qtcreator/PVZ && /usr/bin/cmake -E copy /document/qtcreator/PVZ/assets/images.qrc /document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/PVZ/assets/images.qrc
+  DESC = Generating PVZ/assets/images.qrc
+  restat = 1
+
+
+#############################################
 # Phony custom command for CMakeFiles/appPVZ_qmlimportscan
 
 build CMakeFiles/appPVZ_qmlimportscan | ${cmake_ninja_workdir}CMakeFiles/appPVZ_qmlimportscan: phony .qt_plugins/Qt6_QmlPlugins_Imports_appPVZ.cmake
@@ -492,7 +663,7 @@ build CMakeFiles/appPVZ_qmlimportscan | ${cmake_ninja_workdir}CMakeFiles/appPVZ_
 #############################################
 # Custom command for .qt_plugins/Qt6_QmlPlugins_Imports_appPVZ.cmake
 
-build .qt_plugins/Qt6_QmlPlugins_Imports_appPVZ.cmake | ${cmake_ninja_workdir}.qt_plugins/Qt6_QmlPlugins_Imports_appPVZ.cmake: CUSTOM_COMMAND /opt/felgo/Felgo/gcc_64/libexec/qmlimportscanner .rcc/qmake_PVZ.qrc .rcc/qmake_PVZ_copy.qrc .rcc/appPVZ_raw_qml_0.qrc /document/qtcreator/PVZ/qml/GameTitle.qml
+build .qt_plugins/Qt6_QmlPlugins_Imports_appPVZ.cmake | ${cmake_ninja_workdir}.qt_plugins/Qt6_QmlPlugins_Imports_appPVZ.cmake: CUSTOM_COMMAND /opt/felgo/Felgo/gcc_64/libexec/qmlimportscanner .rcc/qmake_PVZ.qrc .rcc/qmake_PVZ_copy.qrc .rcc/appPVZ_raw_qml_0.qrc /document/qtcreator/PVZ/qml/GameTitle.qml /document/qtcreator/PVZ/qml/GameTitle.qml
   COMMAND = cd /document/qtcreator/PVZ && /opt/felgo/Felgo/gcc_64/./libexec/qmlimportscanner @/document/qtcreator/PVZ/build/Felgo_SDK_Desktop_Qt_6_4_1_GCC_64bit-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_appPVZ.rsp
   DESC = Running qmlimportscanner for appPVZ
   restat = 1

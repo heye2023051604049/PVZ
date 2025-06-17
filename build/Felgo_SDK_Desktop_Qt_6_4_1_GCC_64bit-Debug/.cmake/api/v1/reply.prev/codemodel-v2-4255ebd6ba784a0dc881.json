@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-35a008a99f36c5f13af2.json",
+					"jsonFile" : "directory-.-Debug-807b647a8b2613f91a78.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -26,7 +26,12 @@
 						7,
 						8,
 						9,
-						10
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
 					]
 				}
 			],
@@ -51,7 +56,12 @@
 						7,
 						8,
 						9,
-						10
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
 					]
 				}
 			],
@@ -87,6 +97,20 @@
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-baa1feb2e8a3bfb3d181.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-36804b43471f93a5ed3c.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-all_qmltyperegistrations-Debug-1fcff456a259551d5f23.json",
 					"name" : "all_qmltyperegistrations",
@@ -95,7 +119,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appPVZ::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appPVZ-Debug-cac14d5ffcc09c299e28.json",
+					"jsonFile" : "target-appPVZ-Debug-e392c75ab8e3d7048d8c.json",
 					"name" : "appPVZ",
 					"projectIndex" : 0
 				},
@@ -109,14 +133,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "appPVZ_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appPVZ_autogen_timestamp_deps-Debug-25322d77f9197b68ce9a.json",
+					"jsonFile" : "target-appPVZ_autogen_timestamp_deps-Debug-68a6f22a7c545da8cd4b.json",
 					"name" : "appPVZ_autogen_timestamp_deps",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "appPVZ_other_files::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-appPVZ_other_files-Debug-93fc08ea472da8116102.json",
+					"jsonFile" : "target-appPVZ_other_files-Debug-144160ef047228b5e825.json",
 					"name" : "appPVZ_other_files",
 					"projectIndex" : 0
 				},
@@ -129,9 +153,30 @@
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "appPVZ_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appPVZ_qmllint-Debug-8def87084387c6d5c7c4.json",
+					"name" : "appPVZ_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appPVZ_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appPVZ_qmllint_json-Debug-e4cebb10ab5fd5ca20f3.json",
+					"name" : "appPVZ_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "appPVZ_qmltyperegistration::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-appPVZ_qmltyperegistration-Debug-c1f3756c32ffdd4acd8c.json",
 					"name" : "appPVZ_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "appPVZ_tooling::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-appPVZ_tooling-Debug-ab3567bb91176616ce3e.json",
+					"name" : "appPVZ_tooling",
 					"projectIndex" : 0
 				}
 			]

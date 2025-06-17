@@ -53,6 +53,8 @@ qt_add_qml_module(appPVZ
 #    RESOURCES ${AssetsFiles}
     NO_RESOURCE_TARGET_PATH
     QML_FILES qml/GameTitle.qml
+    RESOURCES assets/images.qrc
+    QML_FILES qml/GameTitle.qml
 )
 
 # NOTE: for PUBLISHING, perform the following steps:
