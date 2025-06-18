@@ -57,7 +57,7 @@ GameWindow{
         State {
             name: "menu"
             PropertyChanges {
-                target: gametitle;opacity:1
+                target: gameTitle;opacity:1
 
 
             }
@@ -65,7 +65,7 @@ GameWindow{
         State {
             name: "game"
             PropertyChanges {
-                target: gamescene;opacity:1
+                target: gameScene;opacity:1
 
 
 
@@ -76,12 +76,12 @@ GameWindow{
 
     GameTitle{
 
-        id:_gametitle;opacity: 0
+        id:_gameTitle;opacity: 0
         onBeginTapped: gameWindow.state ="game"
     }
 
     GameScene{
-        id:_gamescene;opacity: 0
+        id:_gameScene;opacity: 0
 
         Zombie{id:zb}
         Peashooter{id:ps}
