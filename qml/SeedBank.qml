@@ -5,7 +5,7 @@ Item {
     id:seedBank
 
     width: parent.width
-    height: 30
+    height: 45
 
     property var plantTypes: [
         { name:"Peashooter",cost:100,image:"../assets/pea-seed.png"},
@@ -14,13 +14,13 @@ Item {
     ]
 
     property int selectedPlantIndex:-1
-    property int sunCount:0
+    property int sunCount:50
 
     signal plantSelected(string plantName)
 
     Row{
         anchors.fill: parent
-        spacing: 10
+        spacing: 1
 
         Repeater {
             model: plantTypes
@@ -33,7 +33,8 @@ Item {
                 selected: seedBank.selectedPlantIndex === index
 
                 onClicked: {
-                    if (sunCount >= modelData.cost && !cooldownActive) {
+                    console.log("slot was clicked")
+                    if (sunCount >= modelData.cost) {
                         seedBank.selectedPlantIndex = index
                         seedBank.plantSelected(modelData.name)
                     }
@@ -43,10 +44,10 @@ Item {
     }
 
     /*Image {
+        anchors.fill:parent
         source: "../assets/SeedBank.png"
-        x:100
-        width: 200
-        height: 30
+        fillMode: Image.TileHorizontally
+        z:-1
         }*/
     }
 

@@ -4,7 +4,7 @@ import QtQuick
 Item {
     id: seedSlot
 
-    width: 80
+    width: 25
     height: parent.height
 
     property string plantName: ""
@@ -19,8 +19,8 @@ Item {
         anchors.fill: parent
         color: selected ? "#a0a0ff" : (available ? "#f0f0f0" : "#cccccc")
         border.color: "#000000"
-        border.width: 2
-        radius: 5
+        border.width: 1
+        radius: 2
 
         Column {
             anchors.centerIn: parent
@@ -29,14 +29,14 @@ Item {
             Image {
                 anchors.horizontalCenter: parent.horizontalCenter
                 source: plantImage
-                width: 50
-                height: 50
+                width: 20
+                height: 30
             }
 
             Text {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: plantCost
-                font.pixelSize: 16
+                font.pixelSize: 8
                 color: available ? "black" : "red"
             }
         }
