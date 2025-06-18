@@ -12,12 +12,16 @@ EntityBase{
     width:  64
     height: 64
 
+    x:400
+
+
+
     SpriteSequence{
     id:zbam
     //source:"../assets/walking.png"
     width: 64
     height:64
-    goalSprite: "walk"
+    goalSprite:"walk"
 
         Sprite{
         name:"walk"
@@ -29,6 +33,7 @@ EntityBase{
         frameX:0
         frameY:0
         frameDuration: 250
+        //to: {"eat":1,"die":1}
         }
 
         Sprite{
@@ -40,7 +45,7 @@ EntityBase{
         frameX:0
         frameY:0
         frameDuration: 250
-
+        //to: {"die":1,"walk":1}
         }
 
         Sprite{
@@ -52,7 +57,7 @@ EntityBase{
         frameX: 0
         frameY: 0
         frameDuration: 330
-
+        //to: {"walk":1,"eat":1}
         }
 
 
@@ -63,9 +68,19 @@ EntityBase{
     id:zb
     width: zombie.width
     height: zombie.height
+    bodyType: Body.Dynamic //动态物体
+    density: 1 //密度
+    friction: 0.5 //摩擦系数
+
     }
 
+    Timer{
+    interval: 500
+    running:true
+    repeat: true
+    onTriggered: {zombie.x= zombie.x-0.5;}
 
+    }
 
 
 
