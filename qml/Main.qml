@@ -65,6 +65,7 @@ GameWindow{
     GameTitle{
         id:_gametitle
         Zombie{id:zb}
+        Peashooter{id:ps}
         PhysicsWorld{
         debugDrawVisible: true
         }

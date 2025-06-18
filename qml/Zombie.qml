@@ -21,7 +21,7 @@ EntityBase{
     //source:"../assets/walking.png"
     width: 64
     height:64
-    goalSprite:"walk"
+    goalSprite:""
 
         Sprite{
         name:"walk"
@@ -33,7 +33,7 @@ EntityBase{
         frameX:0
         frameY:0
         frameDuration: 250
-        //to: {"eat":1,"die":1}
+        to: {}//{"eat":1,"die":1}
         }
 
         Sprite{
@@ -61,7 +61,6 @@ EntityBase{
         }
 
 
-
     }
 
     BoxCollider{
@@ -72,9 +71,21 @@ EntityBase{
     density: 1 //密度
     friction: 0.5 //摩擦系数
 
+    categories: Box.Category2
+    collidesWith: Box.Category1
+
+        fixture.onBeginContact: {
+        zbam.goalSprite = "eat";
+        zbtm.running = false;
+        zbtm.repeat = false;
+        console.log("eat");
+
+        }
+
     }
 
     Timer{
+    id:zbtm
     interval: 500
     running:true
     repeat: true
