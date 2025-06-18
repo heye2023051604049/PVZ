@@ -2,6 +2,7 @@
 import Felgo 4.0
 import QtQuick
 import QtQuick.Controls
+
 GameWindow{
     id:gameWindow
     property alias gametitle: _gametitle
@@ -27,6 +28,9 @@ GameWindow{
     Zombie{id:bb}
     }
     }*/
+
+ //Zombie{id:zb}
+
 
 
 //activeScene: menuScene
@@ -60,6 +64,10 @@ GameWindow{
 
     GameTitle{
         id:_gametitle
+        Zombie{id:zb}
+        PhysicsWorld{
+        debugDrawVisible: true
+        }
     }
 
 
