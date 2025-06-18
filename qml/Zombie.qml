@@ -18,7 +18,7 @@ import Felgo 4.0
         Sprite{
         name:"walk"
         //sourceRect:Qt.rect(0, 0, 169,239)
-        source:"assets/walking.png"
+        source:"../assets/walking.png"
         frameCount: 17
         frameWidth: 150
         frameHeight: 230

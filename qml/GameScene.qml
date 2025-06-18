@@ -3,18 +3,16 @@ import Felgo 4.0
 import QtQuick
 import QtQuick.Controls
 
-
 Scene{
-Image{
+    id:gamescene
+    Image {
+        id:_gamebackground
+        source: "../assets/background1.jpg"
+        anchors.fill:parent
+    }
 
-
-anchors.fill: parent
-source: "/root/pvz/background.jpg"
-
-TapHandler{
-onTapped: bb.start();
-
-}
-
-}
+    SeedBank{
+        id:_seedbank
+        anchors.top: parent.top
+    }
 }

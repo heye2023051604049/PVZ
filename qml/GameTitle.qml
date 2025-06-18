@@ -19,7 +19,7 @@ Scene{
     property alias survival:_survival
     property alias survivalImage:_survivalImage
     id:menuscene
-    signal beginpressed
+    signal startpressed
 
     MediaPlayer {
         source:""
@@ -116,6 +116,7 @@ Scene{
         }
         TapHandler{
             onTapped: {
+                startpressed()
                 console.log("start was clicked")
             }
         }
