@@ -2,6 +2,7 @@
 import Felgo 4.0
 import QtQuick
 import QtQuick.Controls
+
 GameWindow{
     id:gameWindow
     property alias gametitle: _gametitle
@@ -20,6 +21,7 @@ GameWindow{
             PropertyChanges {
                 target: gametitle;opacity:1
 
+
             }
         },
         State {
@@ -27,17 +29,27 @@ GameWindow{
             PropertyChanges {
                 target: gamescene;opacity:1
 
+
+
+
             }
         }
     ]
 
     GameTitle{
+
         id:_gametitle;opacity: 0
         onStartpressed: gameWindow.state ="game"
     }
 
     GameScene{
         id:_gamescene;opacity: 0
+
+        Zombie{id:zb}
+        Peashooter{id:ps}
+        PhysicsWorld{
+        debugDrawVisible: true
+        }
     }
 
 

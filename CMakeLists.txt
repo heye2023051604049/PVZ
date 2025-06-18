@@ -56,6 +56,7 @@ qt_add_qml_module(appPVZ
     QML_FILES qml/Zombie.qml
     RESOURCES assets/images.qrc
     QML_FILES qml/GameTitle.qml
+    QML_FILES qml/Peashooter.qml
 
 )
 
