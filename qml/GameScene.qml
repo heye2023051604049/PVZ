@@ -11,7 +11,7 @@ Scene{
     }
     Image {
         id: image2
-        source: "../assets/SelectorScreen_Survival_highlight."  // 替换为你的 image2 路径
+        source: "../assets/SelectorScreen_Survival_highlight.jpg"  // 替换为你的 image2 路径
         width: 50
         height: 50
         visible: false  // 初始不可见

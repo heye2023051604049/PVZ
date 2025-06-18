@@ -10,7 +10,6 @@ EntityBase{
     property string attack
     width:  40
     height: 40
-
     x:340
 
 

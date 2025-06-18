@@ -7,7 +7,6 @@ GameWindow{
     id:gameWindow
 
     property alias gameTitle: _gameTitle
-    property alias menuScene: _menuScene
     property alias gameScene: _gameScene
 
     //color: "white"
@@ -18,27 +17,20 @@ GameWindow{
 
 
 //wenrenqiang
-    state:"title"
+    // state:"title"
 
-    GameTitle{
-        id:_gameTitle
-        opacity: 0
-        onBeginTapped: gameWindow.state = "game"
-    }
-    MenuScene{
-        id:_menuScene
-        opacity: 0
-        Image{
-            Zombie{id:aa}
-        }
-    }
-    GameScene{
-        id:_gameScene
-        opacity: 0
-        Image{
-            //Zombie{id:bb}
-        }
-    }
+    // GameTitle{
+    //     id:_gameTitle
+    //     opacity: 0
+    //     onBeginTapped: gameWindow.state = "game"
+    // }
+    // GameScene{
+    //     id:_gameScene
+    //     opacity: 0
+    //     Image{
+    //         //Zombie{id:bb}
+    //     }
+    // }
 
 
 //activeScene: menuScene
@@ -61,7 +53,6 @@ GameWindow{
 //     ]
 // =======
     state:  "menu"
-
     states: [
         State {
             name: "menu"
