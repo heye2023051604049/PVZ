@@ -5,17 +5,12 @@ import QtQuick.Controls
 
 
 Scene{
-Image{
+    Image{
+        anchors.fill: parent
+        source:"/root/pvz/background.jpg"
+    TapHandler{
+        onTapped: aa.start();
 
-
-anchors.fill: parent
-source:"/root/pvz/background.jpg"
-
-TapHandler{
-onTapped: aa.start();
-
-}
-}
-
-
+        }
+    }
 }

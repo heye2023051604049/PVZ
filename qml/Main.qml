@@ -4,7 +4,9 @@ import QtQuick
 import QtQuick.Controls
 GameWindow{
     id:gameWindow
-    property alias gametitle: _gametitle
+    property alias gameTitle: _gameTitle
+    property alias menuScene: _menuScene
+    property alias gameScene: _gameScene
     //color: "white"
     //width:640
     //height:480
@@ -12,55 +14,47 @@ GameWindow{
     visible:true
 
 //wenrenqiang
-  //  state:"game"
+    state:"title"
 
-   /* MenuScene{
-    id:menuScene
-    Image{
-    Zombie{id:aa
+    GameTitle{
+        id:_gameTitle
+        opacity: 0
+        onBeginTapped: gameWindow.state = "game"
     }
+    MenuScene{
+        id:_menuScene
+        opacity: 0
+        Image{
+            Zombie{id:aa}
+        }
     }
-    }*/
-    /*GameScene{
-    id:gameScene
-    Image{
-    Zombie{id:bb}
+    GameScene{
+        id:_gameScene
+        opacity: 0
+        Image{
+            //Zombie{id:bb}
+        }
     }
-    }*/
 
 
 //activeScene: menuScene
 
-/*states:[
-  State{
-  name:"menu"
+    states:[
+        State{
+            name:"title"
+            PropertyChanges {target:gameTitle;opacity:1}
 
-    PropertyChanges{
+        },
+        State{
+            name:"menu"
+            PropertyChanges{target:menuScene;opacity:1}
+        },
 
-    target:gameWindow;
-    activeScene: menuScene
-    }
-    },
-
-  State{
-  name:"game"
-
-    PropertyChanges{
-
-    target:gameWindow;
-    activeScene: gameScene
-    }
-
-
-    }
-
-
-]*/
-
-
-    GameTitle{
-        id:_gametitle
-    }
+        State{
+            name:"game"
+            PropertyChanges{target:gameScene;opacity:1}
+        }
+    ]
 
 
 }
