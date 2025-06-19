@@ -6,12 +6,12 @@ EntityBase{
     id:peashooter
     property int hp :150
     //anchors.centerIn: parent
-    entityType: "peashooter"
+    entityType: "plant"
     property int attack
     width:  40
     height: 40
 
-    x:340
+    x:100
     y:100
 
 
@@ -76,7 +76,14 @@ EntityBase{
 
     }
 
+    /*BoxCollider{
+    id:attackrange
+    width:600
+    anchors.left: parent.left
+    sensor: true
 
+    fixture.
+    }*/
 
 
 
@@ -104,7 +111,25 @@ EntityBase{
 
     }
 
+    Timer{
+    id:attck
+    interval: 2000
+    running: true
+    repeat: true
+    onTriggered: {fireBullet();}
 
+    }
+
+    // 生成子弹
+    function fireBullet() {
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Peabullet.qml"), {
+            x: peashooter.x+30,
+            y: peashooter.y+5  //需手动跟换id
+            //velocity: Qt.point(0, -500)
+        })
+    }
+
+//WithProperties
 
 }
 
