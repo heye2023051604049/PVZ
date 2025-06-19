@@ -90,16 +90,17 @@ EntityBase{
 
 
         fixture.onBeginContact: other =>{
-        zbam.jumpTo("eat");
+
+        var otherEntity = other.getBody().target;
+
+        if(otherEntity.entityType === "plant" )    {
+        zbam.jumpTo("eat");}
         console.log("38283");
         console.log("peznhads");
 
         }
 
-        fixture.onEndContact: other=> {
-            console.log("碰撞结束!");
-            //zbam.jumpTo("walk");
-        }
+
 
 }
 
@@ -117,9 +118,16 @@ EntityBase{
 
     Timer{
     id:damagecount
+    interval:100
+    running: true
+    repeat: true
+    onTriggered: {
+    if(hp<=0){
+    zbam.jumpTo("die")
+    zombie.removeEntity()
+    }
 
-    //to do
-
+    }
 
     }
 
