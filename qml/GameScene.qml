@@ -201,32 +201,7 @@ Scene{
             }
         }
     }
-    // Button{
-    //     id:_options
-    //     x:86;y:40
-    //     width:29;height:55
-    //     background: Rectangle {
-    //         color: "transparent" // 设置背景为透明
-    //         //border.color: "transparent" // 确保边框也是透明的
-    //         border.color: "#888"
-    //     TapHandler{
-    //         onTapped: {
-    //         //    console.log("options was clicked")
-    //         }
-    //     }
 
-    //        Image {
-    //            id:_optionsImage
-    //            opacity: 0.4
-    //             anchors.horizontalCenter: parent.horizontalCenter
-    //             anchors.verticalCenter: parent.verticalCenter
-    //             fillMode: Image.PreserveAspectFit // 保持宽高比，填充容器
-    //             //source: "../assets/SelectorScreen_Options2.png"
-    //             visible:_options.hovered
-    //             source:path
-    //         }
-    //     }
-    // }
     Image {
         id:a
         opacity: 1
@@ -253,13 +228,9 @@ Scene{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter}
     }
-    //id:gamescene
+
     property int sunCount: 50
-    // Image {
-    //     id:_gamebackground
-    //     source: "../assets/background1.jpg"
-    //     anchors.fill:parent
-    // }
+    property int maxSunCount: 9999
 
     SunBank{
         id:_sunbank
@@ -269,7 +240,24 @@ Scene{
             margins: 5
         }
         sunCount: parent.sunCount
+        autoGenerate: true
+        generateInterval: 7000
+        generateAmount: 1
+        generateArea: parent
+        onSunCountChanged: parent.sunCount = sunCount
     }
+    // 手动生成测试按钮
+    Button {
+        text: "手动生成阳光"
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        //anchors.horizontalCenter: parent.horizontalCenter
+        onClicked: {
+            _sunbank.generateRandomSuns()
+            console.log("suncount:",_seedbank.sunCount)
+        }
+    }
+
 
     SeedBank{
         id:_seedbank
