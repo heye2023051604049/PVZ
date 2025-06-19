@@ -4,56 +4,66 @@ import QtQuick.Controls
 
 Scene{
     id:gameScene
-    property string path
+    property string shadowPath
+    property string examplePath
     property Component plantingComponent
     property double xPosition
     property double yPosition
     property alias seedBank:_seedbank
+    property var currentPlant
+    property var currentPlantList:[]
     Image{
         id:image1
     anchors.fill: parent
     source: "../assets/background1.jpg"
     }
+
     HoveredButton {
-        id:p11;x:86; y:40;width: 55; height: 55;imageSource:path;}
+        id:p11;x:86;  y:40; width: 55; height: 55;imageSource:shadowPath;}
     HoveredButton {
-        id:p12;x:142; y:40;width: 55; height: 55;imageSource:path;}
+        id:p12;x:142; y:40; width: 55; height: 55;imageSource:shadowPath;}
     HoveredButton {
-        id:p13;x:198; y:40;width: 55; height: 55;imageSource:path;}
+        id:p13;x:198; y:40; width: 55; height: 55;imageSource:shadowPath;}
     HoveredButton {
-        id:p14;x:254; y:40;width: 55; height: 55;imageSource:path;}
+        id:p14;x:254; y:40; width: 55; height: 55;imageSource:shadowPath;}
     HoveredButton {
-        id:p21;x:86; y:95;width: 55; height: 53;imageSource:path;}
+        id:p21;x:86;  y:95; width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p22;x:142; y:95;width: 55; height: 53;imageSource:path;}
+        id:p22;x:142; y:95; width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p23;x:198; y:95;width: 55; height: 53;imageSource:path;}
+        id:p23;x:198; y:95; width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p24;x:254; y:95;width: 55; height: 53;imageSource:path;}
+        id:p24;x:254; y:95; width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p31;x:86; y:148;width: 55; height: 53;imageSource:path;}
+        id:p31;x:86;  y:148;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p32;x:142; y:148;width: 55; height: 53;imageSource:path;}
+        id:p32;x:142; y:148;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p33;x:198; y:148;width: 55; height: 53;imageSource:path;}
+        id:p33;x:198; y:148;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p34;x:254; y:148;width: 55; height: 53;imageSource:path;}
+        id:p34;x:254; y:148;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p41;x:86; y:201;width: 55; height: 53;imageSource:path;}
+        id:p41;x:86;  y:201;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p42;x:142; y:201;width: 55; height: 53;imageSource:path;}
+        id:p42;x:142; y:201;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p43;x:198; y:201;width: 55; height: 53;imageSource:path;}
+        id:p43;x:198; y:201;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p44;x:254; y:201;width: 55; height: 53;imageSource:path;}
+        id:p44;x:254; y:201;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p51;x:86; y:254;width: 55; height: 53;imageSource:path;}
+        id:p51;x:86;  y:254;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p52;x:142; y:254;width: 55; height: 53;imageSource:path;}
+        id:p52;x:142; y:254;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p53;x:198; y:254;width: 55; height: 53;imageSource:path;}
+        id:p53;x:198; y:254;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
-        id:p54;x:254; y:254;width: 55; height: 53;imageSource:path;}
+        id:p54;x:254; y:254;width: 55; height: 53;imageSource:shadowPath;}
+        TapHandler{
+            onTapped: {
+                console.log(" was clicked")
+            }
+        }
+
 
     component HoveredButton: Button{
         property alias imageSource : image.source
@@ -73,13 +83,17 @@ Scene{
                 if(plantingComponent){
                     seedBank.plantPlanteddemo(plantingComponent)
                     console.log(plantingComponent)
-                    //plantingComponent:null
-                    //path:null
-                            }
+                    gameScene.plantingComponent = null
+                    gameScene.shadowPath=""
+                   console.log("After reset - plantingComponent:", plantingComponent, "shadowPath:", shadowPath)
+                           }
             }
         }
     }
-    property int sunCount: 100
+    // property int sunCount: 100
+
+    property int sunCount: 666
+    property int maxSunCount: 9999
 
     SunBank{
         id:_sunbank
@@ -89,7 +103,24 @@ Scene{
             margins: 5
         }
         sunCount: parent.sunCount
+        autoGenerate: true
+        generateInterval: 7000
+        generateAmount: 1
+        generateArea: parent
+        onSunCountChanged: parent.sunCount = sunCount
     }
+    // 手动生成测试按钮
+    Button {
+        text: "手动生成阳光"
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        //anchors.horizontalCenter: parent.horizontalCenter
+        onClicked: {
+            _sunbank.generateRandomSuns()
+            console.log("suncount:",_seedbank.sunCount)
+        }
+    }
+
 
     SeedBank{
         id:_seedbank
@@ -98,7 +129,7 @@ Scene{
 
         onPlantSelected: {
             console.log("Plant selected:",plantName,plantComponent)
-            path=shadowImage
+            shadowPath=shadowImage
             plantingComponent=plantComponent
         }
 
@@ -116,9 +147,21 @@ Scene{
                     x: xPosition - 20,  // 居中修正
                     y: yPosition - 20
                         })
+                currentPlantList.push(currentPlant)
+                console.log(currentPlantList.length)
             }
         }
 
+    }
+    Shovel{
+        x:400;y:0
+        MouseArea{
+            anchors.fill:parent
+            hoverEnabled: true
+            onPositionChanged: {
+
+            }
+        }
     }
 
 //     function plantPlanted(plantType, x, y) {

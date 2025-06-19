@@ -8,6 +8,10 @@ Item {
 
     property int sunCount: 0
     property int maxSunCount: 9999
+    property bool autoGenerate: true  // 是否自动生成阳光
+    property int generateInterval: 5000  // 生成间隔(毫秒)
+    property int generateAmount: 1  // 每次生成数量
+    property var generateArea: parent  // 生成区域
 
     //存储阳光最大值
     onSunCountChanged: {
@@ -47,13 +51,13 @@ Item {
 
         Behavior on text {
             NumberAnimation {
-                duration: 200
+                duration: 100
             }
         }
     }
 
     // 阳光收集动画效果
-    /*function playCollectAnimation(x, y) {
+    function playCollectAnimation(x, y) {
         var sun = sunComponent.createObject(sunBank.parent, {
             startX: x,
             startY: y,
@@ -85,7 +89,7 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "qrc:/images/sun.png"
+                source: "../assets/sun1.png"
                 rotation: parent.rotation
             }
 
@@ -177,5 +181,25 @@ Item {
                 }
             }
         }
-    }*/
+    }
+    // 随机生成阳光
+    function generateRandomSuns() {
+        for (var i = 0; i < generateAmount; i++) {
+            // 在生成区域内随机位置
+            var x = Math.random() * (generateArea.width - 30)
+            var y = -30  // 从屏幕上方开始
+
+            // 创建阳光实例
+            var sun = sunComponent.createObject(generateArea, {
+                startX: x,
+                startY: y,
+                endX: sunBank.x + sunIcon.x + sunIcon.width/2,
+                endY: sunBank.y + sunIcon.y + sunIcon.height/2,
+            });
+            sun.collected.connect(function() {
+                sunCount += 25;  // 每个阳光值25
+                sun.destroy();
+            });
+        }
+    }
 }

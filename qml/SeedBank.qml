@@ -16,9 +16,11 @@ Item {
 
     property int selectedPlantIndex:-1
     property int sunCount:50
+    property int maxSunCount:9999
 
     signal plantSelected(string plantName,string shadowImage,Component plantComponent)
     signal plantClicked(string plantName)
+    signal selectedPlantIndexChanged
 
     Row{
         anchors.fill: parent

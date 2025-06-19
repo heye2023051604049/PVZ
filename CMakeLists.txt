@@ -57,6 +57,8 @@ qt_add_qml_module(appPVZ
     RESOURCES assets/images.qrc
     QML_FILES qml/GameTitle.qml
     QML_FILES qml/Peashooter.qml
+    QML_FILES qml/Peabullet.qml
+    QML_FILES qml/Shovel.qml
 
 )
 

@@ -4,36 +4,35 @@ import Felgo 4.0
 
 EntityBase{
     id:peashooter
-    property string hp
+    property int hp :150
     //anchors.centerIn: parent
     entityType: "peashooter"
-    property string attack
+    property int attack
     width:  40
     height: 40
-    //x:340
 
-
-
-    SpriteSequence{
+    GameSpriteSequence{
     id:psam
     //source:"../assets/Peashooter.png"
     width: 40
     height:40
     goalSprite:"relax"
 
-        Sprite{
+        GameSprite{
         name:"relax"
         //sourceRect:Qt.rect(0, 0, 169,239)
-        source: "../assets/Peashooter.png"
+        //source: "../assets/Peashooter.png"
+        source: Qt.resolvedUrl("../assets/Peashooter.png")
         frameCount: 13
         frameWidth: 142
         frameHeight: 142
         frameX:0
         frameY:0
-        frameDuration: 150
-        //to: {"eat":1,"die":1}
+        frameDuration: 150      
         }
 
+
+    //to do 攻击动画
         /*Sprite{
         name:"shoot"
         source: "../assets/Peashooter.png"
@@ -43,7 +42,7 @@ EntityBase{
         frameX:0
         frameY:0
         frameDuration: 250
-        //to: {"die":1,"walk":1}
+
     }*/
 
 
@@ -55,22 +54,53 @@ EntityBase{
     width: peashooter.width
     height: peashooter.height
     bodyType: Body.Static //静态物体
-    //density: 1 //密度
-    //friction: 0.5 //摩擦系数
+
+
+
+    fixture.onBeginContact: (other) =>{
+
+                            console.log("attacked");
+                            damagecount.running=true;
+
+
+
+                            }
 
     categories: Box.Category1
     collidesWith: Box.Category2
 
+
     }
 
-    /*Timer{
-    interval: 500
-    running:true
-    repeat: true
-    onTriggered: {zombie.x= zombie.x-0.5;}
 
-    }*/
+
+
+
+
+
+
+
+    Timer{
+    id:damagecount
+    interval: 1000
+    running:false
+    repeat: true
+    onTriggered: {
+        peashooter.hp= peashooter.hp-zombie.attack;
+        console.log("HP",peashooter.hp)
+
+        if (peashooter.hp<=0){
+                damagecount.running=false;
+                peashooter.removeEntity();
+                zombie.anima.jumpTo("walk")
+        }
+
+
+    }
+
+    }
 
 
 
 }
+

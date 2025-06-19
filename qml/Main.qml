@@ -9,9 +9,6 @@ GameWindow{
     property alias gameTitle: _gameTitle
     property alias gameScene: _gameScene
 
-    //color: "white"
-    //width:640
-    //height:480
     title:qsTr("PlantsVSZombies,你们知道吗，什么，不会吧，真的吗")
     visible:true
 
@@ -21,21 +18,17 @@ GameWindow{
     states: [
         State {
             name: "menu"
-            PropertyChanges {
-                target: gameTitle;opacity:1
+            PropertyChanges {target: gameTitle;opacity:1}
+            PropertyChanges {target: gameWindow; activeScene: gameTitle}
 
 
-            }
+
         },
         State {
             name: "game"
-            PropertyChanges {
-                target: gameScene;opacity:1
+            PropertyChanges {target: gameScene;opacity:1}
+            PropertyChanges {target: gameWindow; activeScene: gameScene}
 
-
-
-
-            }
         }
     ]
 
@@ -43,16 +36,24 @@ GameWindow{
 
         id:_gameTitle;opacity: 0
         onBeginTapped: gameWindow.state ="game"
+
+
     }
 
     GameScene{
-        id:_gameScene;opacity: 0
+        id:_gameScene;opacity:  0
 
-        Zombie{id:zb}
-        Peashooter{id:ps}
+        Zombie{id:zombie}
+        Peashooter{id:peashooter}
         PhysicsWorld{
         debugDrawVisible: true
+        //updatesPerSecondForPhysics:60
+        //gravity. y:10
+
         }
+
+        EntityManager {id:entityManager; entityContainer: gameScene}
+
     }
 
 
