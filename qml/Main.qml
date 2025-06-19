@@ -43,16 +43,24 @@ GameWindow{
 
         id:_gameTitle;opacity: 0
         onBeginTapped: gameWindow.state ="game"
+
+
     }
 
     GameScene{
         id:_gameScene;opacity: 0
 
-        Zombie{id:zb}
-        Peashooter{id:ps}
+        Zombie{id:zombie}
+        Peashooter{id:peashooter}
         PhysicsWorld{
         debugDrawVisible: true
+        //updatesPerSecondForPhysics:60
+        //gravity. y:10
+
         }
+
+        EntityManager {id:entityManager; entityContainer: gameScene}
+
     }
 
 

@@ -9,13 +9,7 @@ Scene{
     anchors.fill: parent
     source: "../assets/background1.jpg"
     }
-    Image {
-        id: image2
-        source: "../assets/SelectorScreen_Survival_highlight.jpg"  // 替换为你的 image2 路径
-        width: 50
-        height: 50
-        visible: false  // 初始不可见
-    }
+
     HoveredButton {
         id:p11;x:86; y:40;width: 55; height: 55
         imageSource:path;imageY:-12;imageWidth: 145

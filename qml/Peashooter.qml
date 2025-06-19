@@ -14,17 +14,18 @@ EntityBase{
 
 
 
-    SpriteSequence{
+    GameSpriteSequence{
     id:psam
     //source:"../assets/Peashooter.png"
     width: 40
     height:40
     goalSprite:"relax"
 
-        Sprite{
+        GameSprite{
         name:"relax"
         //sourceRect:Qt.rect(0, 0, 169,239)
-        source: "../assets/Peashooter.png"
+        //source: "../assets/Peashooter.png"
+        source: Qt.resolvedUrl("../assets/Peashooter.png")
         frameCount: 13
         frameWidth: 142
         frameHeight: 142
@@ -57,6 +58,20 @@ EntityBase{
     bodyType: Body.Static //静态物体
     //density: 1 //密度
     //friction: 0.5 //摩擦系数
+
+
+    fixture.onBeginContact: (other,contactNormal) =>{
+                            zombie.eat();
+                            console.log("q783234782");
+                            }
+
+
+
+
+    /*fixture{
+        categories: Box.Category1
+        collidesWith: Box.Category2
+    }*/
 
     categories: Box.Category1
     collidesWith: Box.Category2

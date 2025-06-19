@@ -14,31 +14,32 @@ EntityBase{
 
     x:400
 
-
-
-    SpriteSequence{
+    GameSpriteSequence{
     id:zbam
     //source:"../assets/walking.png"
     width: 64
     height:64
-    goalSprite:""
+    //goalSprite:"walk"
 
-        Sprite{
+        GameSprite{
         name:"walk"
         //sourceRect:Qt.rect(0, 0, 169,239)
-        source: "../assets/ZBwalik.png"
+        //source: "../assets/ZBwalik.png"
+        source: Qt.resolvedUrl("../assets/ZBwalik.png")
         frameCount: 17
         frameWidth: 332
         frameHeight: 288
         frameX:0
         frameY:0
         frameDuration: 250
-        to: {}//{"eat":1,"die":1}
+        //to: {}
+        //to: {"eat":1,"die":1}
         }
 
-        Sprite{
+        GameSprite{
         name:"eat"
-        source: "../assets/ZBeat.png"
+        //source: "../assets/ZBeat.png"
+        source: Qt.resolvedUrl("../assets/ZBeat.png")
         frameCount: 19
         frameWidth:332
         frameHeight: 288
@@ -48,9 +49,10 @@ EntityBase{
         //to: {"die":1,"walk":1}
         }
 
-        Sprite{
+        GameSprite{
         name:"die"
-        source:"../assets/ZBdie.png"
+        //source:"../assets/ZBdie.png"
+        source: Qt.resolvedUrl("../assets/ZBdie.png")
         frameCount: 9
         frameWidth: 446
         frameHeight: 265
@@ -71,16 +73,35 @@ EntityBase{
     density: 1 //密度
     friction: 0.5 //摩擦系数
 
+
     categories: Box.Category2
     collidesWith: Box.Category1
 
-        fixture.onBeginContact: {
-        zbam.goalSprite = "eat";
-        zbtm.running = false;
-        zbtm.repeat = false;
-        console.log("eat");
+
+
+        //categories: Box.Category2
+        //collidesWith: Box.Category1
+
+        fixture.density: 1
+        fixture.friction: 0.5
+
+
+        /*fixture.onBeginContact: other =>{
+        //zbam.goalSprite = "eat";
+        zbam.jumpTo("eat");
+        //zbtm.running = false;
+        //zbtm.repeat = false;
+        console.log("38283");
+        console.log("peznhads");
+        //zombie.removeEntity();
 
         }
+
+        fixture.onEndContact: function(other) {
+            console.log("碰撞结束!");
+            zbam.jumpTo("walk");
+        }*/
+
 
     }
 
@@ -89,12 +110,20 @@ EntityBase{
     interval: 500
     running:true
     repeat: true
-    onTriggered: {zombie.x= zombie.x-0.5;}
+    onTriggered: {zombie.x= zombie.x-1;}
 
     }
 
 
 
+
+
+
+    function eat(){
+    zbam.jumpTo("eat");
+    console.log("4238423");
+
+
+    }
+
 }
-
-
