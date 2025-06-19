@@ -32,10 +32,11 @@ EntityBase{
         frameHeight: 142
         frameX:0
         frameY:0
-        frameDuration: 150
-        //to: {"eat":1,"die":1}
+        frameDuration: 150      
         }
 
+
+    //to do 攻击动画
         /*Sprite{
         name:"shoot"
         source: "../assets/Peashooter.png"
@@ -45,7 +46,7 @@ EntityBase{
         frameX:0
         frameY:0
         frameDuration: 250
-        //to: {"die":1,"walk":1}
+
     }*/
 
 
