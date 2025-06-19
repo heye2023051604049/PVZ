@@ -15,6 +15,7 @@ Item {
 
     property int selectedPlantIndex:-1
     property int sunCount:50
+    property int maxSunCount:9999
 
     signal plantSelected(string plantName)
 

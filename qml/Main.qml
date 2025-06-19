@@ -9,9 +9,6 @@ GameWindow{
     property alias gameTitle: _gameTitle
     property alias gameScene: _gameScene
 
-    //color: "white"
-    //width:640
-    //height:480
     title:qsTr("PlantsVSZombies,你们知道吗，什么，不会吧，真的吗")
     visible:true
 
