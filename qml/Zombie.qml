@@ -5,18 +5,22 @@ import Felgo 4.0
 
 EntityBase{
     id:zombie
-    property string hp
+
+    property alias anima: zbam
+
+
+    property int hp :500
     //anchors.centerIn: parent
     entityType: "zombie"
-    property string attack
+    property int attack :20
     width:  64
     height: 64
 
     x:400
+    y:100
 
     GameSpriteSequence{
     id:zbam
-    //source:"../assets/walking.png"
     width: 64
     height:64
     //goalSprite:"walk"
@@ -24,7 +28,6 @@ EntityBase{
         GameSprite{
         name:"walk"
         //sourceRect:Qt.rect(0, 0, 169,239)
-        //source: "../assets/ZBwalik.png"
         source: Qt.resolvedUrl("../assets/ZBwalik.png")
         frameCount: 17
         frameWidth: 332
@@ -71,7 +74,7 @@ EntityBase{
     height: zombie.height
     bodyType: Body.Dynamic //动态物体
     density: 1 //密度
-    friction: 0.5 //摩擦系数
+    //friction: 0.5 //摩擦系数
 
 
     categories: Box.Category2
@@ -79,28 +82,22 @@ EntityBase{
 
 
 
-        //categories: Box.Category2
-        //collidesWith: Box.Category1
 
         fixture.density: 1
         fixture.friction: 0.5
 
 
-        /*fixture.onBeginContact: other =>{
-        //zbam.goalSprite = "eat";
+        fixture.onBeginContact: other =>{
         zbam.jumpTo("eat");
-        //zbtm.running = false;
-        //zbtm.repeat = false;
         console.log("38283");
         console.log("peznhads");
-        //zombie.removeEntity();
 
         }
 
-        fixture.onEndContact: function(other) {
+        fixture.onEndContact: other=> {
             console.log("碰撞结束!");
-            zbam.jumpTo("walk");
-        }*/
+            //zbam.jumpTo("walk");
+        }
 
 
     }
@@ -110,20 +107,20 @@ EntityBase{
     interval: 500
     running:true
     repeat: true
-    onTriggered: {zombie.x= zombie.x-1;}
+    onTriggered: {
+        zombie.x= zombie.x-1;
+        zb.body.applyLinearImpulse(Qt.point(-200, 0), zb.body.getWorldCenter())}
+
+    }
+
+    Timer{
+    id:damagecount
+
+    //to do
+
 
     }
 
 
-
-
-
-
-    function eat(){
-    zbam.jumpTo("eat");
-    console.log("4238423");
-
-
-    }
 
 }

@@ -4,14 +4,15 @@ import Felgo 4.0
 
 EntityBase{
     id:peashooter
-    property string hp
+    property int hp :150
     //anchors.centerIn: parent
     entityType: "peashooter"
-    property string attack
+    property int attack
     width:  40
     height: 40
-    x:340
 
+    x:340
+    y:100
 
 
     GameSpriteSequence{
@@ -56,36 +57,53 @@ EntityBase{
     width: peashooter.width
     height: peashooter.height
     bodyType: Body.Static //静态物体
-    //density: 1 //密度
-    //friction: 0.5 //摩擦系数
 
 
-    fixture.onBeginContact: (other,contactNormal) =>{
-                            zombie.eat();
-                            console.log("q783234782");
+
+    fixture.onBeginContact: (other) =>{
+
+                            console.log("attacked");
+                            damagecount.running=true;
+
+
+
                             }
-
-
-
-
-    /*fixture{
-        categories: Box.Category1
-        collidesWith: Box.Category2
-    }*/
 
     categories: Box.Category1
     collidesWith: Box.Category2
 
+
     }
 
-    /*Timer{
-    interval: 500
-    running:true
-    repeat: true
-    onTriggered: {zombie.x= zombie.x-0.5;}
 
-    }*/
+
+
+
+
+
+
+
+    Timer{
+    id:damagecount
+    interval: 1000
+    running:false
+    repeat: true
+    onTriggered: {
+        peashooter.hp= peashooter.hp-zombie.attack;
+        console.log("HP",peashooter.hp)
+
+        if (peashooter.hp<=0){
+                damagecount.running=false;
+                peashooter.removeEntity();
+                zombie.anima.jumpTo("walk")
+        }
+
+
+    }
+
+    }
 
 
 
 }
+

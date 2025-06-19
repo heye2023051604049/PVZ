@@ -18,21 +18,17 @@ GameWindow{
     states: [
         State {
             name: "menu"
-            PropertyChanges {
-                target: gameTitle;opacity:1
+            PropertyChanges {target: gameTitle;opacity:1}
+            PropertyChanges {target: gameWindow; activeScene: gameTitle}
 
 
-            }
+
         },
         State {
             name: "game"
-            PropertyChanges {
-                target: gameScene;opacity:1
+            PropertyChanges {target: gameScene;opacity:1}
+            PropertyChanges {target: gameWindow; activeScene: gameScene}
 
-
-
-
-            }
         }
     ]
 
@@ -45,7 +41,7 @@ GameWindow{
     }
 
     GameScene{
-        id:_gameScene;opacity: 0
+        id:_gameScene;opacity:  0
 
         Zombie{id:zombie}
         Peashooter{id:peashooter}
