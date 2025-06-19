@@ -12,6 +12,8 @@ Item {
     property string plantImage: ""
     property bool available: true
     property bool selected: false
+    property string shadowImage:""
+    property Component plantComponent
 
     signal clicked()
 
@@ -39,6 +41,7 @@ Item {
                 font.pixelSize: 8
                 color: available ? "black" : "red"
             }
+
         }
     }
 
