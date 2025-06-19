@@ -16,42 +16,7 @@ GameWindow{
     visible:true
 
 
-//wenrenqiang
-    // state:"title"
 
-    // GameTitle{
-    //     id:_gameTitle
-    //     opacity: 0
-    //     onBeginTapped: gameWindow.state = "game"
-    // }
-    // GameScene{
-    //     id:_gameScene
-    //     opacity: 0
-    //     Image{
-    //         //Zombie{id:bb}
-    //     }
-    // }
-
-
-//activeScene: menuScene
-
-//     states:[
-//         State{
-//             name:"title"
-//             PropertyChanges {target:gameTitle;opacity:1}
-
-//         },
-//         State{
-//             name:"menu"
-//             PropertyChanges{target:menuScene;opacity:1}
-//         },
-
-//         State{
-//             name:"game"
-//             PropertyChanges{target:gameScene;opacity:1}
-//         }
-//     ]
-// =======
     state:  "menu"
     states: [
         State {
