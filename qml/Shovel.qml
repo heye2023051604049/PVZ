@@ -1,7 +1,7 @@
 //Shovel.qml
 import QtQuick
 import QtQuick.Controls
-import Felgo 4.0
+import Felgo
 Item {
     property alias shovelRes:_shovelRes
     property alias imageSource:_shovelRes.source

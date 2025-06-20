@@ -1,7 +1,7 @@
 //wenrenqiang
 //这是一个僵尸，有实体，有hp,attack属性
 import QtQuick
-import Felgo 4.0
+import Felgo
 
 EntityBase{
     id:zombie
