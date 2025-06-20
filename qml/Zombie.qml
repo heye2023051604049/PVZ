@@ -28,7 +28,6 @@ EntityBase{
         //走路
         GameSprite{
         name:"walk"
-        //sourceRect:Qt.rect(0, 0, 169,239)
         source: Qt.resolvedUrl("../assets/ZBwalik.png")
         frameCount: 17
         frameWidth: 332
@@ -92,17 +91,44 @@ EntityBase{
         fixture.onBeginContact: other =>{
 
         var otherEntity = other.getBody().target;
+        const otherfixtrue = other;
+        //var colliderType = collider.colliderType;
+         //console.log("999999999999",other);
+         //console.log("666666666666",other.colliderType);
 
-        if(otherEntity.entityType === "plant" )    {
-        zbam.jumpTo("eat");}
-        console.log("38283");
-        console.log("peznhads");
+        let collidedCollider = null
+        for(let i = 0;i < otherEntity.colliders.length; i++) {
+            console.log("xunhuan",i)
 
-        }
+            const collider = otherEntity.colliders[i];
+             if (collider.fixtrue === otherfixtrue) {
+                console.log("666666666666");
+                   collidedCollider = collider
+                       break
+                }
+            }
+
+            if (collidedCollider) {
+                console.log("碰撞类型",collidedCollider.colliderType)
+                                        if(collidedCollider.colliderType ==="body"){
+                                        console.log("成功")
+                                        zbam.jumpTo("eat")}
+                                    }
+
+  }
+        /*if(otherEntity.entityType === "plant" && colliderType === "body" )    {
+        zbam.jumpTo("eat");}*/
+
+
+        fixture.onEndContact: other =>{
+        //zbam.jumpTo("walk")
+        console.log("eatfinished")
+                              }
 
 
 
 }
+
 
 
     Timer{

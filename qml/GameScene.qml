@@ -92,7 +92,7 @@ Scene{
     }
     // property int sunCount: 100
 
-    property int sunCount: 666
+    property int sunCount: 9999
     property int maxSunCount: 9999
 
     SunBank{

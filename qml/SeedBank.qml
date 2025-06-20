@@ -20,7 +20,7 @@ Item {
 
     signal plantSelected(string plantName,string shadowImage,Component plantComponent)
     signal plantClicked(string plantName)
-    signal selectedPlantIndexChanged
+
 
     Row{
         anchors.fill: parent

@@ -11,6 +11,11 @@ EntityBase{
     width:  40
     height: 40
 
+    y:100
+
+
+    property var colliders: []//存放的collider
+
     GameSpriteSequence{
     id:psam
     //source:"../assets/Peashooter.png"
@@ -50,12 +55,10 @@ EntityBase{
     }
 
     BoxCollider{
-    id:ps
+    id:body
     width: peashooter.width
     height: peashooter.height
     bodyType: Body.Static //静态物体
-
-
 
     fixture.onBeginContact: (other) =>{
 
@@ -69,17 +72,40 @@ EntityBase{
     categories: Box.Category1
     collidesWith: Box.Category2
 
-
+    Component.onCompleted: peashooter.colliders.push(body)
     }
 
-    /*BoxCollider{
+    BoxCollider{
     id:attackrange
-    width:600
+    width:400 //可设置攻击范围
     anchors.left: parent.left
     sensor: true
+    property bool isEnterAttackrange: false
+    property int number: 0
 
-    fixture.
-    }*/
+
+    categories: Box.Category1
+    collidesWith: Box.Category2
+
+
+    fixture.onBeginContact: other =>{
+        console.log("进入攻击范围")
+        enterrange()
+       }
+
+    fixture.onEndContact: other =>{
+        console.log("离开攻击范围")
+        outofrange()
+        }
+
+
+    Component.onCompleted:{
+        if (!fixture) {
+        Qt.callLater(()=>peashooter.colliders(attackrange));
+        } else {
+        peashooter.colliders.push(attackrange); }
+                }
+    }
 
 
 
@@ -112,7 +138,11 @@ EntityBase{
     interval: 2000
     running: true
     repeat: true
-    onTriggered: {fireBullet();}
+    onTriggered: {
+
+        if(attackrange.isEnterAttackrange == true){
+        fireBullet();}
+    }
 
     }
 
@@ -124,6 +154,20 @@ EntityBase{
             //velocity: Qt.point(0, -500)
         })
     }
+
+    function enterrange () {
+    attackrange.isEnterAttackrange = true;
+    attackrange.number +=1;
+
+    }
+
+    function outofrange(){
+    attackrange.number = attackrange.number -1;
+    if(attackrange.number<=0){
+    attackrange.isEnterAttackrange = false};
+    }
+
+
 
 //WithProperties
 
