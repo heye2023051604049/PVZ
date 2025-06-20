@@ -91,16 +91,19 @@ EntityBase{
         fixture.onBeginContact: other =>{
 
         var otherEntity = other.getBody().target;
-        const otherfixtrue = other;
+        /*const otherfixtrue = other;
         //var colliderType = collider.colliderType;
          //console.log("999999999999",other);
          //console.log("666666666666",other.colliderType);
 
         let collidedCollider = null
         for(let i = 0;i < otherEntity.colliders.length; i++) {
+        //for (let collider of otherEntity.colliders)          {
             console.log("xunhuan",i)
 
             const collider = otherEntity.colliders[i];
+            console.log("collider",collider);
+            console.log("collider.fixture",collider.fixtrue);
              if (collider.fixtrue === otherfixtrue) {
                 console.log("666666666666");
                    collidedCollider = collider
@@ -115,10 +118,10 @@ EntityBase{
                                         zbam.jumpTo("eat")}
                                     }
 
-  }
-        /*if(otherEntity.entityType === "plant" && colliderType === "body" )    {
-        zbam.jumpTo("eat");}*/
-
+  }*/
+        if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ )    {
+        zbam.jumpTo("eat");}
+     }
 
         fixture.onEndContact: other =>{
         //zbam.jumpTo("walk")
@@ -127,7 +130,8 @@ EntityBase{
 
 
 
-}
+    }
+
 
 
 

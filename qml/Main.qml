@@ -46,12 +46,14 @@ GameWindow{
         Zombie{id:zombie}
         //Zombie{}
         //Zombie{}
-        Peashooter{id:peashooter}
+        Peashooter{x:200;y:200}
+        Peashooter{x:300;y:150}
+        Peashooter{x:50}
         Peashooter{x:360}
         //Peabullet{id:peabullet}
         PhysicsWorld{
         debugDrawVisible: true
-        //updatesPerSecondForPhysics:60
+        updatesPerSecondForPhysics:60
         //gravity. y:10
 
         }

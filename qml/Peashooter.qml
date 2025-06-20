@@ -14,7 +14,7 @@ EntityBase{
     y:100
 
 
-    property var colliders: []//存放的collider
+    //property var colliders: []//存放的collider
 
     GameSpriteSequence{
     id:psam
@@ -63,6 +63,8 @@ EntityBase{
     fixture.onBeginContact: (other) =>{
 
                             console.log("attacked");
+                            var zbattk = other.getBody().target;
+
                             damagecount.running=true;
 
 
@@ -72,16 +74,32 @@ EntityBase{
     categories: Box.Category1
     collidesWith: Box.Category2
 
-    Component.onCompleted: peashooter.colliders.push(body)
+    fixture.onEndContact: (other) =>{
+                          damagecount.running=false;
+                          console.log("finished")
+                          }
+
     }
 
-    BoxCollider{
+
+EntityBase{
     id:attackrange
-    width:400 //可设置攻击范围
-    anchors.left: parent.left
-    sensor: true
+    //anchors.left: parent.left
+    height: parent.height
+    width:parent.width*10 //可设置攻击范围
+    entityType: "range"
+
+    x:parent.x
+    y:parent.y
+
     property bool isEnterAttackrange: false
     property int number: 0
+
+    BoxCollider{
+    id:ar
+
+    sensor: true
+
 
 
     categories: Box.Category1
@@ -98,14 +116,18 @@ EntityBase{
         outofrange()
         }
 
-
-    Component.onCompleted:{
-        if (!fixture) {
-        Qt.callLater(()=>peashooter.colliders(attackrange));
-        } else {
-        peashooter.colliders.push(attackrange); }
-                }
     }
+
+}
+    /*Component.onCompleted:{
+        if (!fixture) {
+        Qt.callLater(()=>peashooter.colliders.push(attackrange));
+        console.log("attackrange.fixtrue",attackrange.fixture)
+        } else {
+        peashooter.colliders.push(attackrange);
+        console.log("attackrange.fixtrue",attackrange.fixture)}
+                }
+    }*/
 
 
 
@@ -118,16 +140,8 @@ EntityBase{
     interval: 1000
     running:false
     repeat: true
-    onTriggered: {
-        peashooter.hp= peashooter.hp-zombie.attack;
-        console.log("HP",peashooter.hp)
-
-        if (peashooter.hp<=0){
-                damagecount.running=false;
-                peashooter.removeEntity();
-                zombie.anima.jumpTo("walk")
-        }
-
+    onTriggered: {      
+        ondamaged();
 
     }
 
@@ -142,6 +156,7 @@ EntityBase{
 
         if(attackrange.isEnterAttackrange == true){
         fireBullet();}
+        //fireBullet()
     }
 
     }
@@ -155,6 +170,16 @@ EntityBase{
         })
     }
 
+    // 生成攻击范围
+    /*function attackrange() {
+        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("PeashooterAr.qml"), {
+            x: peashooter.x+30,
+            y: peashooter.y+5  //需手动跟换id
+            //velocity: Qt.point(0, -500)
+        })
+    }    */
+
+
     function enterrange () {
     attackrange.isEnterAttackrange = true;
     attackrange.number +=1;
@@ -167,7 +192,16 @@ EntityBase{
     attackrange.isEnterAttackrange = false};
     }
 
+    function ondamaged(){
+        peashooter.hp= peashooter.hp-zombie.attack;
+        console.log("HP",peashooter.hp)
 
+        if (peashooter.hp<=0){
+                damagecount.running=false;
+                peashooter.removeEntity();
+                zombie.anima.jumpTo("walk")
+    }
+    }
 
 //WithProperties
 
