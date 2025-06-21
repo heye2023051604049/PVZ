@@ -3,8 +3,8 @@ import QtQuick
 import Felgo 4.0
 
 EntityBase{
-    id:peashooter
-    property int hp :150
+    id:nut
+    property int hp :400
     //anchors.centerIn: parent
     entityType: "plant"
     property int attack
@@ -24,31 +24,41 @@ EntityBase{
     goalSprite:"relax"
 
         GameSprite{
-        name:"relax"
+        name:"maxhp"
         //sourceRect:Qt.rect(0, 0, 169,239)
         //source: "../assets/Peashooter.png"
-        source: Qt.resolvedUrl("../assets/Peashooter.png")
-        frameCount: 13
-        frameWidth: 142
-        frameHeight: 142
+        source: Qt.resolvedUrl("../assets/nut1.png")
+        frameCount: 15
+        frameWidth: 65
+        frameHeight: 73
         frameX:0
         frameY:0
-        frameDuration: 150      
+        frameDuration: 150
         }
 
 
-    //to do 攻击动画
-        /*Sprite{
-        name:"shoot"
-        source: "../assets/Peashooter.png"
-        frameCount: 19
-        frameWidth:332
-        frameHeight: 288
+
+        GameSprite{
+        name:"halfhp"
+        source: Qt.resolvedUrl("../assets/nut2.png")
+        frameCount: 11
+        frameWidth:65
+        frameHeight: 73
         frameX:0
         frameY:0
-        frameDuration: 250
+        frameDuration: 150
+        }
 
-    }*/
+        GameSprite{
+        name:"lowhp"
+        source: Qt.resolvedUrl("../assets/nut3.png")
+        frameCount: 15
+        frameWidth:65
+        frameHeight: 73
+        frameX:0
+        frameY:0
+        frameDuration: 150
+        }
 
 
 
@@ -82,54 +92,6 @@ EntityBase{
     }
 
 
-EntityBase{
-    id:attackrange
-    //anchors.left: parent.left
-    height: parent.height
-    width:parent.width*10 //可设置攻击范围
-    entityType: "range"
-
-    x:parent.x
-    y:parent.y
-
-    property bool isEnterAttackrange: false
-    property int number: 0
-
-    BoxCollider{
-    id:ar
-
-    sensor: true
-
-
-
-    categories: Box.Category1
-    collidesWith: Box.Category2
-
-
-    fixture.onBeginContact: other =>{
-        console.log("进入攻击范围")
-        enterrange()
-       }
-
-    fixture.onEndContact: other =>{
-        console.log("离开攻击范围")
-        outofrange()
-        }
-
-    }
-
-}
-    /*Component.onCompleted:{
-        if (!fixture) {
-        Qt.callLater(()=>peashooter.colliders.push(attackrange));
-        console.log("attackrange.fixtrue",attackrange.fixture)
-        } else {
-        peashooter.colliders.push(attackrange);
-        console.log("attackrange.fixtrue",attackrange.fixture)}
-                }
-    }*/
-
-
 
 
 
@@ -142,13 +104,16 @@ EntityBase{
     repeat: true
     property int attack
     property int zombienumber: 0
-    onTriggered: {      
+    onTriggered: {
         //ondamaged(zbattk);
         attack = zombie.attack
         parent.hp= parent.hp-attack;
         attack = 0;
         //peashooter.hp= peashooter.hp-zbattk.attack;
         console.log("HP",parent.hp)
+
+        if(parent.hp<= 250){plam.jumpTo("halfhp")}
+        if(parent.hp<= 150){plam.jumpTo("lowhp")}
 
         if (parent.hp<=0){
                 damagecount.running=false;
@@ -161,28 +126,8 @@ EntityBase{
 
     }
 
-    Timer{
-    id:attck
-    interval: 2000
-    running: true
-    repeat: true
-    onTriggered: {
 
-        if(attackrange.isEnterAttackrange == true){
-        fireBullet();}
-        //fireBullet()
-    }
 
-    }
-
-    // 生成子弹
-    function fireBullet() {
-        entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Peabullet.qml"), {
-            x: peashooter.x+30,
-            y: peashooter.y+5  //需手动跟换id
-            //velocity: Qt.point(0, -500)
-        })
-    }
 
     // 生成攻击范围
     /*function attackrange() {
@@ -220,4 +165,3 @@ EntityBase{
 
 
 }
-

@@ -126,6 +126,7 @@ EntityBase{
         fixture.onEndContact: other =>{
         //zbam.jumpTo("walk")
         console.log("eatfinished")
+        zombie.removeEntity()
                               }
 
 
@@ -141,8 +142,8 @@ EntityBase{
     running:true
     repeat: true
     onTriggered: {
-        zombie.x= zombie.x-1;
-        zb.body.applyLinearImpulse(Qt.point(-200, 0), zb.body.getWorldCenter())}
+        //zombie.x= zombie.x-1;
+        zb.body.applyLinearImpulse(Qt.point(-300, 0), zb.body.getWorldCenter())}
 
     }
 
@@ -154,12 +155,16 @@ EntityBase{
     onTriggered: {
     if(hp<=0){
     zbam.jumpTo("die")
+    //zombie.x= zombie.x+1;
+    //damagecount.running=false;
+    //zb.body.applyLinearImpulse(Qt.point(300, 0), zb.body.getWorldCenter())
     zombie.removeEntity()
     }
 
     }
 
     }
+
 
 
 
