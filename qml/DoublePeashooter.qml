@@ -11,8 +11,11 @@ EntityBase{
     width:  40
     height: 40
 
+    y:100
+
 
     //property var colliders: []//存放的collider
+
     GameSpriteSequence{
     id:plam
     //source:"../assets/Peashooter.png"
@@ -24,13 +27,13 @@ EntityBase{
         name:"relax"
         //sourceRect:Qt.rect(0, 0, 169,239)
         //source: "../assets/Peashooter.png"
-        source: Qt.resolvedUrl("../assets/Peashooter.png")
-        frameCount: 13
-        frameWidth: 142
-        frameHeight: 142
+        source: Qt.resolvedUrl("../assets/ReapeaterPea.png")
+        frameCount: 15
+        frameWidth: 73
+        frameHeight: 71
         frameX:0
         frameY:0
-        frameDuration: 150      
+        frameDuration: 150
         }
 
 
@@ -141,7 +144,7 @@ EntityBase{
     property int attack
     property int attack2
     property int zombienumber: 0
-    onTriggered: {      
+    onTriggered: {
         //ondamaged(zbattk);
         attack = zombie1.attack
         parent.hp= parent.hp-attack;
@@ -167,17 +170,20 @@ EntityBase{
 
     Timer{
     id:attck
-    interval: 2000
+    interval: 1000
     running: true
     repeat: true
     onTriggered: {
 
         if(attackrange.isEnterAttackrange == true){
-        fireBullet();}
-        //fireBullet()
+        fireBullet();
+        }
+
     }
 
     }
+
+
 
     // 生成子弹
     function fireBullet() {
@@ -228,4 +234,3 @@ EntityBase{
 
 
 }
-

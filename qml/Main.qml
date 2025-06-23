@@ -43,15 +43,19 @@ GameWindow{
     GameScene{
         id:_gameScene;opacity:  0
 
-        Zombie{id:zombie;y:30}
+        Zombie{id:zombie1;y:70}
+        Zombie{id:zombie2;y:70;x:410}
+        ZombieRoadBlock{y:30}
+        BucketZombie{y:120}
         //Zombie{}
         //Zombie{}
         Peashooter{x:200;y:200}
         Peashooter{x:300;y:150}
-        Peashooter{x:50}
+        //Peashooter{x:50}
         Nut{x:300;y:50}
-        Peashooter{x:300}
-        Peashooter{x:380}
+        //Peashooter{x:300}
+        //Peashooter{x:380}
+        DoublePeashooter{x:100;y:100}
         //Peabullet{id:peabullet}
         PhysicsWorld{
         debugDrawVisible: true
