@@ -51,7 +51,7 @@ EntityBase{
 
         GameSprite{
         name:"lowhp"
-        source: Qt.resolvedUrl("../assets/nut3.png")
+        source: Qt.resolvedUrl("../assets/nut33.png")
         frameCount: 15
         frameWidth:65
         frameHeight: 73
@@ -102,11 +102,11 @@ EntityBase{
     interval: 1000
     running:false
     repeat: true
-    property int attack
+    property int attack1
     property int zombienumber: 0
     onTriggered: {
         //ondamaged(zbattk);
-        attack = zombie.attack
+        attack = zombie1.attack
         parent.hp= parent.hp-attack;
         attack = 0;
         //peashooter.hp= peashooter.hp-zbattk.attack;

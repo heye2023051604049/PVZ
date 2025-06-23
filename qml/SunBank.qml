@@ -148,7 +148,7 @@ Item {
 
                 onFinished: {
                     // 下落完成后可点击收集
-                    mouseArea.enabled = true
+                    tapHandler.enabled = true
                 }
             }
 
