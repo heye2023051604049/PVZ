@@ -152,7 +152,8 @@ Scene{
                 _seedbank.selectedPlantIndex = -1
                 currentPlant = plantData.plantComponent.createObject(gameScene, {
                     x: xPosition - 20,  // 居中修正
-                    y: yPosition - 20
+                    y: yPosition - 20,
+                    gameScene:gameScene
                         })
                 currentPlantList.push(currentPlant)
                 }else{
@@ -161,6 +162,23 @@ Scene{
                 console.log(currentPlantList.length)
             }
         }
+    }
+    // 添加生成阳光的公共方法
+    function generateSunAt(x, y, value, maxDropDistance) {
+        _sunbank.generateSunAtPosition(x, y, value, maxDropDistance)
+    }
+
+    // 创建向日葵时设置gameScene引用
+    function createSunflower(x, y) {
+        var entity = entityManager.createEntityFromComponentWithProperties(
+            Qt.resolvedUrl("Sunflower.qml"),
+            {
+                x: x,
+                y: y,
+                gameScene: gameScene // 传递场景引用
+            }
+        )
+        return entity
     }
     Shovel{
         x:400;y:0

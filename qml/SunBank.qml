@@ -94,6 +94,8 @@ Item {
             property real startY: 0
             property real endX: 0
             property real endY: 0
+            property int sunValue: 25
+            property real maxDropDistance: 150
             signal collected()
 
             x: startX
@@ -125,7 +127,7 @@ Item {
                     target: sunInstance
                     property: "y"
                     from: startY
-                    to: startY + 150
+                    to: startY + Math.min(150,maxDropDistance)
                     duration: 1500
                     easing.type: Easing.OutQuad
                 }
@@ -148,7 +150,7 @@ Item {
 
                 onFinished: {
                     // 下落完成后可点击收集
-                    mouseArea.enabled = true
+                    tapHandler.enabled = true
                 }
             }
 
@@ -214,5 +216,21 @@ Item {
                 sun.destroy();
             });
         }
+    }
+    // 添加在指定位置生成阳光的方法
+    function generateSunAtPosition(x, y, value,maxDropDistance) {
+        var sun = sunComponent.createObject(sunBank.parent, {
+            startX: x,
+            startY: y,
+            endX: sunBank.x + sunIcon.x + sunIcon.width/2,
+            endY: sunBank.y + sunIcon.y + sunIcon.height/2,
+            sunValue: value || 25, // 默认值25
+            maxDropDistance: maxDropDistance || 150
+        });
+
+        sun.collected.connect(function() {
+            sunCollected(sun.sunValue)
+            sun.destroy()
+        })
     }
 }

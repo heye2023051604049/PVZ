@@ -10,8 +10,10 @@ Item {
     property var plantTypes: [
         { name:"Peashooter",cost:100,image:"../assets/pea-seed.png",
             shadowImage:"../assets/peashooter1.png",plantComponent:Qt.createComponent("Peashooter.qml")},
-        { name:"Sunflower",cost:50,image:"../assets/sunflw-seed.png",shadowImage:"../assets/sunflw.png"},
-        { name:"Wallnut",cost:50,image:"../assets/nut-seed.png",shadowImage:"../assets/nut.png"}
+        { name:"Sunflower",cost:50,image:"../assets/sunflw-seed.png",
+            shadowImage:"../assets/sunflw.png",plantComponent:Qt.createComponent("SunFlower.qml")},
+        { name:"Wallnut",cost:50,image:"../assets/nut-seed.png",
+            shadowImage:"../assets/nut.png",plantComponent:Qt.createComponent("Nut.qml")}
     ]
 
     property int selectedPlantIndex:-1
