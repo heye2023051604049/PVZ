@@ -3,19 +3,14 @@ import QtQuick
 import QtQuick.Controls
 import Felgo 4.0
 Button {
-     signal shovelSelected
     width:50;height: 50
-    property string imageSource:"../assets/Shovel_hi_res.png"
-    //signal clicked(string imageSource)
-    background: Rectangle{id:rectangle;color:"transparent";border.color:"red"}
-    property alias shovelRes:_shovelRes
-    property alias imageSource:_shovelRes.source
+    background: Rectangle{id:rectangle;color:"transparent";border.color:"transparent"}
     Image {
+        id:_shovelBank
         anchors.fill:parent
-        id:shovelBank
         source: "../assets/ShovelBank.png"
         Image {
-            id: shovel
+            id: _shovelImage
             anchors.fill:parent
             source: "../assets/Shovel.png"
             anchors.horizontalCenter: parent.horizontalCenter

@@ -1,6 +1,7 @@
 import Felgo
 import QtQuick
 import QtQuick.Controls
+import "Controller.js" as Controller
 
 Scene{
     id:gameScene
@@ -11,7 +12,9 @@ Scene{
     property alias seedBank:_seedbank
     property var currentPlant
     property var currentPlantList:[]
-    property bool deletePlant
+    property bool deleteStatus
+    property var tapHandler
+    property var tapHandlerList:[]
     Image{
         id:image1
         anchors.fill: parent
@@ -78,7 +81,7 @@ Scene{
                 yPosition = scenePos.y
                 event.accepted = true
                 if(plantingComponent){
-                    gameScene.deletePlant = false
+                    gameScene.deleteStatus = false
                     seedBank.plantPlanteddemo(plantingComponent)
                     console.log(plantingComponent)
                     gameScene.plantingComponent = null
@@ -86,7 +89,8 @@ Scene{
                    console.log("After reset - plantingComponent:", plantingComponent, "shadowPath:", shadowPath)
                 }
                 if(deletePlant){
-                    //deletePlant...
+                    gameScene.plantingComponent = null
+                    currentPlant.destory()
                 }
             }
         }
@@ -154,6 +158,21 @@ Scene{
                     x: xPosition - 20,  // 居中修正
                     y: yPosition - 20
                         })
+                    var tapHandler = Qt.createQmlObject(`
+                        import QtQuick
+                        import QtQuick.Controls
+                        TapHandler {
+                            // onTapped: (event) => {
+                            // gameScene.currentPlant = currentPlant
+                            // console.log("123456")
+                            // event.accepted = true
+                            ontapped{
+                                console.log("111")
+                            }
+                        }
+                    }
+                    `, currentPlant)
+                tapHandlerList.push(tapHandler)
                 currentPlantList.push(currentPlant)
                 }else{
                     console.log("Not enough sun")
@@ -164,9 +183,12 @@ Scene{
     }
     Shovel{
         id:shovel
-        x:400;y:0
-     onShovelSelected: {
-         gameScene.deletePlant = true
-     }
+        x:400;y:100
+        TapHandler{
+            onTapped: {
+                gameScene.deleteStatus = true
+                console.log("deletePlant: ",deleteStatus)
+            }
+        }
     }
 }

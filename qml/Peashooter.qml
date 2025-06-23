@@ -12,7 +12,6 @@ EntityBase{
     height: 40
 
 
-
     //property var colliders: []//存放的collider
     GameSpriteSequence{
     id:plam

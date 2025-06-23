@@ -60,6 +60,7 @@ qt_add_qml_module(appPVZ
     QML_FILES qml/Peabullet.qml
     QML_FILES qml/Shovel.qml
     QML_FILES qml/Nut.qml
+    QML_FILES qml/Controller.js
 
 
 )
