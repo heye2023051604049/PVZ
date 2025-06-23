@@ -1,5 +1,5 @@
 //the integration of all the parts
-import Felgo 4.0
+import Felgo
 import QtQuick
 import QtQuick.Controls
 

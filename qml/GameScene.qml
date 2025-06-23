@@ -1,4 +1,4 @@
-import Felgo 4.0
+import Felgo
 import QtQuick
 import QtQuick.Controls
 
@@ -90,9 +90,9 @@ Scene{
             }
         }
     }
-    // property int sunCount: 100
 
-    property int sunCount: 9999
+
+    property int sunCount: 50
     property int maxSunCount: 9999
 
     SunBank{
@@ -102,12 +102,19 @@ Scene{
             left:parent.left
             margins: 5
         }
-        sunCount: parent.sunCount
+        sunCount: gameScene.sunCount
         autoGenerate: true
         generateInterval: 7000
         generateAmount: 1
         generateArea: parent
-        onSunCountChanged: parent.sunCount = sunCount
+        //onSunCountChanged: parent.sunCount = sunCount
+
+        onSunCollected: function(amount){
+            gameScene.sunCount += amount
+            if(gameScene.sunCount > gameScene.maxSunCount){
+                gameScene.sunCount = gameScene.maxSunCount
+            }
+        }
     }
     // 手动生成测试按钮
     Button {
@@ -125,7 +132,7 @@ Scene{
     SeedBank{
         id:_seedbank
         anchors.bottom: parent.bottom
-        sunCount: parent.sunCount
+        sunCount: gameScene.sunCount
 
         onPlantSelected: {
             console.log("Plant selected:",plantName,plantComponent)
@@ -133,25 +140,27 @@ Scene{
             plantingComponent=plantComponent
         }
 
-        function addSun(amount){
+        /*function addSun(amount){
             sunCount += amount
-        }
+        }*/
 
         function plantPlanteddemo(plantComponent){
             var plantData=_seedbank.plantTypes.find(p => p.plantComponent === plantComponent)
             if(plantData){
-                sunCount -= plantData.cost
-
+                if(gameScene.sunCount >= plantData.cost){
+                gameScene.sunCount -= plantData.cost
                 _seedbank.selectedPlantIndex = -1
                 currentPlant = plantData.plantComponent.createObject(gameScene, {
                     x: xPosition - 20,  // 居中修正
                     y: yPosition - 20
                         })
                 currentPlantList.push(currentPlant)
+                }else{
+                    console.log("Not enough sun")
+                }
                 console.log(currentPlantList.length)
             }
         }
-
     }
     Shovel{
         x:400;y:0
@@ -163,23 +172,4 @@ Scene{
             }
         }
     }
-
-//     function plantPlanted(plantType, x, y) {
-//             // 找到对应的植物类型
-//             var plantData = seedBank.plantTypes.find(p => p.name === plantType)
-//             if (plantData) {
-//                 // 扣除阳光
-//                 sunCount -= plantData.cost
-
-//                 // 重置选择
-//                 seedBank.selectedPlantIndex = -1
-
-//                 // 实际创建植物...
-//                 // createPlant(plantType, x, y)
-
-
-//             }
-//         }
-// }
-
 }

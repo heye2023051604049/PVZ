@@ -2,7 +2,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtMultimedia
-import Felgo 4.0
+import Felgo
 Scene{
     property alias options:_options
     property alias quit:_quit

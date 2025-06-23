@@ -1,6 +1,6 @@
 //wenrenqiang
 import QtQuick
-import Felgo 4.0
+import Felgo
 
 EntityBase{
     id:peashooter

@@ -15,11 +15,12 @@ Item {
     ]
 
     property int selectedPlantIndex:-1
-    property int sunCount:50
+    property int sunCount: parent.sunCount
     property int maxSunCount:9999
 
     signal plantSelected(string plantName,string shadowImage,Component plantComponent)
     signal plantClicked(string plantName)
+
 
 
     Row{
@@ -33,14 +34,14 @@ Item {
                 plantName: modelData.name
                 plantCost: modelData.cost
                 plantImage: modelData.image
-                available: sunCount >= modelData.cost
+                available: _sunbank.sunCount >= modelData.cost
                 selected: seedBank.selectedPlantIndex === index
                 shadowImage: modelData.shadowImage
                 plantComponent: modelData.plantComponent
 
                 onClicked: {
                     console.log("slot was clicked")
-                    if (sunCount >= modelData.cost) {
+                    if ((_sunbank.sunCount) >= modelData.cost) {
                         seedBank.selectedPlantIndex = index
                         seedBank.plantSelected(modelData.name,modelData.shadowImage,modelData.plantComponent)
                     }
