@@ -8,6 +8,8 @@ Button {
     property string imageSource:"../assets/Shovel_hi_res.png"
     //signal clicked(string imageSource)
     background: Rectangle{id:rectangle;color:"transparent";border.color:"red"}
+    property alias shovelRes:_shovelRes
+    property alias imageSource:_shovelRes.source
     Image {
         anchors.fill:parent
         id:shovelBank

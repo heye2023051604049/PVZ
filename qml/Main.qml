@@ -1,5 +1,5 @@
 //the integration of all the parts
-import Felgo 4.0
+import Felgo
 import QtQuick
 import QtQuick.Controls
 
@@ -43,13 +43,19 @@ GameWindow{
     GameScene{
         id:_gameScene;opacity:  0
 
-        Zombie{id:zombie}
-        Peashooter{id:peashooter}
-        Peashooter{x:360}
+        Zombie{id:zombie;y:30}
+        //Zombie{}
+        //Zombie{}
+        Peashooter{x:200;y:200}
+        Peashooter{x:300;y:150}
+        Peashooter{x:50}
+        Nut{x:300;y:50}
+        Peashooter{x:300}
+        Peashooter{x:380}
         //Peabullet{id:peabullet}
         PhysicsWorld{
-        //debugDrawVisible: true
-        //updatesPerSecondForPhysics:60
+        debugDrawVisible: true
+        updatesPerSecondForPhysics:60
         //gravity. y:10
 
         }

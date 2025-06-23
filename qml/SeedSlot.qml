@@ -45,9 +45,8 @@ Item {
         }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
+    TapHandler {
+        onTapped: {
             seedSlot.clicked()
         }
     }

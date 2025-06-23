@@ -1,7 +1,7 @@
 //wenrenqiang
 //这是一个僵尸，有实体，有hp,attack属性
 import QtQuick
-import Felgo 4.0
+import Felgo
 
 EntityBase{
     id:zombie
@@ -28,7 +28,6 @@ EntityBase{
         //走路
         GameSprite{
         name:"walk"
-        //sourceRect:Qt.rect(0, 0, 169,239)
         source: Qt.resolvedUrl("../assets/ZBwalik.png")
         frameCount: 17
         frameWidth: 332
@@ -92,17 +91,49 @@ EntityBase{
         fixture.onBeginContact: other =>{
 
         var otherEntity = other.getBody().target;
+        /*const otherfixtrue = other;
+        //var colliderType = collider.colliderType;
+         //console.log("999999999999",other);
+         //console.log("666666666666",other.colliderType);
 
-        if(otherEntity.entityType === "plant" )    {
+        let collidedCollider = null
+        for(let i = 0;i < otherEntity.colliders.length; i++) {
+        //for (let collider of otherEntity.colliders)          {
+            console.log("xunhuan",i)
+
+            const collider = otherEntity.colliders[i];
+            console.log("collider",collider);
+            console.log("collider.fixture",collider.fixtrue);
+             if (collider.fixtrue === otherfixtrue) {
+                console.log("666666666666");
+                   collidedCollider = collider
+                       break
+                }
+            }
+
+            if (collidedCollider) {
+                console.log("碰撞类型",collidedCollider.colliderType)
+                                        if(collidedCollider.colliderType ==="body"){
+                                        console.log("成功")
+                                        zbam.jumpTo("eat")}
+                                    }
+
+  }*/
+        if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ )    {
         zbam.jumpTo("eat");}
-        console.log("38283");
-        console.log("peznhads");
+     }
 
-        }
+        fixture.onEndContact: other =>{
+        //zbam.jumpTo("walk")
+        console.log("eatfinished")
+        zombie.removeEntity()
+                              }
 
 
 
-}
+    }
+
+
 
 
     Timer{
@@ -111,8 +142,8 @@ EntityBase{
     running:true
     repeat: true
     onTriggered: {
-        zombie.x= zombie.x-1;
-        zb.body.applyLinearImpulse(Qt.point(-200, 0), zb.body.getWorldCenter())}
+        //zombie.x= zombie.x-1;
+        zb.body.applyLinearImpulse(Qt.point(-300, 0), zb.body.getWorldCenter())}
 
     }
 
@@ -124,12 +155,16 @@ EntityBase{
     onTriggered: {
     if(hp<=0){
     zbam.jumpTo("die")
+    //zombie.x= zombie.x+1;
+    //damagecount.running=false;
+    //zb.body.applyLinearImpulse(Qt.point(300, 0), zb.body.getWorldCenter())
     zombie.removeEntity()
     }
 
     }
 
     }
+
 
 
 

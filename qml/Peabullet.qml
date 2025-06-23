@@ -1,6 +1,6 @@
 //wenrenqiang
 import QtQuick
-import Felgo 4.0
+import Felgo
 
 EntityBase{
     id:peabullet
@@ -15,15 +15,17 @@ EntityBase{
 
     CircleCollider{
     id:pb
-    radius: parent.width
+    radius: parent.width/2
     anchors.centerIn: parent
     fixture.friction: 0
     fixture.restitution: 1
     sensor: true
     //bullet: true
 
-    //categories:Box.Category3
-    //collidesWith: Box.Category2
+    property string colliderType :"bullet"
+
+    categories:Box.Category1
+    collidesWith: Box.Category2
 
 
     fixture.onBeginContact: other=>{

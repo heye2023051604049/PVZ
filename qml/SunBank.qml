@@ -13,10 +13,24 @@ Item {
     property int generateAmount: 1  // 每次生成数量
     property var generateArea: parent  // 生成区域
 
+    signal sunCollected(int amount)
+
     //存储阳光最大值
     onSunCountChanged: {
         if(sunCount > maxSunCount) {
             sunCount = maxSunCount
+        }
+    }
+
+    Timer {
+        id: generateTimer
+        running: autoGenerate
+        interval: generateInterval
+        repeat: true
+        triggeredOnStart: true
+
+        onTriggered: {
+            generateRandomSuns()
         }
     }
 
@@ -42,7 +56,7 @@ Item {
             leftMargin: 10
             verticalCenter: parent.verticalCenter
         }
-        text: sunCount
+        text: sunBank.sunCount
         font.pixelSize: 24
         font.bold: true
         color: "#FFD700"  // 金色文字
@@ -65,7 +79,7 @@ Item {
             endY: sunBank.y + sunIcon.y + sunIcon.height/2
         });
         sun.collected.connect(function() {
-            sunCount += 25;  // 每个阳光值25
+            sunCollected(25);  // 每个阳光值25
             sun.destroy();
         });
     }
@@ -139,11 +153,10 @@ Item {
             }
 
             // 点击收集阳光
-            MouseArea {
-                id: mouseArea
-                anchors.fill: parent
-                enabled: false
-                onClicked: {
+            TapHandler {
+                id: tapHandler
+                enabled: fallAnimation.running == false
+                onTapped: {
                     collectAnimation.start()
                 }
             }
@@ -197,7 +210,7 @@ Item {
                 endY: sunBank.y + sunIcon.y + sunIcon.height/2,
             });
             sun.collected.connect(function() {
-                sunCount += 25;  // 每个阳光值25
+                sunCollected(25);  // 每个阳光值25
                 sun.destroy();
             });
         }
