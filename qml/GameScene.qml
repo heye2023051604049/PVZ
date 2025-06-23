@@ -5,17 +5,17 @@ import QtQuick.Controls
 Scene{
     id:gameScene
     property string shadowPath
-    property string examplePath
     property Component plantingComponent
     property double xPosition
     property double yPosition
     property alias seedBank:_seedbank
     property var currentPlant
     property var currentPlantList:[]
+    property bool deletePlant
     Image{
         id:image1
-    anchors.fill: parent
-    source: "../assets/background1.jpg"
+        anchors.fill: parent
+        source: "../assets/background1.jpg"
     }
 
     HoveredButton {
@@ -58,14 +58,10 @@ Scene{
         id:p53;x:198; y:254;width: 55; height: 53;imageSource:shadowPath;}
     HoveredButton {
         id:p54;x:254; y:254;width: 55; height: 53;imageSource:shadowPath;}
-        TapHandler{
-            onTapped: {
-                console.log(" was clicked")
-            }
-        }
 
 
-    component HoveredButton: Button{
+    component HoveredButton:Button{
+
         property alias imageSource : image.source
         property alias imageWidth: image.width
 
@@ -76,20 +72,26 @@ Scene{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter}
         TapHandler{
-            onTapped: {
+            onTapped: (event)=>{
                 var scenePos = button.mapToItem(gameScene, button.width/2, button.height/2)
                 xPosition = scenePos.x//location active button
                 yPosition = scenePos.y
+                event.accepted = true
                 if(plantingComponent){
+                    gameScene.deletePlant = false
                     seedBank.plantPlanteddemo(plantingComponent)
                     console.log(plantingComponent)
                     gameScene.plantingComponent = null
                     gameScene.shadowPath=""
                    console.log("After reset - plantingComponent:", plantingComponent, "shadowPath:", shadowPath)
-                           }
+                }
+                if(deletePlant){
+                    //deletePlant...
+                }
             }
         }
     }
+
     // property int sunCount: 100
 
     property int sunCount: 666
@@ -151,17 +153,13 @@ Scene{
                 console.log(currentPlantList.length)
             }
         }
-
     }
     Shovel{
+        id:shovel
         x:400;y:0
-        MouseArea{
-            anchors.fill:parent
-            hoverEnabled: true
-            onPositionChanged: {
-
-            }
-        }
+     onShovelSelected: {
+         gameScene.deletePlant = true
+     }
     }
 
 //     function plantPlanted(plantType, x, y) {

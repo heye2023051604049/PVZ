@@ -11,6 +11,8 @@ EntityBase{
     width:  40
     height: 40
 
+    //y:100
+
     GameSpriteSequence{
     id:psam
     //source:"../assets/Peashooter.png"
