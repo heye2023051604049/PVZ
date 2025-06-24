@@ -11,11 +11,8 @@ EntityBase{
     width:  40
     height: 40
 
-    y:100
-
 
     //property var colliders: []//存放的collider
-
     GameSpriteSequence{
     id:plam
     //source:"../assets/Peashooter.png"

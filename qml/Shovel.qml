@@ -1,28 +1,20 @@
 //Shovel.qml
 import QtQuick
 import QtQuick.Controls
-import Felgo
-Item {
-    property alias shovelRes:_shovelRes
-    property alias imageSource:_shovelRes.source
+import Felgo 4.0
+Button {
+    width:50;height: 50
+    background: Rectangle{id:rectangle;color:"transparent";border.color:"transparent"}
     Image {
-        id:shovelBank
+        id:_shovelBank
+        anchors.fill:parent
         source: "../assets/ShovelBank.png"
         Image {
-            id: shovel
+            id: _shovelImage
+            anchors.fill:parent
             source: "../assets/Shovel.png"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
         }
-        TapHandler{
-            onTapped: {
-                shovelRes.visible = true
-            }
-        }
     }
-    Image{
-        id:_shovelRes
-        source:"../assets/Shovel_hi_res.png"
-        visible:false
-        }
-    }
+}
