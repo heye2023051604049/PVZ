@@ -57,10 +57,10 @@ EntityBase{
     id:shoot
     interval: 500
     running:true
-    repeat: true
+    repeat: false
     onTriggered: {
         //peabullet.x= peabullet.x+1.5;
-        pb.body.applyLinearImpulse(Qt.point(20, 0), pb.body.getWorldCenter())}
+        pb.body.applyLinearImpulse(Qt.point(100, 0), pb.body.getWorldCenter())}
 
     }
 

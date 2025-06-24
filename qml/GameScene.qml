@@ -171,8 +171,8 @@ Scene{
                     x: xPosition - 20,  // 居中修正
                     y: yPosition - 20,
                     z: 1,
-                    visible:true
-                    //gameScene:gameScene
+                    visible:true,
+                    gameScene:gameScene
                         })
                     console.log("Creating TapHandler for plant:", currentPlant)
                     var tapHandler = Qt.createQmlObject(`

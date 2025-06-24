@@ -9,6 +9,17 @@ GameWindow{
     property alias gameTitle: _gameTitle
     property alias gameScene: _gameScene
 
+
+    property alias zombie11: creatzombie1
+    property alias zombie22: creatzombie2
+    property alias zombie33: creatzombie3
+    property alias zombie44: creatzombieCZ
+    property alias zombie55: creatzombieBk
+    property alias entityManager :entityManager
+
+
+
+
     title:qsTr("PlantsVSZombies,你们知道吗，什么，不会吧，真的吗")
     visible:true
 
@@ -42,20 +53,31 @@ GameWindow{
 
     GameScene{
         id:_gameScene;opacity:  0
+        /*property alias zombie1: creatzombie1
+        property alias zombie2: creatzombie2
+        property alias zombie3: creatzombie3
+        property alias zombie4: creatzombieCZ
+        property alias zombie5: creatzombieBk*/
 
-        Zombie{id:zombie1;y:70}
-        Zombie{id:zombie2;y:70;x:410}
-        ZombieRoadBlock{y:30}
-        BucketZombie{y:120}
-        //Zombie{}
-        //Zombie{}
+
+
+
+
+        /*Zombie{id:zombie1;y:70}
+        ZombieRoadBlock{y:120}
+        Zombie{id:zombie2;y:30;x:410}
+        ZombieRoadBlock{y:230}
+        BucketZombie{y:170}*/
+
         Peashooter{x:200;y:200}
         Peashooter{x:300;y:150}
         //Peashooter{x:50}
-        Nut{x:300;y:50}
+        Nut{x:380;y:100}
+        //DoublePeashooter{y:100}
         //Peashooter{x:300}
         //Peashooter{x:380}
-        DoublePeashooter{x:100;y:100}
+        //DoublePeashooter{x:100;y:100}
+        //Peashooter{x:400;y:100}
         //Peabullet{id:peabullet}
         PhysicsWorld{
         debugDrawVisible: true
@@ -64,7 +86,88 @@ GameWindow{
 
         }
 
-        EntityManager {id:entityManager; entityContainer: gameScene}
+        EntityManager {id:entityManager;
+                       entityContainer: gameScene
+                      // entityTypes:[
+                      //  EntityType{}
+
+
+
+        }
+
+
+
+        Timer{
+        id:creatzombie1
+        interval: 5000
+        running: true
+        repeat: false
+        property string zombie1
+        onTriggered: {
+
+ zombie1 = entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Zombie.qml"), { "y": 70});
+ //zombie1atk = entityManager.getEntityById(zombie1).attack
+console.log("zombie1",zombie1)
+
+        }
+
+        }
+
+        Timer{
+        id:creatzombie2
+        interval: 10000
+        running: true
+        repeat: false
+        onTriggered: {
+
+var zombie2 = entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Zombie.qml"), { "y": 30});
+console.log("zombie2",zombie2)
+        }
+
+        }
+
+        Timer{
+        id:creatzombie3
+        interval: 12000
+        running: true
+        repeat: false
+        onTriggered: {
+
+ var zombie3 = entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Zombie.qml"), { "y": 170});
+console.log("zombie3",zombie3)
+        }
+}
+        Timer{
+        id:creatzombieCZ
+        interval: 20000
+        running: true
+        repeat: false
+        onTriggered: {
+
+          var zombie4 =   entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("ZombieRoadBlock.qml"), { "y": 70});
+           console.log("zombie4",zombie4)
+           var zombie5 = entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("ZombieRoadBlock.qml"), { "y": 120});
+           console.log("zombie5",zombie5)
+        }
+
+        }
+
+
+
+        Timer{
+        id:creatzombieBk
+        interval: 25000
+        running: true
+        repeat: false
+        onTriggered: {
+
+            var zombie6 = entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("BucketZombie.qml"), { "y": 30});
+            console.log("zombie6",zombie6)
+            var zombie7 =entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("BucketZombie.qml"), { "y": 230});
+           console.log("zombie7",zombie7)
+        }
+
+        }
 
     }
 

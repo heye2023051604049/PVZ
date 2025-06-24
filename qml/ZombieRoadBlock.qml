@@ -4,7 +4,7 @@ import QtQuick
 import Felgo
 
 EntityBase{
-    id:zombie
+    //id:zombie
 
     property alias anima: zbam
 
@@ -12,7 +12,7 @@ EntityBase{
     property int hp :800
     //anchors.centerIn: parent
     entityType: "zombie2"
-    property int attack :20
+    property int attack :25
     width:  64
     height: 64
 
@@ -21,8 +21,8 @@ EntityBase{
 
     GameSpriteSequence{//僵尸动画合集
     id:zbam
-    width: zombie.width
-    height:zombie.height
+    width: parent.width
+    height:parent.height
     //goalSprite:"walk"
 
         //走路
@@ -60,8 +60,8 @@ EntityBase{
 
     BoxCollider{
     id:zb
-    width: zombie.width/2
-    height: zombie.height/2
+    width: parent.width/2
+    height: parent.height/2
     anchors.bottom: parent.bottom
     anchors.right: parent.right
     bodyType: Body.Dynamic //动态物体
@@ -82,13 +82,15 @@ EntityBase{
         var otherEntity = other.getBody().target;
 
         if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ )    {
-        zbam.jumpTo("eat");}
+        zbam.jumpTo("eat")
+        zbwalk.running =true;
+                                }
      }
 
         fixture.onEndContact: other =>{
         //zbam.jumpTo("walk")
         console.log("eatfinished")
-        zombie.removeEntity()
+        parent.removeEntity()
                               }
 
 
@@ -105,7 +107,7 @@ EntityBase{
     repeat: true
     onTriggered: {
         //zombie.x= zombie.x-1;
-        zb.body.applyLinearImpulse(Qt.point(-300, 0), zb.body.getWorldCenter())}
+        zb.body.applyLinearImpulse(Qt.point(-200, 0), zb.body.getWorldCenter())}
 
     }
 
@@ -120,14 +122,24 @@ EntityBase{
     //zombie.x= zombie.x+1;
     //damagecount.running=false;
     //zb.body.applyLinearImpulse(Qt.point(300, 0), zb.body.getWorldCenter())
-    zombie.removeEntity()
+    parent.removeEntity()
     }
 
     }
 
     }
 
+    Timer{
+    id:zbwalk
+    interval:15000
+    running:false
+    repeat: true
+    onTriggered: {
+    zbam.jumpTo("walk")
 
+    }
+
+    }
 
 
 }
