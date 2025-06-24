@@ -13,7 +13,9 @@ Item {
         { name:"Sunflower",cost:50,image:"../assets/sunflw-seed.png",
             shadowImage:"../assets/sunflw.png",plantComponent:Qt.createComponent("SunFlower.qml")},
         { name:"Wallnut",cost:50,image:"../assets/nut-seed.png",
-            shadowImage:"../assets/nut.png",plantComponent:Qt.createComponent("Nut.qml")}
+            shadowImage:"../assets/nut.png",plantComponent:Qt.createComponent("Nut.qml")},
+        { name:"Reapeater",cost:200,image:"../assets/doublepea-seed.png",
+            shadowImage:"../assets/reapeater.png",plantComponent:Qt.createComponent("DoublePeashooter.qml")}
     ]
 
     property int selectedPlantIndex:-1
@@ -51,12 +53,5 @@ Item {
             }
         }
     }
-
-    /*Image {
-        anchors.fill:parent
-        source: "../assets/SeedBank.png"
-        fillMode: Image.TileHorizontally
-        z:-1
-        }*/
-    }
+}
 
