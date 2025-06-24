@@ -11,13 +11,10 @@ Scene{
     property alias miniGames:_miniGames
     property alias puzzle:_puzzle
     property alias survival:_survival
+    property alias bgm:_bgm
     id:menuscene
     signal beginTapped
 
-
-    MediaPlayer {
-        source:""
-    }
 
     Image {
         id:_menu
@@ -29,6 +26,16 @@ Scene{
             }
         }
     }
+    component HoveredButton: Button{
+        property alias imageSource : image.source
+        property alias imageX: image.x
+        property alias imageY: image.y
+        property alias imageWidth: image.width
+
+        id:button
+        background: Rectangle{id:rectangle;color:"transparent";border.color:"transparent"}
+        Image{id:image;fillMode: Image.PreserveAspectFit;visible:button.hovered}
+        }
     HoveredButton {
         id:_options
         x:320; y:235
@@ -106,6 +113,8 @@ Scene{
         TapHandler{
             onTapped: {
                 console.log("puzzle was clicked")
+                //console.log("backgroundMusic.mediaStatus: ",backgroundMusic.mediaStatus)
+                //backgroundMusic.play()
             }
         }
     }
@@ -123,20 +132,12 @@ Scene{
         }
     }
 
-    component HoveredButton: Button{
-        property alias imageSource : image.source
-        property alias imageX: image.x
-        property alias imageY: image.y
-        property alias imageWidth: image.width
-
-        id:button
-        background: Rectangle{id:rectangle;color:"transparent";border.color:"transparent"}
-        Image{id:image;fillMode: Image.PreserveAspectFit;visible:button.hovered}
-        }
-
-    BackgroundMusic{
-        source:""
+    MusicButton{
+        id:_bgm
+        x:385
+        backgroundMusicSource: "../assets/titlemusic.mp3"
     }
+
 
 }
 

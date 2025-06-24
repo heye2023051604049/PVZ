@@ -33,10 +33,11 @@ GameWindow{
     ]
 
     GameTitle{
-
         id:_gameTitle;opacity: 0
-        onBeginTapped: gameWindow.state ="game"
-
+        onBeginTapped: {
+            gameWindow.state ="game"
+            gameTitle.bgm.backgroundMusic.stop()
+        }
 
     }
 

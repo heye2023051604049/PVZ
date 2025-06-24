@@ -54,7 +54,7 @@ qt_add_qml_module(appPVZ
     NO_RESOURCE_TARGET_PATH
     QML_FILES qml/GameScene.qml
     QML_FILES qml/Zombie.qml
-    RESOURCES assets/images.qrc
+    RESOURCES assets/sounds.qrc
     QML_FILES qml/GameTitle.qml
     QML_FILES qml/Peashooter.qml
     QML_FILES qml/Peabullet.qml
@@ -64,6 +64,7 @@ qt_add_qml_module(appPVZ
     QML_FILES qml/ZombieRoadBlock.qml
     QML_FILES qml/BucketZombie.qml
     QML_FILES qml/DoublePeashooter.qml
+    QML_FILES qml/MusicButton.qml
 
 
 )

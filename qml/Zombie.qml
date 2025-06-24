@@ -2,7 +2,7 @@
 //这是一个僵尸，有实体，有hp,attack属性
 import QtQuick
 import Felgo
-
+import QtMultimedia
 EntityBase{
     id:zombie
 
@@ -119,8 +119,13 @@ EntityBase{
                                     }
 
   }*/
-        if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ )    {
-        zbam.jumpTo("eat");}
+        if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ ){
+        zbam.jumpTo("eat");
+        switchTimer.start();
+        eatingMusic.play()
+
+
+        }
      }
 
         fixture.onEndContact: other =>{
@@ -164,8 +169,35 @@ EntityBase{
     }
 
     }
+    MediaPlayer{
+        property int currentIndex:0
+        property string eat1:"../assets/chomp.ogg"
+        property string eat2:"../assets/chomp2.ogg"
+        property string eat3:"../assets/chompsoft.ogg"
+        property var eatMusicList:[]
+        id:eatingMusic
+        source:eatMusicList[currentIndex]
+        loops: MediaPlayer.Infinite  // 无限循环播放
+        audioOutput: AudioOutput {
+            id:_audioOutput
+        }
+    }
+    Component.onCompleted: {
+            eatingMusic.eatMusicList.push(eatingMusic.eat1)
+            eatingMusic.eatMusicList.push(eatingMusic.eat2)
+            eatingMusic.eatMusicList.push(eatingMusic.eat3)
+            console.log("Eat Music List:", eatingMusic.eatMusicList)
+        }
+    Timer{
+        id:switchTimer
+        interval:1000
+        repeat: true
+        running: false
+        onTriggered: {
+            eatingMusic.currentIndex = (eatingMusic.currentIndex + 1) % eatingMusic.eatMusicList.length
+            eatingMusic.source = eatingMusic.eatMusicList[eatingMusic.currentIndex]
+            eatingMusic.play()
+        }
+    }
+    }
 
-
-
-
-}
