@@ -11,17 +11,14 @@ Button {
         id:rectangle;color:"transparent";border.color:"transparent"
         width: 60;height: 30
         Row{
-            anchors.fill:parent
             Image{
                 width:25;height:25
                 id:musicImage
-                anchors.left: parent.left
                 source:"../assets/music.png"
             }
             Image {
                 width:30;height: 30
                 id: frame
-                anchors.left:musicImage.right
                 source:playMusic? "../assets/options_checkbox1.png" : "../assets/options_checkbox0.png"
             }
         }

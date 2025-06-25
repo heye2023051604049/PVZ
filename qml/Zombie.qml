@@ -3,6 +3,7 @@ import QtQuick
 import Felgo
 import QtMultimedia
 EntityBase{
+    id:zombie
     property alias anima: zbam
     property int hp :400
     property int attack :20
@@ -80,6 +81,7 @@ EntityBase{
         fixture.onBeginContact: other =>{
 
                                     var otherEntity = other.getBody().target;
+
                                     /*const otherfixtrue = other;
         //var colliderType = collider.colliderType;
          //console.log("999999999999",other);

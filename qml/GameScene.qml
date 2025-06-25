@@ -15,6 +15,7 @@ Scene{
     property var currentPlant
     property var currentPlantList:[]
     property bool deleteStatus:false
+    property bool gameOver: false
     Image{
         id:image1
         anchors.fill: parent
@@ -247,4 +248,42 @@ Scene{
                 }
 
         }
+    //defeatcondition
+    function zombieReachedHouse(){
+        if(!gameOver){
+            gameOver = true
+            showGameOverScreen()
+        }
+    }
+
+    function showGameOverScreen(){
+        gameOverlay.visible = true
+    }
+
+    Image{
+        id:gameOverlay
+        anchors.fill: parent
+        visible: gameOver
+        z:1000
+        source: "../assets/ZombiesWon.jpg"
+    }
+    EntityBase{
+        id:leftBoundary
+        entityType: "leftBoundary"
+        width: 10
+        height: gameScene.height
+        x:0
+        y:0
+        visible: true
+
+        BoxCollider{
+            anchors.fill: parent
+            bodyType: Body.Static
+            categories: Box.Category1
+            collidesWith: Box.Category2
+            fixture.onBeginContact: other=>{
+                                        zombieReachedHouse()
+                                    }
+        }
+    }
     }

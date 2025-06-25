@@ -66,7 +66,7 @@ GameWindow{
     GameScene{
         id:_gameScene;opacity:  0
         PhysicsWorld{
-            //debugDrawVisible: true
+            debugDrawVisible: true
             updatesPerSecondForPhysics:60
         }
         EntityManager {id:entityManager;
@@ -81,32 +81,6 @@ GameWindow{
 
         //var array = entityManager.getEntityArrayByType(zombie)
 
-        Timer{
-        id:creatzombie1
-        interval: 8000
-        running: true
-        repeat: false
-        property string zombie1
-        onTriggered: {
-
- zombie1 = entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Zombie.qml"), { "y": 70});
- //zombie1atk = entityManager.getEntityById(zombie1).attack
-console.log("zombie1",zombie1)
-
-        }
-
-        }
-
-        Timer{
-        id:creatzombie2
-        interval: 16000
-        running: true
-        repeat: false
-        onTriggered: {
-
-var zombie2 = entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Zombie.qml"), { "y": 30});
-console.log("zombie2",zombie2)
-        }
 
 
         }
@@ -201,4 +175,3 @@ console.log("zombie2",zombie2)
 
 
     }
-}
