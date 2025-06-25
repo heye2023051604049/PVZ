@@ -1,6 +1,7 @@
 import Felgo
 import QtQuick
 import QtQuick.Controls
+import QtMultimedia
 import "Controller.js" as Controller
 
 Scene{
@@ -12,7 +13,7 @@ Scene{
     property alias seedBank:_seedbank
     property var currentPlant
     property var currentPlantList:[]
-    property bool deleteStatus
+    property bool deleteStatus:false
     //property var tapHandler
     //property var tapHandlerList:[]
     Image{
@@ -101,6 +102,7 @@ Scene{
                         currentPlant = null
                         plant = null
                         deleteStatus = false
+                        shovel.deleteModel = false
                         event.accepted = true
                     }
                 }
@@ -155,6 +157,7 @@ Scene{
             shadowPath=shadowImage
             plantingComponent=plantComponent
             gameScene.deleteStatus = false
+            shovel.deleteModel = false
         }
 
         /*function addSun(amount){
@@ -182,7 +185,7 @@ Scene{
                         TapHandler {
                             onTapped: (event) => {
                             gameScene.currentPlant = currentPlant
-                            console.log("123456")
+                            //console.log("123456")
                             event.accepted = true
                         }
                     }
@@ -220,13 +223,20 @@ Scene{
             onTapped: {
                 if(deleteStatus){
                 gameScene.deleteStatus = false
+                shovel.deleteModel = false
                 } else {
                 gameScene.deleteStatus = true
+                shovel.deleteModel = true
                 }
                 gameScene.plantingComponent = null
                 console.log("deletePlant: ",deleteStatus)
                 console.log("currentPlantList: ",currentPlantList)
             }
         }
+    }
+    MusicButton{
+        id:background
+        x:300
+        backgroundMusicSource: "../assets/main.mp3"
     }
 }

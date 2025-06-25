@@ -1,7 +1,7 @@
 //wenrenqiang
 import QtQuick
 import Felgo
-
+import QtMultimedia
 EntityBase{
     id:peabullet
     entityType: "bullet"
@@ -35,8 +35,11 @@ EntityBase{
 
         var otherEntity = other.getBody().target;
         if(otherEntity.entityType === "zombie") {
-        console.log("boom")
-        otherEntity.hp = otherEntity.hp-peabullet.attack;
+
+        console.log("boom");
+        attackMusic.play();
+        otherEntity.hp = otherEntity.hp-attack;
+
         console.log("zombieHp",otherEntity.hp)
                                 }
         peabullet.removeEntity();
@@ -63,6 +66,18 @@ EntityBase{
         pb.body.applyLinearImpulse(Qt.point(100, 0), pb.body.getWorldCenter())}
 
     }
+    MediaPlayer{
+        property string collisionMusic:"../assets/peabullet.mp3"
+        id:attackMusic
+        source:collisionMusic
+        loops: MediaPlayer.Infinite  // 无限循环播放
+        audioOutput: AudioOutput {
+            id:_audioOutput
+        }
+    }
+    Component.onCompleted: {
+            console.log("attack Music :", attackMusic.collisionMusic)
+        }
 
 
 

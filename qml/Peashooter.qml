@@ -1,7 +1,7 @@
 //wenrenqiang
 import QtQuick
 import Felgo
-
+import QtMultimedia
 EntityBase{
     id:peashooter
     property int hp :150
@@ -63,7 +63,12 @@ EntityBase{
 
     fixture.onBeginContact: (other) =>{
 
+
                            /* console.log("attacked");
+
+                            console.log("attacked");
+                            //attackMusic.play()
+
                             var zbattk = other.getBody().target;
 
 
@@ -299,7 +304,18 @@ onTriggered: {
     }
     }*/
 
-
+    // MediaPlayer{
+    //     property string collisionMusic:"../assets/peabullet.mp3"
+    //     id:attackMusic
+    //     source:collisionMusic
+    //     loops: MediaPlayer.Infinite  // 无限循环播放
+    //     audioOutput: AudioOutput {
+    //         id:_audioOutput
+    //     }
+    // }
+    // Component.onCompleted: {
+    //         console.log("attack Music :", attackMusic.collisionMusic)
+    //     }
 
 
 
