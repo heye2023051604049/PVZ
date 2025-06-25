@@ -169,9 +169,11 @@ EntityBase{
         if(parent.hp<= 150){plam.jumpTo("lowhp")}
 
         if (parent.hp<=0){
-                damagecount1.running=false;
-                parent.removeEntity();
+            //damagecount2.restart()
+                damagecount1.running=false;                
                 zb1.anima.jumpTo("walk")
+                //console.log("666")
+                parent.removeEntity();
     }
 
 
@@ -188,6 +190,10 @@ EntityBase{
     property int zombienumber: 0
     onTriggered: {
         //ondamaged(zbattk);
+        //if(parent.hp<=0) {damagecount1.restart()
+        //                    zb2.jumpTo("walk")}
+
+
         var zb2 = entityManager.getEntityById(body.bdzbid2)
 
         if(zb2){
@@ -196,12 +202,14 @@ EntityBase{
             parent.hp= parent.hp-attack
             attack = 0;}
 
-
         if (parent.hp<=0){
+                //damagecount1.restart()
                 damagecount2.running=false
+                //console.log("666")
                 zb2.anima.jumpTo("walk");
-
+                parent.removeEntity();
     }
+
 
 
     }

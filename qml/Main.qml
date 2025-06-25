@@ -69,8 +69,8 @@ GameWindow{
         ZombieRoadBlock{y:230}
         BucketZombie{y:170}*/
 
-        Peashooter{x:200;y:200}
-        Peashooter{x:300;y:150}
+        //Peashooter{x:200;y:200}
+        //Peashooter{x:300;y:150}
         //Peashooter{x:50}
         Nut{x:380;y:100}
         //DoublePeashooter{y:100}
