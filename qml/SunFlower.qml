@@ -1,3 +1,4 @@
+//sunflower functions
 import QtQuick
 import Felgo
 
@@ -10,7 +11,7 @@ EntityBase{
     height: 40
 
     // 阳光生成相关属性
-    property int sunGenerateInterval: 10000 // 10秒生成一次阳光
+    property int sunGenerateInterval: 7000 // 10秒生成一次阳光
     property int sunValue: 25 // 每个阳光值
     property var gameScene // 用于引用游戏场景
 
@@ -68,13 +69,21 @@ EntityBase{
         width: parent.width
         height: parent.height
         bodyType: Body.Static
+        property string bdzbid1
+        property string bdzbid2
+        property int enermynumber:0
 
         fixture.onBeginContact: (other) =>{
                                     console.log("attacked");
-                                    var zbattk = other.getBody().target;
+                                    var bdzb = other.getBody().target;
+                                    bdzbid1  = bdzb.entityId;
 
-                                    damagecount.zombienumber +=1;
-                                    damagecount.running=true;
+                                    enermynumber +=1
+                                    damagecount1.zombienumber += 1;
+                                    damagecount1.running=true;
+
+                                    if(enermynumber>1){bdzbid2 = bdzb.entityId
+                                        damagecount2.running = true;}
                                 }
         categories: Box.Category1
         collidesWith: Box.Category2
@@ -84,35 +93,74 @@ EntityBase{
                                   console.log("finished")
                               }
     }
+
     Timer{
-    id:damagecount
-    interval: 1000
-    running:false
-    repeat: true
-    property int attack
-    property int zombienumber: 0
-    onTriggered: {
-        attack = zombie.attack
-        parent.hp= parent.hp-attack;
-        attack = 0;
-        console.log("HP",parent.hp)
-        if (parent.hp<=0){
-                damagecount.running=false;
+        id:damagecount1
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            var zb1 = entityManager.getEntityById(body.bdzbid1)
+
+            if(zb1){
+                attack = zb1.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;}
+
+            console.log("HP",parent.hp)
+
+            if (parent.hp<=0){
+                damagecount1.running=false;
                 parent.removeEntity();
-                zombie.anima.jumpTo("walk")
+                zb1.anima.jumpTo("walk")
+            }
+
+
         }
+
     }
+
+
+    Timer{
+        id:damagecount2
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            var zb2 = entityManager.getEntityById(body.bdzbid2)
+
+            if(zb2){
+                attack = zb2.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;}
+
+
+            if (parent.hp<=0){
+                damagecount2.running=false
+                zb2.anima.jumpTo("walk");
+
+            }
+
+
+        }
+
     }
 
     function enterrange () {
-    attackrange.isEnterAttackrange = true;
-    attackrange.number +=1;
+        attackrange.isEnterAttackrange = true;
+        attackrange.number +=1;
 
     }
 
     function outofrange(){
-    attackrange.number = attackrange.number -1;
-    if(attackrange.number<=0){
-    attackrange.isEnterAttackrange = false};
+        attackrange.number = attackrange.number -1;
+        if(attackrange.number<=0){
+            attackrange.isEnterAttackrange = false};
     }
 }

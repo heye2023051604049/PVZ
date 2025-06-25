@@ -38,7 +38,7 @@ Scene{
         id:button
         background: Rectangle{id:rectangle;color:"transparent";border.color:"transparent"}
         Image{id:image;fillMode: Image.PreserveAspectFit;visible:button.hovered}
-        }
+    }
     HoveredButton {
         id:_options
         x:320; y:235

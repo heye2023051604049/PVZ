@@ -1,4 +1,4 @@
-//wenrenqiang
+//the peashooter's functions
 import QtQuick
 import Felgo
 import QtMultimedia
@@ -6,35 +6,34 @@ EntityBase{
     id:peashooter
     property int hp :150
     //anchors.centerIn: parent
+    property var myArray
     entityType: "plant"
     property int attack
     width:  40
     height: 40
 
-
     //property var colliders: []//存放的collider
     GameSpriteSequence{
-    id:plam
-    //source:"../assets/Peashooter.png"
-    width: 40
-    height:40
-    goalSprite:"relax"
+        id:plam
+        //source:"../assets/Peashooter.png"
+        width: 40
+        height:40
+        goalSprite:"relax"
 
         GameSprite{
-        name:"relax"
-        //sourceRect:Qt.rect(0, 0, 169,239)
-        //source: "../assets/Peashooter.png"
-        source: Qt.resolvedUrl("../assets/Peashooter.png")
-        frameCount: 13
-        frameWidth: 142
-        frameHeight: 142
-        frameX:0
-        frameY:0
-        frameDuration: 150      
+            name:"relax"
+            //sourceRect:Qt.rect(0, 0, 169,239)
+            //source: "../assets/Peashooter.png"
+            source: Qt.resolvedUrl("../assets/Peashooter.png")
+            frameCount: 13
+            frameWidth: 142
+            frameHeight: 142
+            frameX:0
+            frameY:0
+            frameDuration: 150
         }
 
-
-    //to do 攻击动画
+        //to do 攻击动画
         /*Sprite{
         name:"shoot"
         source: "../assets/Peashooter.png"
@@ -46,78 +45,73 @@ EntityBase{
         frameDuration: 250
 
     }*/
-
-
-
     }
 
     BoxCollider{
-    id:body
-    width: parent.width
-    height: parent.height
-    bodyType: Body.Static //静态物体
+        id:body
+        width: parent.width
+        height: parent.height
+        bodyType: Body.Static //静态物体
+        property string bdzbid1
+        property string bdzbid2
+        property int enermynumber:0
 
-    fixture.onBeginContact: (other) =>{
-
+        fixture.onBeginContact: (other) =>{
+                                    /* console.log("attacked");
                             console.log("attacked");
                             //attackMusic.play()
                             var zbattk = other.getBody().target;
-
                             damagecount.zombienumber += 1;
-                            //if(damagecount.zombienumber>0) {
-                            //damagecount.running=true;}
-                            damagecount.running=true;
+                            damagecount.running=true;*/
+                                    console.log("attacked");
+                                    var bdzb = other.getBody().target;
+                                    bdzbid1  = bdzb.entityId;
 
-                            }
+                                    enermynumber +=1
+                                    damagecount1.zombienumber += 1;
+                                    damagecount1.running=true;
 
-    categories: Box.Category1
-    collidesWith: Box.Category2
+                                    if(enermynumber>1){bdzbid2 = bdzb.entityId
+                                        damagecount2.running = true;}
+                                }
 
-    fixture.onEndContact: (other) =>{
-                          damagecount.running=false;
-                          console.log("finished")
-                          }
+        categories: Box.Category1
+        collidesWith: Box.Category2
+        fixture.onEndContact: (other) =>{
+                                  damagecount.running=false;
+                                  console.log("finished")
+                              }
 
     }
 
 
-EntityBase{
-    id:attackrange
-    //anchors.left: parent.left
-    height: parent.height
-    width:parent.width*10 //可设置攻击范围
-    entityType: "range"
+    EntityBase{
+        property bool isEnterAttackrange: false
+        property int number: 0
 
-    x:parent.x
-    y:parent.y
+        id:attackrange
+        height: parent.height
+        width:parent.width*10 //可设置攻击范围
+        entityType: "range"
 
-    property bool isEnterAttackrange: false
-    property int number: 0
+        x:parent.x
+        y:parent.y
+        BoxCollider{
+            id:ar
+            sensor: true
+            categories: Box.Category1
+            collidesWith: Box.Category2
+            fixture.onBeginContact: other =>{
+                                        console.log("进入攻击范围")
+                                        enterrange()
+                                    }
 
-    BoxCollider{
-    id:ar
-
-    sensor: true
-
-
-
-    categories: Box.Category1
-    collidesWith: Box.Category2
-
-
-    fixture.onBeginContact: other =>{
-        console.log("进入攻击范围")
-        enterrange()
-       }
-
-    fixture.onEndContact: other =>{
-        console.log("离开攻击范围")
-        outofrange()
+            fixture.onEndContact: other =>{
+                                      console.log("离开攻击范围")
+                                      outofrange()
+                                  }
         }
-
     }
-
-}
     /*Component.onCompleted:{
         if (!fixture) {
         Qt.callLater(()=>peashooter.colliders.push(attackrange));
@@ -128,13 +122,7 @@ EntityBase{
                 }
     }*/
 
-
-
-
-
-
-
-    Timer{
+    /*Timer{
     id:damagecount
     interval: 1000
     running:false
@@ -142,7 +130,7 @@ EntityBase{
     property int attack
     property int attack2
     property int zombienumber: 0
-    onTriggered: {      
+    onTriggered: {
         //ondamaged(zbattk);
         attack = zombie1.attack
         parent.hp= parent.hp-attack;
@@ -160,33 +148,81 @@ EntityBase{
                 parent.removeEntity();
                 zombie1.anima.jumpTo("walk")
         }
-
-
     }
+    }*/
 
+    Timer{
+        id:damagecount1
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            //ondamaged(zbattk);
+            var zb1 = entityManager.getEntityById(body.bdzbid1)
+
+            if(zb1){
+                attack = zb1.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;}
+
+            console.log("HP",parent.hp)
+
+            if (parent.hp<=0){
+                damagecount1.running=false;
+                parent.removeEntity();
+                zb1.anima.jumpTo("walk")
+            }
+        }
     }
 
     Timer{
-    id:attck
-    interval: 2000
-    running: true
-    repeat: true
-    onTriggered: {
+        id:damagecount2
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            //ondamaged(zbattk);
+            var zb2 = entityManager.getEntityById(body.bdzbid2)
 
-        if(attackrange.isEnterAttackrange == true){
-        fireBullet();}
-        //fireBullet()
+            if(zb2){
+                attack = zb2.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;}
+
+            if (parent.hp<=0){
+                damagecount2.running=false
+                zb2.anima.jumpTo("walk");
+            }
+        }
     }
+
+    Timer{
+        id:attck
+        interval: 2000
+        running: true
+        repeat: true
+        onTriggered: {
+
+            if(attackrange.isEnterAttackrange == true){
+                fireBullet();}
+            //fireBullet()
+        }
 
     }
 
     // 生成子弹
     function fireBullet() {
         entityManager.createEntityFromUrlWithProperties(Qt.resolvedUrl("Peabullet.qml"), {
-            x: peashooter.x+30,
-            y: peashooter.y+5  //需手动跟换id
-            //velocity: Qt.point(0, -500)
-        })
+                                                            x: peashooter.x+30,
+                                                            y: peashooter.y+5  //需手动跟换id
+                                                            //velocity: Qt.point(0, -500)
+                                                        })
     }
 
     // 生成攻击范围
@@ -200,15 +236,15 @@ EntityBase{
 
 
     function enterrange () {
-    attackrange.isEnterAttackrange = true;
-    attackrange.number +=1;
+        attackrange.isEnterAttackrange = true;
+        attackrange.number +=1;
 
     }
 
     function outofrange(){
-    attackrange.number = attackrange.number -1;
-    if(attackrange.number<=0){
-    attackrange.isEnterAttackrange = false};
+        attackrange.number = attackrange.number -1;
+        if(attackrange.number<=0){
+            attackrange.isEnterAttackrange = false};
     }
 
     /*function ondamaged(zbattk){
@@ -234,10 +270,5 @@ EntityBase{
     // Component.onCompleted: {
     //         console.log("attack Music :", attackMusic.collisionMusic)
     //     }
-
-
-
-
-
 }
 

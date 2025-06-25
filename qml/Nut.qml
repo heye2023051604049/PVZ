@@ -1,133 +1,172 @@
-//wenrenqiang
+//nuts' functions
 import QtQuick
 import Felgo 4.0
 
 EntityBase{
     id:nut
-    property int hp :400
-    //anchors.centerIn: parent
+    property int hp :600
     entityType: "plant"
-    property int attack
     width:  40
     height: 40
 
     y:100
 
-
-    //property var colliders: []//存放的collider
-
     GameSpriteSequence{
-    id:plam
-    //source:"../assets/Peashooter.png"
-    width: 40
-    height:40
-    goalSprite:"relax"
+        id:plam
+        width: 40
+        height:40
+        goalSprite:"relax"
 
         GameSprite{
-        name:"maxhp"
-        //sourceRect:Qt.rect(0, 0, 169,239)
-        //source: "../assets/Peashooter.png"
-        source: Qt.resolvedUrl("../assets/nut1.png")
-        frameCount: 15
-        frameWidth: 65
-        frameHeight: 73
-        frameX:0
-        frameY:0
-        frameDuration: 150
-        }
-
-
-
-        GameSprite{
-        name:"halfhp"
-        source: Qt.resolvedUrl("../assets/nut2.png")
-        frameCount: 11
-        frameWidth:65
-        frameHeight: 73
-        frameX:0
-        frameY:0
-        frameDuration: 150
+            name:"maxhp"
+            source: Qt.resolvedUrl("../assets/nut1.png")
+            frameCount: 15
+            frameWidth: 65
+            frameHeight: 73
+            frameX:0
+            frameY:0
+            frameDuration: 150
         }
 
         GameSprite{
-        name:"lowhp"
-        source: Qt.resolvedUrl("../assets/nut33.png")
-        frameCount: 15
-        frameWidth:65
-        frameHeight: 73
-        frameX:0
-        frameY:0
-        frameDuration: 150
+            name:"halfhp"
+            source: Qt.resolvedUrl("../assets/nut2.png")
+            frameCount: 11
+            frameWidth:65
+            frameHeight: 73
+            frameX:0
+            frameY:0
+            frameDuration: 150
         }
 
-
-
+        GameSprite{
+            name:"lowhp"
+            source: Qt.resolvedUrl("../assets/nut33.png")
+            frameCount: 15
+            frameWidth:65
+            frameHeight: 73
+            frameX:0
+            frameY:0
+            frameDuration: 150
+        }
     }
 
     BoxCollider{
-    id:body
-    width: parent.width
-    height: parent.height
-    bodyType: Body.Static //静态物体
+        id:body
+        width: parent.width
+        height: parent.height
+        bodyType: Body.Static //静态物体
+        property string bdzbid1
+        property string bdzbid2
+        property int enermynumber:0
 
-    fixture.onBeginContact: (other) =>{
+        fixture.onBeginContact: (other) =>{
 
-                            console.log("attacked");
-                            var zbattk = other.getBody().target;
+                                    console.log("attacked");
+                                    var bdzb = other.getBody().target;
+                                    bdzbid1  = bdzb.entityId;
 
-                            damagecount.zombienumber += 1;
-                            damagecount.running=true;
+                                    enermynumber +=1
+                                    damagecount1.zombienumber += 1;
+                                    damagecount1.running=true;
 
+                                    if(enermynumber>1){bdzbid2 = bdzb.entityId
+                                        damagecount2.running = true;}
+                                }
 
-                            }
+        categories: Box.Category1
+        collidesWith: Box.Category2
 
-    categories: Box.Category1
-    collidesWith: Box.Category2
-
-    fixture.onEndContact: (other) =>{
-                          damagecount.running=false;
-                          console.log("finished")
-                          }
-
+        fixture.onEndContact: (other) =>{
+                                  damagecount1.running=false;
+                                  console.log("finished")
+                              }
     }
 
-
-
-
-
-
-
-    Timer{
-    id:damagecount
+    /*Timer{
+    id:damagecount1
     interval: 1000
     running:false
     repeat: true
-    property int attack1
+    property int attack
     property int zombienumber: 0
     onTriggered: {
         //ondamaged(zbattk);
-        attack = zombie1.attack
-        parent.hp= parent.hp-attack;
-        attack = 0;
-        //peashooter.hp= peashooter.hp-zbattk.attack;
+        var zb1 = entityManager.getEntityById(zombie11.zombie1)
+        if(zb1){
+        attack = zb1.attack
+        console.log("zombieatttack",attack)
+            parent.hp= parent.hp-attack
+            attack = 0;}
+        //parent.hp= parent.hp-attack1;
+        //attack = 0;
         console.log("HP",parent.hp)
-
         if(parent.hp<= 250){plam.jumpTo("halfhp")}
         if(parent.hp<= 150){plam.jumpTo("lowhp")}
-
         if (parent.hp<=0){
-                damagecount.running=false;
+                damagecount1.running=false;
                 parent.removeEntity();
-                zombie.anima.jumpTo("walk")
+                zb1.anima.jumpTo("walk")
+    }
+    }
+    }*/
+
+    Timer{
+        id:damagecount1
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            //ondamaged(zbattk);
+            var zb1 = entityManager.getEntityById(body.bdzbid1)
+
+            if(zb1){
+                attack = zb1.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;
+            }
+
+            console.log("HP",parent.hp)
+
+            if(parent.hp<= 250){plam.jumpTo("halfhp")}
+            if(parent.hp<= 150){plam.jumpTo("lowhp")}
+
+            if (parent.hp<=0){
+                //damagecount2.restart()
+                damagecount1.running=false;
+                zb1.anima.jumpTo("walk")
+                //console.log("666")
+                parent.removeEntity();
+            }
+        }
     }
 
+    Timer{
+        id:damagecount2
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            var zb2 = entityManager.getEntityById(body.bdzbid2)
 
+            if(zb2){
+                attack = zb2.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;}
+
+            if (parent.hp<=0){
+                damagecount2.running=false
+                zb2.anima.jumpTo("walk");
+                parent.removeEntity();
+            }
+        }
     }
-
-    }
-
-
-
 
     // 生成攻击范围
     /*function attackrange() {
@@ -138,17 +177,15 @@ EntityBase{
         })
     }    */
 
-
     function enterrange () {
-    attackrange.isEnterAttackrange = true;
-    attackrange.number +=1;
-
+        attackrange.isEnterAttackrange = true;
+        attackrange.number +=1;
     }
 
     function outofrange(){
-    attackrange.number = attackrange.number -1;
-    if(attackrange.number<=0){
-    attackrange.isEnterAttackrange = false};
+        attackrange.number = attackrange.number -1;
+        if(attackrange.number<=0){
+            attackrange.isEnterAttackrange = false};
     }
 
     /*function ondamaged(zbattk){
@@ -161,7 +198,4 @@ EntityBase{
                 zombie.anima.jumpTo("walk")
     }
     }*/
-
-
-
 }

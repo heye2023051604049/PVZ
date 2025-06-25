@@ -1,87 +1,76 @@
-//wenrenqiang
 //这是一个僵尸，有实体，有hp,attack属性
 import QtQuick
 import Felgo
 import QtMultimedia
 EntityBase{
-    id:zombie
-
     property alias anima: zbam
-
-
-    property int hp :500
-    //anchors.centerIn: parent
-    entityType: "zombie"
+    property int hp :400
     property int attack :20
-    width:  64
-    height: 64
-
-    x:400
-    y:70
+    entityType: "zombie"
+    width:  64;height: 64;
+    x:400;y:70
 
     GameSpriteSequence{//僵尸动画合集
-    id:zbam
-    width: zombie.width
-    height:zombie.height
-    //goalSprite:"walk"
+        id:zbam
+        width: parent.width
+        height:parent.height
+        //goalSprite:"walk"
 
         //走路
         GameSprite{
-        name:"walk"
-        source: Qt.resolvedUrl("../assets/ZBwalik.png")
-        frameCount: 17
-        frameWidth: 332
-        frameHeight: 288
-        frameX:0
-        frameY:0
-        frameDuration: 250
-        //to: {}
-        //to: {"eat":1,"die":1}
+            name:"walk"
+            source: Qt.resolvedUrl("../assets/ZBwalik.png")
+            frameCount: 17
+            frameWidth: 332
+            frameHeight: 288
+            frameX:0
+            frameY:0
+            frameDuration: 250
+            //to: {}
+            //to: {"eat":1,"die":1}
         }
 
         //攻击
         GameSprite{
-        name:"eat"
-        //source: "../assets/ZBeat.png"
-        source: Qt.resolvedUrl("../assets/ZBeat.png")
-        frameCount: 19
-        frameWidth:332
-        frameHeight: 288
-        frameX:0
-        frameY:0
-        frameDuration: 250
-        //to: {"die":1,"walk":1}
+            name:"eat"
+            source: Qt.resolvedUrl("../assets/ZBeat.png")
+            frameCount: 19
+            frameWidth:332
+            frameHeight: 288
+            frameX:0
+            frameY:0
+            frameDuration: 250
+            //to: {"die":1,"walk":1}
         }
 
         //死亡
         GameSprite{
-        name:"die"
-        //source:"../assets/ZBdie.png"
-        source: Qt.resolvedUrl("../assets/ZBdie.png")
-        frameCount: 9
-        frameWidth: 446
-        frameHeight: 265
-        frameX: 0
-        frameY: 0
-        frameDuration: 330
-        //to: {"walk":1,"eat":1}
+            name:"die"
+            source: Qt.resolvedUrl("../assets/ZBdie.png")
+            frameCount: 9
+            frameWidth: 446
+            frameHeight: 265
+            frameX: 0
+            frameY: 0
+            frameDuration: 330
+            //to: {"walk":1,"eat":1}
         }
     }
 
 
     BoxCollider{
-    id:zb
-    width: zombie.width/2
-    height: zombie.height/2
-    anchors.bottom: parent.bottom
-    anchors.right: parent.right
-    bodyType: Body.Dynamic //动态物体
-    density: 1 //密度
-    //friction: 0.5 //摩擦系数
+        id:zb
+        width: parent.width/2
+        height: parent.height/2
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        bodyType: Body.Dynamic //动态物体
+        density: 1 //密度
+        //friction: 0.5 //摩擦系数
 
 
-    categories: Box.Category2
-    collidesWith: Box.Category1
+        categories: Box.Category2
+        collidesWith: Box.Category1
 
 
         fixture.density: 1
@@ -90,8 +79,8 @@ EntityBase{
 
         fixture.onBeginContact: other =>{
 
-        var otherEntity = other.getBody().target;
-        /*const otherfixtrue = other;
+                                    var otherEntity = other.getBody().target;
+                                    /*const otherfixtrue = other;
         //var colliderType = collider.colliderType;
          //console.log("999999999999",other);
          //console.log("666666666666",other.colliderType);
@@ -119,19 +108,19 @@ EntityBase{
                                     }
 
   }*/
-        if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ ){
-        zbam.jumpTo("eat");
-        switchTimer1.start();
-        eatingMusic.play()
 
+                                    if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ )    {
+                                        zbam.jumpTo("eat")
+                                        zbwalk.running = true
+                                        switchTimer.start()
+                                        eatingMusic.play();}
 
-        }
-     }
+                                }
 
         fixture.onEndContact: other =>{
-        //zbam.jumpTo("walk")
-        console.log("eatfinished")
-        zombie.removeEntity()
+                                  //zbam.jumpTo("walk")
+                                  console.log("eatfinished")
+                                  parent.removeEntity()
                               }
 
 
@@ -142,31 +131,32 @@ EntityBase{
 
 
     Timer{
-    id:zbtm
-    interval: 500
-    running:true
-    repeat: true
-    onTriggered: {
-        //zombie.x= zombie.x-1;
-        zb.body.applyLinearImpulse(Qt.point(-300, 0), zb.body.getWorldCenter())
-            }
-        }
+        id:zbtm
+        interval: 500
+        running:true
+        repeat: true
+        onTriggered: {
+            //zombie.x= zombie.x-1;
+
+            zb.body.applyLinearImpulse(Qt.point(-200, 0), zb.body.getWorldCenter())}
+
+    }
 
     Timer{
-    id:damagecount
-    interval:100
-    running: true
-    repeat: true
-    onTriggered: {
-    if(hp<=0){
-    zbam.jumpTo("die")
-    //zombie.x= zombie.x+1;
-    //damagecount.running=false;
-    //zb.body.applyLinearImpulse(Qt.point(300, 0), zb.body.getWorldCenter())
-    zombie.removeEntity()
-    }
+        id:damagecount
+        interval:100
+        running: true
+        repeat: true
+        onTriggered: {
+            if(hp<=0){
+                zbam.jumpTo("die")
+                //zombie.x= zombie.x+1;
+                //damagecount.running=false;
+                //zb.body.applyLinearImpulse(Qt.point(300, 0), zb.body.getWorldCenter())
+                parent.removeEntity()
+            }
 
-    }
+        }
 
     }
     MediaPlayer{
@@ -219,20 +209,34 @@ EntityBase{
             walkingMusic.source = walkingMusic.walkMusicList[walkingMusic.currentIndex]
             walkingMusic.play()
         }
-    }
-    Component.onCompleted: {
-            eatingMusic.eatMusicList.push(eatingMusic.eat1)
-            eatingMusic.eatMusicList.push(eatingMusic.eat2)
-            eatingMusic.eatMusicList.push(eatingMusic.eat3)
-            console.log("Eat Music List:", eatingMusic.eatMusicList)
-            walkingMusic.walkMusicList.push(walkingMusic.walk1)
-            walkingMusic.walkMusicList.push(walkingMusic.walk2)
-            walkingMusic.walkMusicList.push(walkingMusic.walk3)
-            walkingMusic.walkMusicList.push(walkingMusic.walk4)
-            walkingMusic.walkMusicList.push(walkingMusic.walk5)
-            walkingMusic.walkMusicList.push(walkingMusic.walk6)
-            console.log("walk Music List:",walkingMusic.walkMusicList)
 
+
+        Timer{
+            id:zbwalk
+            interval:20000
+            running:false
+            repeat: true
+            onTriggered: {
+                zbam.jumpTo("walk")
+
+            }
+            Component.onCompleted: {
+                eatingMusic.eatMusicList.push(eatingMusic.eat1)
+                eatingMusic.eatMusicList.push(eatingMusic.eat2)
+                eatingMusic.eatMusicList.push(eatingMusic.eat3)
+                console.log("Eat Music List:", eatingMusic.eatMusicList)
+                walkingMusic.walkMusicList.push(walkingMusic.walk1)
+                walkingMusic.walkMusicList.push(walkingMusic.walk2)
+                walkingMusic.walkMusicList.push(walkingMusic.walk3)
+                walkingMusic.walkMusicList.push(walkingMusic.walk4)
+                walkingMusic.walkMusicList.push(walkingMusic.walk5)
+                walkingMusic.walkMusicList.push(walkingMusic.walk6)
+                console.log("walk Music List:",walkingMusic.walkMusicList)
+
+            }
         }
-}
 
+    }
+
+
+}
