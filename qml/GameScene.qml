@@ -239,4 +239,13 @@ Scene{
         x:300
         backgroundMusicSource: "../assets/main.mp3"
     }
-}
+
+    function checkallzombieremoved(){
+    var countarray = entityManager.getEntityArrayByType("zombie")
+        if (countarray.length === 0){
+            console.log("fail");
+            gameWindow.state = "win"
+                }
+
+        }
+    }

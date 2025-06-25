@@ -8,6 +8,7 @@ GameWindow{
 
     property alias gameTitle: _gameTitle
     property alias gameScene: _gameScene
+    property alias win:_win
 
 
     property alias zombie11: creatzombie1
@@ -40,6 +41,12 @@ GameWindow{
             PropertyChanges {target: gameScene;opacity:1}
             PropertyChanges {target: gameWindow; activeScene: gameScene}
 
+        },
+        State {
+            name:"win"
+            PropertyChanges {target: win;opacity:1}
+            PropertyChanges {target: gameWindow; activeScene: win}
+
         }
     ]
 
@@ -49,6 +56,10 @@ GameWindow{
             gameWindow.state ="game"
             gameTitle.bgm.backgroundMusic.stop()
         }
+
+    }
+    Win{
+        id:_win;opacity: 0
 
     }
 
@@ -96,7 +107,7 @@ GameWindow{
 
         }
 
-
+        //var array = entityManager.getEntityArrayByType(zombie)
 
         Timer{
         id:creatzombie1
@@ -170,8 +181,31 @@ console.log("zombie3",zombie3)
 
         }
 
+        Timer{
+        id:check
+        interval: 1000
+        running: false
+        repeat: true
+        onTriggered: {
+        gameScene.checkallzombieremoved()
+            }
+        }
+
+        Timer{
+        interval: 40000
+        running: true
+        repeat: false
+        onTriggered: {
+        check.running = true
+        }
+        }
+
+        Button{
+        height: 20
+        width:30
+        text: "清除僵尸"
+        onClicked: {entityManager.removeAllEntities()}
+        }
+
     }
-
-
-
 }

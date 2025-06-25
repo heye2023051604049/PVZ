@@ -65,6 +65,7 @@ qt_add_qml_module(appPVZ
     QML_FILES qml/BucketZombie.qml
     QML_FILES qml/DoublePeashooter.qml
     QML_FILES qml/MusicButton.qml
+    QML_FILES qml/Win.qml
 
 
 )
