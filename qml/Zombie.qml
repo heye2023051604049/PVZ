@@ -121,7 +121,7 @@ EntityBase{
   }*/
         if(otherEntity.entityType === "plant" /*&& colliderType === "body"*/ ){
         zbam.jumpTo("eat");
-        switchTimer.start();
+        switchTimer1.start();
         eatingMusic.play()
 
 
@@ -148,9 +148,9 @@ EntityBase{
     repeat: true
     onTriggered: {
         //zombie.x= zombie.x-1;
-        zb.body.applyLinearImpulse(Qt.point(-300, 0), zb.body.getWorldCenter())}
-
-    }
+        zb.body.applyLinearImpulse(Qt.point(-300, 0), zb.body.getWorldCenter())
+            }
+        }
 
     Timer{
     id:damagecount
@@ -177,19 +177,29 @@ EntityBase{
         property var eatMusicList:[]
         id:eatingMusic
         source:eatMusicList[currentIndex]
-        loops: MediaPlayer.Infinite  // 无限循环播放
+        loops: 1
+        audioOutput: AudioOutput {
+            id:audioOutput
+        }
+    }
+    MediaPlayer{
+        property int currentIndex:0
+        property string walk1:"../assets/groan.ogg"
+        property string walk2:"../assets/groan2.ogg"
+        property string walk3:"../assets/groan3.ogg"
+        property string walk4:"../assets/groan4.ogg"
+        property string walk5:"../assets/groan5.ogg"
+        property string walk6:"../assets/groan6.ogg"
+        property var walkMusicList:[]
+        id:walkingMusic
+        source:walkMusicList[currentIndex]
+        loops: 1
         audioOutput: AudioOutput {
             id:_audioOutput
         }
     }
-    Component.onCompleted: {
-            eatingMusic.eatMusicList.push(eatingMusic.eat1)
-            eatingMusic.eatMusicList.push(eatingMusic.eat2)
-            eatingMusic.eatMusicList.push(eatingMusic.eat3)
-            console.log("Eat Music List:", eatingMusic.eatMusicList)
-        }
     Timer{
-        id:switchTimer
+        id:switchTimer1
         interval:1000
         repeat: true
         running: false
@@ -199,5 +209,30 @@ EntityBase{
             eatingMusic.play()
         }
     }
+    Timer{
+        id:switchTimer2
+        interval:8000
+        repeat: true
+        running:true
+        onTriggered: {
+            walkingMusic.currentIndex = (walkingMusic.currentIndex + 1) % walkingMusic.walkMusicList.length
+            walkingMusic.source = walkingMusic.walkMusicList[walkingMusic.currentIndex]
+            walkingMusic.play()
+        }
     }
+    Component.onCompleted: {
+            eatingMusic.eatMusicList.push(eatingMusic.eat1)
+            eatingMusic.eatMusicList.push(eatingMusic.eat2)
+            eatingMusic.eatMusicList.push(eatingMusic.eat3)
+            console.log("Eat Music List:", eatingMusic.eatMusicList)
+            walkingMusic.walkMusicList.push(walkingMusic.walk1)
+            walkingMusic.walkMusicList.push(walkingMusic.walk2)
+            walkingMusic.walkMusicList.push(walkingMusic.walk3)
+            walkingMusic.walkMusicList.push(walkingMusic.walk4)
+            walkingMusic.walkMusicList.push(walkingMusic.walk5)
+            walkingMusic.walkMusicList.push(walkingMusic.walk6)
+            console.log("walk Music List:",walkingMusic.walkMusicList)
+
+        }
+}
 

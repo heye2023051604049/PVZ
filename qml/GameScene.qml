@@ -14,8 +14,6 @@ Scene{
     property var currentPlant
     property var currentPlantList:[]
     property bool deleteStatus:false
-    //property var tapHandler
-    //property var tapHandlerList:[]
     Image{
         id:image1
         anchors.fill: parent
@@ -178,19 +176,19 @@ Scene{
                     gameScene:gameScene
                         })
                     console.log("Creating TapHandler for plant:", currentPlant)
-                    var tapHandler = Qt.createQmlObject(`
-                        import QtQuick
-                        import QtQuick.Controls
-                        import Felgo
-                        TapHandler {
-                            onTapped: (event) => {
-                            gameScene.currentPlant = currentPlant
-                            //console.log("123456")
-                            event.accepted = true
-                        }
-                    }
-                    `, currentPlant)
-                    console.log("Creating TapHandler for plant:", tapHandler)
+                    // var tapHandler = Qt.createQmlObject(`
+                    //     import QtQuick
+                    //     import QtQuick.Controls
+                    //     import Felgo
+                    //     TapHandler {
+                    //         onTapped: (event) => {
+                    //         gameScene.currentPlant = currentPlant
+                    //         //console.log("123456")
+                    //         event.accepted = true
+                    //     }
+                    // }
+                    // `, currentPlant)
+                    // console.log("Creating TapHandler for plant:", tapHandler)
                 currentPlantList.push(currentPlant)
                 }else{
                     console.log("Not enough sun")
