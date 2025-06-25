@@ -10,7 +10,7 @@ EntityBase{
     height: 40
 
     // 阳光生成相关属性
-    property int sunGenerateInterval: 10000 // 10秒生成一次阳光
+    property int sunGenerateInterval: 7000 // 10秒生成一次阳光
     property int sunValue: 25 // 每个阳光值
     property var gameScene // 用于引用游戏场景
 

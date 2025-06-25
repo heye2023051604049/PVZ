@@ -7,7 +7,7 @@ EntityBase{
     entityType: "bullet"
     width:10
     height:10
-    property int attack: 30
+    property int attack: 40
 
 
     //x:400
@@ -30,16 +30,16 @@ EntityBase{
 
     fixture.onBeginContact: other=>{
 
-    peabullet.removeEntity();
+
         //console.log("boom");
 
         var otherEntity = other.getBody().target;
         if(otherEntity.entityType === "zombie") {
         console.log("boom")
-        otherEntity.hp = otherEntity.hp-attack;
+        otherEntity.hp = otherEntity.hp-peabullet.attack;
         console.log("zombieHp",otherEntity.hp)
                                 }
-
+        peabullet.removeEntity();
     }
 
 

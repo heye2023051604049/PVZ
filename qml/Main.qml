@@ -72,7 +72,7 @@ GameWindow{
         //Peashooter{x:200;y:200}
         //Peashooter{x:300;y:150}
         //Peashooter{x:50}
-        Nut{x:380;y:100}
+        //Nut{x:380;y:100}
         //DoublePeashooter{y:100}
         //Peashooter{x:300}
         //Peashooter{x:380}
@@ -80,7 +80,7 @@ GameWindow{
         //Peashooter{x:400;y:100}
         //Peabullet{id:peabullet}
         PhysicsWorld{
-        debugDrawVisible: true
+        //debugDrawVisible: true
         updatesPerSecondForPhysics:60
         //gravity. y:10
 
@@ -99,7 +99,7 @@ GameWindow{
 
         Timer{
         id:creatzombie1
-        interval: 5000
+        interval: 8000
         running: true
         repeat: false
         property string zombie1
@@ -115,7 +115,7 @@ console.log("zombie1",zombie1)
 
         Timer{
         id:creatzombie2
-        interval: 10000
+        interval: 16000
         running: true
         repeat: false
         onTriggered: {
@@ -128,7 +128,7 @@ console.log("zombie2",zombie2)
 
         Timer{
         id:creatzombie3
-        interval: 12000
+        interval: 20000
         running: true
         repeat: false
         onTriggered: {
@@ -139,7 +139,7 @@ console.log("zombie3",zombie3)
 }
         Timer{
         id:creatzombieCZ
-        interval: 20000
+        interval: 30000
         running: true
         repeat: false
         onTriggered: {
@@ -156,7 +156,7 @@ console.log("zombie3",zombie3)
 
         Timer{
         id:creatzombieBk
-        interval: 25000
+        interval: 40000
         running: true
         repeat: false
         onTriggered: {

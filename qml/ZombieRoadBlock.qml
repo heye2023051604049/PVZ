@@ -9,10 +9,10 @@ EntityBase{
     property alias anima: zbam
 
 
-    property int hp :800
+    property int hp :600
     //anchors.centerIn: parent
-    entityType: "zombie2"
-    property int attack :25
+    entityType: "zombie"
+    property int attack :20
     width:  64
     height: 64
 
@@ -54,6 +54,18 @@ EntityBase{
         }
 
         //死亡
+        GameSprite{
+        name:"die"
+        //source:"../assets/ZBdie.png"
+        source: Qt.resolvedUrl("../assets/ZBdie.png")
+        frameCount: 9
+        frameWidth: 446
+        frameHeight: 265
+        frameX: 0
+        frameY: 0
+        frameDuration: 330
+        //to: {"walk":1,"eat":1}
+        }
 
     }
 
@@ -131,7 +143,7 @@ EntityBase{
 
     Timer{
     id:zbwalk
-    interval:15000
+    interval:20000
     running:false
     repeat: true
     onTriggered: {

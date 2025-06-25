@@ -9,7 +9,7 @@ EntityBase{
     property alias anima: zbam
 
 
-    property int hp :500
+    property int hp :400
     //anchors.centerIn: parent
     entityType: "zombie"
     property int attack :20
@@ -169,7 +169,7 @@ EntityBase{
 
     Timer{
     id:zbwalk
-    interval:15000
+    interval:20000
     running:false
     repeat: true
     onTriggered: {

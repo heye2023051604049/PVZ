@@ -9,7 +9,7 @@ Item {
     property int sunCount: 0
     property int maxSunCount: 9999
     property bool autoGenerate: true  // 是否自动生成阳光
-    property int generateInterval: 5000  // 生成间隔(毫秒)
+    property int generateInterval: 8000  // 生成间隔(毫秒)
     property int generateAmount: 1  // 每次生成数量
     property var generateArea: parent  // 生成区域
 
