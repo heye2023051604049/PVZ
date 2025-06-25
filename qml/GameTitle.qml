@@ -2,7 +2,9 @@
 import QtQuick
 import QtQuick.Controls
 import QtMultimedia
+import QtQuick.Dialogs
 import Felgo
+import "Controller.js" as Controller
 Scene{
     property alias options:_options
     property alias quit:_quit
@@ -12,6 +14,7 @@ Scene{
     property alias puzzle:_puzzle
     property alias survival:_survival
     property alias bgm:_bgm
+    property alias about:_about
     id:menuscene
     signal beginTapped
 
@@ -35,7 +38,7 @@ Scene{
         id:button
         background: Rectangle{id:rectangle;color:"transparent";border.color:"transparent"}
         Image{id:image;fillMode: Image.PreserveAspectFit;visible:button.hovered}
-        }
+    }
     HoveredButton {
         id:_options
         x:320; y:235
@@ -44,7 +47,7 @@ Scene{
         imageX:1;imageY:25;imageWidth: 44
         TapHandler{
             onTapped: {
-                console.log("options was clicked")
+                Controller.options()
             }
         }
     }
@@ -57,9 +60,7 @@ Scene{
         imageX:5;imageY:30;imageWidth: 27
         TapHandler{
             onTapped: {
-                console.log("quit was clicked")
-               //EntityManager.removeAllEntities()//before quit  destory all entities
-                Qt.quit()
+                Controller.quit()
             }
         }
     }
@@ -72,7 +73,7 @@ Scene{
         imageX:5;imageY:43;imageWidth: 26
         TapHandler{
             onTapped: {
-                console.log("help was clicked")
+                Controller.help()
             }
         }
     }
@@ -85,8 +86,7 @@ Scene{
         imageWidth: 170
         TapHandler{
             onTapped: {
-                console.log("adventure was clicked")
-                beginTapped()
+                Controller.adventure()
             }
         }
     }
@@ -99,7 +99,7 @@ Scene{
         imageY:-10;imageWidth:160
         TapHandler{
             onTapped: {
-                console.log("options was clicked")
+                Controller.miniGames()
             }
         }
     }
@@ -112,7 +112,7 @@ Scene{
         imageY:-12;imageWidth: 145
         TapHandler{
             onTapped: {
-                console.log("puzzle was clicked")
+                Controller.puzzle()
                 //console.log("backgroundMusic.mediaStatus: ",backgroundMusic.mediaStatus)
                 //backgroundMusic.play()
             }
@@ -127,17 +127,24 @@ Scene{
         imageY:-12;imageWidth: 135
         TapHandler{
             onTapped: {
-                console.log("survival was clicked")
+                Controller.survival()
             }
         }
     }
 
+
+    MessageDialog{
+        id:_about
+        modality: Qt.WindowModal
+        buttons:MessageDialog.Ok
+        text:"WnW"
+        informativeText: qsTr("I don't know what to say ,but wish you have a good day")
+        detailedText: "sometimes I feel lost "
+    }
     MusicButton{
         id:_bgm
         x:385
         backgroundMusicSource: "../assets/titlemusic.mp3"
     }
-
-
 }
 

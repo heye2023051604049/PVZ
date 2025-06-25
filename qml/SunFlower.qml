@@ -1,3 +1,4 @@
+//sunflower functions
 import QtQuick
 import Felgo
 
@@ -82,7 +83,7 @@ EntityBase{
                                     damagecount1.running=true;
 
                                     if(enermynumber>1){bdzbid2 = bdzb.entityId
-                                                        damagecount2.running = true;}
+                                        damagecount2.running = true;}
                                 }
         categories: Box.Category1
         collidesWith: Box.Category2
@@ -93,100 +94,73 @@ EntityBase{
                               }
     }
 
-   /* Timer{
-    id:damagecount
-    interval: 1000
-    running:false
-    repeat: true
-    property int attack
-    property int zombienumber: 0
-    onTriggered: {
-        attack = zombie.attack
-        parent.hp= parent.hp-attack;
-        attack = 0;
-        console.log("HP",parent.hp)
-        if (parent.hp<=0){
-                damagecount.running=false;
-                parent.removeEntity();
-                zombie.anima.jumpTo("walk")
-        }
-    }
-    }*/
-
-
     Timer{
-    id:damagecount1
-    interval: 1000
-    running:false
-    repeat: true
-    property int attack
-    property int zombienumber: 0
-    onTriggered: {
-        //ondamaged(zbattk);
-        var zb1 = entityManager.getEntityById(body.bdzbid1)
+        id:damagecount1
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            var zb1 = entityManager.getEntityById(body.bdzbid1)
 
-        if(zb1){
-        attack = zb1.attack
-        console.log("zombieatttack",attack)
-            parent.hp= parent.hp-attack
-            attack = 0;}
+            if(zb1){
+                attack = zb1.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;}
 
+            console.log("HP",parent.hp)
 
-        //parent.hp= parent.hp-attack1;
-        //attack = 0;
-
-        console.log("HP",parent.hp)
-
-        if (parent.hp<=0){
+            if (parent.hp<=0){
                 damagecount1.running=false;
                 parent.removeEntity();
                 zb1.anima.jumpTo("walk")
-    }
+            }
 
 
-    }
+        }
 
     }
 
 
     Timer{
-    id:damagecount2
-    interval: 1000
-    running:false
-    repeat: true
-    property int attack
-    property int zombienumber: 0
-    onTriggered: {
-        //ondamaged(zbattk);
-        var zb2 = entityManager.getEntityById(body.bdzbid2)
+        id:damagecount2
+        interval: 1000
+        running:false
+        repeat: true
+        property int attack
+        property int zombienumber: 0
+        onTriggered: {
+            var zb2 = entityManager.getEntityById(body.bdzbid2)
 
-        if(zb2){
-        attack = zb2.attack
-        console.log("zombieatttack",attack)
-            parent.hp= parent.hp-attack
-            attack = 0;}
+            if(zb2){
+                attack = zb2.attack
+                console.log("zombieatttack",attack)
+                parent.hp= parent.hp-attack
+                attack = 0;}
 
 
-        if (parent.hp<=0){
+            if (parent.hp<=0){
                 damagecount2.running=false
                 zb2.anima.jumpTo("walk");
 
-    }
+            }
 
 
-    }
+        }
 
     }
 
     function enterrange () {
-    attackrange.isEnterAttackrange = true;
-    attackrange.number +=1;
+        attackrange.isEnterAttackrange = true;
+        attackrange.number +=1;
 
     }
 
     function outofrange(){
-    attackrange.number = attackrange.number -1;
-    if(attackrange.number<=0){
-    attackrange.isEnterAttackrange = false};
+        attackrange.number = attackrange.number -1;
+        if(attackrange.number<=0){
+            attackrange.isEnterAttackrange = false};
     }
 }

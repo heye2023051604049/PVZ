@@ -1,3 +1,4 @@
+//sunbank's parts
 import QtQuick
 
 Item {
@@ -73,11 +74,11 @@ Item {
     // 阳光收集动画效果
     function playCollectAnimation(x, y) {
         var sun = sunComponent.createObject(sunBank.parent, {
-            startX: x,
-            startY: y,
-            endX: sunBank.x + sunIcon.x + sunIcon.width/2,
-            endY: sunBank.y + sunIcon.y + sunIcon.height/2
-        });
+                                                startX: x,
+                                                startY: y,
+                                                endX: sunBank.x + sunIcon.x + sunIcon.width/2,
+                                                endY: sunBank.y + sunIcon.y + sunIcon.height/2
+                                            });
         sun.collected.connect(function() {
             sunCollected(25);  // 每个阳光值25
             sun.destroy();
@@ -157,7 +158,7 @@ Item {
             // 点击收集阳光
             TapHandler {
                 id: tapHandler
-                enabled: fallAnimation.running == false
+                enabled: fallAnimation.running === false
                 onTapped: {
                     collectAnimation.start()
                 }
@@ -206,11 +207,11 @@ Item {
 
             // 创建阳光实例
             var sun = sunComponent.createObject(generateArea, {
-                startX: x,
-                startY: y,
-                endX: sunBank.x + sunIcon.x + sunIcon.width/2,
-                endY: sunBank.y + sunIcon.y + sunIcon.height/2,
-            });
+                                                    startX: x,
+                                                    startY: y,
+                                                    endX: sunBank.x + sunIcon.x + sunIcon.width/2,
+                                                    endY: sunBank.y + sunIcon.y + sunIcon.height/2,
+                                                });
             sun.collected.connect(function() {
                 sunCollected(25);  // 每个阳光值25
                 sun.destroy();
@@ -220,13 +221,13 @@ Item {
     // 添加在指定位置生成阳光的方法
     function generateSunAtPosition(x, y, value,maxDropDistance) {
         var sun = sunComponent.createObject(sunBank.parent, {
-            startX: x,
-            startY: y,
-            endX: sunBank.x + sunIcon.x + sunIcon.width/2,
-            endY: sunBank.y + sunIcon.y + sunIcon.height/2,
-            sunValue: value || 25, // 默认值25
-            maxDropDistance: maxDropDistance || 150
-        });
+                                                startX: x,
+                                                startY: y,
+                                                endX: sunBank.x + sunIcon.x + sunIcon.width/2,
+                                                endY: sunBank.y + sunIcon.y + sunIcon.height/2,
+                                                sunValue: value || 25, // 默认值25
+                                                maxDropDistance: maxDropDistance || 150
+                                            });
 
         sun.collected.connect(function() {
             sunCollected(sun.sunValue)

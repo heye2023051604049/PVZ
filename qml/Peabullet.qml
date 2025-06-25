@@ -1,52 +1,38 @@
-//wenrenqiang
+//peabullet's functions' finished
 import QtQuick
 import Felgo
 import QtMultimedia
 EntityBase{
+    property int attack: 40
     id:peabullet
     entityType: "bullet"
     width:10
     height:10
-    property int attack: 40
-
-
-    //x:400
-    //y:120
 
     CircleCollider{
-    id:pb
-    radius: parent.width/2
-    anchors.centerIn: parent
-    fixture.friction: 0
-    fixture.restitution: 1
-    sensor: true
-    //bullet: true
+        id:pb
+        radius: parent.width/2
+        anchors.centerIn: parent
+        fixture.friction: 0
+        fixture.restitution: 1
+        sensor: true
 
-    property string colliderType :"bullet"
+        property string colliderType :"bullet"
 
-    categories:Box.Category1
-    collidesWith: Box.Category2
+        categories:Box.Category1
+        collidesWith: Box.Category2
+        fixture.onBeginContact: other=>{
+                                    var otherEntity = other.getBody().target;
+                                    if(otherEntity.entityType === "zombie") {
 
+                                        console.log("boom");
+                                        attackMusic.play();
+                                        otherEntity.hp = otherEntity.hp-attack;
 
-    fixture.onBeginContact: other=>{
-
-
-        //console.log("boom");
-
-        var otherEntity = other.getBody().target;
-        if(otherEntity.entityType === "zombie") {
-
-        console.log("boom");
-        attackMusic.play();
-        otherEntity.hp = otherEntity.hp-attack;
-
-        console.log("zombieHp",otherEntity.hp)
+                                        console.log("zombieHp",otherEntity.hp)
+                                    }
+                                    peabullet.removeEntity();
                                 }
-        peabullet.removeEntity();
-    }
-
-
-
     }
 
     Image{id:bullet
@@ -55,15 +41,14 @@ EntityBase{
         height:parent.height
     }
 
-
     Timer{
-    id:shoot
-    interval: 500
-    running:true
-    repeat: false
-    onTriggered: {
-        //peabullet.x= peabullet.x+1.5;
-        pb.body.applyLinearImpulse(Qt.point(100, 0), pb.body.getWorldCenter())}
+        id:shoot
+        interval: 500
+        running:true
+        repeat: false
+        onTriggered: {
+            //peabullet.x= peabullet.x+1.5;
+            pb.body.applyLinearImpulse(Qt.point(100, 0), pb.body.getWorldCenter())}
 
     }
     MediaPlayer{
@@ -76,9 +61,6 @@ EntityBase{
         }
     }
     Component.onCompleted: {
-            console.log("attack Music :", attackMusic.collisionMusic)
-        }
-
-
-
+        console.log("attack Music :", attackMusic.collisionMusic)
+    }
 }

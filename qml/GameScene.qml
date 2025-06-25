@@ -1,3 +1,4 @@
+//gamescene's layout and composition
 import Felgo
 import QtQuick
 import QtQuick.Controls
@@ -14,8 +15,6 @@ Scene{
     property var currentPlant
     property var currentPlantList:[]
     property bool deleteStatus:false
-    //property var tapHandler
-    //property var tapHandlerList:[]
     Image{
         id:image1
         anchors.fill: parent
@@ -78,35 +77,35 @@ Scene{
             anchors.verticalCenter: parent.verticalCenter}
         TapHandler{
             onTapped: (event)=>{
-                var scenePos = button.mapToItem(gameScene, button.width/2, button.height/2)
-                xPosition = scenePos.x//location active button
-                yPosition = scenePos.y
-                //gameScene.currentPlant =
-                //event.accepted = true
-                if(plantingComponent){
-                    seedBank.plantPlanteddemo(plantingComponent)
-                    plant = currentPlant
-                    console.log("button's plant is ",plant)
-                    console.log(plantingComponent)
-                    gameScene.plantingComponent = null
-                    gameScene.shadowPath=""
-                    console.log("After reset - plantingComponent:", plantingComponent, "shadowPath:", shadowPath)
-                    event.accepted = true
-                }
-                if(deleteStatus){
-                    currentPlant = plant
-                    var index = currentPlantList.indexOf(currentPlant);
-                    if (index !== -1) {
-                        currentPlantList.splice(index, 1);
-                        currentPlant.destroy()
-                        currentPlant = null
-                        plant = null
-                        deleteStatus = false
-                        shovel.deleteModel = false
-                        event.accepted = true
-                    }
-                }
-            }
+                          var scenePos = button.mapToItem(gameScene, button.width/2, button.height/2)
+                          xPosition = scenePos.x//location active button
+                          yPosition = scenePos.y
+                          //gameScene.currentPlant =
+                          //event.accepted = true
+                          if(plantingComponent){
+                              seedBank.plantPlanteddemo(plantingComponent)
+                              plant = currentPlant
+                              console.log("button's plant is ",plant)
+                              console.log(plantingComponent)
+                              gameScene.plantingComponent = null
+                              gameScene.shadowPath=""
+                              console.log("After reset - plantingComponent:", plantingComponent, "shadowPath:", shadowPath)
+                              event.accepted = true
+                          }
+                          if(deleteStatus){
+                              currentPlant = plant
+                              var index = currentPlantList.indexOf(currentPlant);
+                              if (index !== -1) {
+                                  currentPlantList.splice(index, 1);
+                                  currentPlant.destroy()
+                                  currentPlant = null
+                                  plant = null
+                                  deleteStatus = false
+                                  shovel.deleteModel = false
+                                  event.accepted = true
+                              }
+                          }
+                      }
         }
     }
 
@@ -168,30 +167,30 @@ Scene{
             var plantData=_seedbank.plantTypes.find(p => p.plantComponent === plantComponent)
             if(plantData){
                 if(gameScene.sunCount >= plantData.cost){
-                gameScene.sunCount -= plantData.cost
-                _seedbank.selectedPlantIndex = -1
-                currentPlant = plantData.plantComponent.createObject(gameScene, {
-                    x: xPosition - 20,  // 居中修正
-                    y: yPosition - 20,
-                    z: 1,
-                    visible:true,
-                    gameScene:gameScene
-                        })
+                    gameScene.sunCount -= plantData.cost
+                    _seedbank.selectedPlantIndex = -1
+                    currentPlant = plantData.plantComponent.createObject(gameScene, {
+                                                                             x: xPosition - 20,  // 居中修正
+                                                                             y: yPosition - 20,
+                                                                             z: 1,
+                                                                             visible:true,
+                                                                             gameScene:gameScene
+                                                                         })
                     console.log("Creating TapHandler for plant:", currentPlant)
-                    var tapHandler = Qt.createQmlObject(`
-                        import QtQuick
-                        import QtQuick.Controls
-                        import Felgo
-                        TapHandler {
-                            onTapped: (event) => {
-                            gameScene.currentPlant = currentPlant
-                            //console.log("123456")
-                            event.accepted = true
-                        }
-                    }
-                    `, currentPlant)
-                    console.log("Creating TapHandler for plant:", tapHandler)
-                currentPlantList.push(currentPlant)
+                    // var tapHandler = Qt.createQmlObject(`
+                    //     import QtQuick
+                    //     import QtQuick.Controls
+                    //     import Felgo
+                    //     TapHandler {
+                    //         onTapped: (event) => {
+                    //         gameScene.currentPlant = currentPlant
+                    //         //console.log("123456")
+                    //         event.accepted = true
+                    //     }
+                    // }
+                    // `, currentPlant)
+                    // console.log("Creating TapHandler for plant:", tapHandler)
+                    currentPlantList.push(currentPlant)
                 }else{
                     console.log("Not enough sun")
                 }
@@ -207,13 +206,13 @@ Scene{
     // 创建向日葵时设置gameScene引用
     function createSunflower(x, y) {
         var entity = entityManager.createEntityFromComponentWithProperties(
-            Qt.resolvedUrl("Sunflower.qml"),
-            {
-                x: x,
-                y: y,
-                gameScene: gameScene // 传递场景引用
-            }
-        )
+                    Qt.resolvedUrl("Sunflower.qml"),
+                    {
+                        x: x,
+                        y: y,
+                        gameScene: gameScene // 传递场景引用
+                    }
+                    )
         return entity
     }
     Shovel{
@@ -222,11 +221,11 @@ Scene{
         TapHandler{
             onTapped: {
                 if(deleteStatus){
-                gameScene.deleteStatus = false
-                shovel.deleteModel = false
+                    gameScene.deleteStatus = false
+                    shovel.deleteModel = false
                 } else {
-                gameScene.deleteStatus = true
-                shovel.deleteModel = true
+                    gameScene.deleteStatus = true
+                    shovel.deleteModel = true
                 }
                 gameScene.plantingComponent = null
                 console.log("deletePlant: ",deleteStatus)

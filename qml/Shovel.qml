@@ -25,15 +25,4 @@ Button {
             source:deleteModel? "../assets/options_checkbox1.png" : "../assets/options_checkbox0.png"
         }
     }
-    // TapHandler{
-    //     onTapped: {
-    //         if(deleteModel){
-    //             deleteModel = false
-    //             console.log("deleteDodel :",deleteModel)
-    //         } else {
-    //             deleteModel = true
-    //             console.log("deleteModel :",deleteModel)
-    //         }
-    //     }
-    // }
 }
