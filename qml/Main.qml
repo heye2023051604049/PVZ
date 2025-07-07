@@ -66,7 +66,7 @@ GameWindow{
     GameScene{
         id:_gameScene;opacity:  0
         PhysicsWorld{
-            debugDrawVisible: true
+            //debugDrawVisible: true
             updatesPerSecondForPhysics:60
         }
         EntityManager {id:entityManager;

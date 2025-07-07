@@ -192,6 +192,7 @@ EntityBase{
         repeat: true
         onTriggered: {
             zbam.jumpTo("walk")
+            eatingMusic.stop();
         }
     }
 }

@@ -137,7 +137,7 @@ EntityBase{
             if (parent.hp<=0){
                 //damagecount2.restart()
                 damagecount1.running=false;
-                zb1.anima.jumpTo("walk")
+                zb1.anima.jumpTo("walk")//zhuangtaiqiehuan
                 //console.log("666")
                 parent.removeEntity();
             }

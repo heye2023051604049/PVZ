@@ -71,7 +71,7 @@ Scene{
         property var plant
 
         id:button
-        background: Rectangle{id:rectangle;color:"transparent";border.color:"#888"}
+        background: Rectangle{id:rectangle;color:"transparent";border.color:"transparent"}
         Image{id:image;fillMode: Image.PreserveAspectFit;visible:button.hovered;
             opacity: 0.4;width:30
             anchors.horizontalCenter: parent.horizontalCenter
