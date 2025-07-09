@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Game;ArcadeGame;
+Comment[zh_CN]=
+Comment=
+Exec=/document/qtcreator/PVZ/build/Qt_6_4_1_gcc_64-Release/appPVZ.run
+GenericName[zh_CN]=
+GenericName=
+Icon=applications-games
+MimeType=
+Name[zh_CN]=植物大战僵尸
+Name=植物大战僵尸
+NoDisplay=false
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=none
+X-Desktop-File-Install-Version=0.1
+X-KDE-SubstituteUID=false
+X-KDE-Username=
